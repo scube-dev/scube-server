@@ -1,0 +1,4 @@
+Given /^Foo and Bar playlists$/ do
+  @foo = Playlist.create!(:name => 'Foo')
+  @bar = Playlist.create!(:name => 'Bar')
+end
