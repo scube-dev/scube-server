@@ -16,3 +16,11 @@ Feature: Playlists
     And I fill in "Name" with "Electro"
     And I press "Create"
     Then I should see "Electro" within "ul>li"
+
+  Scenario: Edit playlist
+    Given a playlist named Electro
+    And I am on the playlists page
+    When I follow "Electro"
+    And I fill in "Name" with "Rock"
+    And I press "Save"
+    Then I should see "Rock"

@@ -7,7 +7,7 @@ describe PlaylistsController do
     }
   end
 
-  describe "GET index" do
+  describe 'GET index' do
     it 'assigns all playlists as @playlists' do
       playlist = Playlist.create! valid_attributes
       get :index
@@ -15,14 +15,22 @@ describe PlaylistsController do
     end
   end
 
-  describe "GET new" do
+  describe 'GET new' do
     it 'assigns a new playlist as @playlist' do
       get :new
       assigns[:playlist].should be_a_new(Playlist)
     end
   end
 
-  describe "POST create" do
+  describe 'GET edit' do
+    it 'assigns the requested playlist as @playlist' do
+      playlist = Playlist.create! valid_attributes
+      get :edit, :id => playlist.id.to_s
+      assigns[:playlist].should == playlist
+    end
+  end
+
+  describe 'POST create' do
     let(:playlist) { mock_model(Playlist).as_null_object }
 
     before do
@@ -61,6 +69,29 @@ describe PlaylistsController do
       it 'renders the new template' do
         post :create
         response.should render_template('new')
+      end
+    end
+  end
+
+  describe 'PUT update' do
+    it 'updates the playlist' do
+      playlist = Playlist.create! valid_attributes
+      Playlist.any_instance.should_receive(:update_attributes).
+        with({'name' => 'Rock'})
+      put :update, :id => playlist.id.to_s, :playlist => {:name => 'Rock'}
+    end
+
+    it 'assigns the requested playlist as @playlist' do
+      playlist = Playlist.create! valid_attributes
+      put :update, :id => playlist.id.to_s, :playlist => {:name => 'Rock'}
+      assigns[:playlist].should == playlist
+    end
+
+    context 'when the playlist updates successfully' do
+      it 'redirects to the playlists index' do
+        playlist = Playlist.create! valid_attributes
+        put :update, :id => playlist.id.to_s, :playlist => valid_attributes
+        response.should redirect_to(:action => 'index')
       end
     end
   end

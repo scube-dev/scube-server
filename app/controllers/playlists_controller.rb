@@ -15,4 +15,14 @@ class PlaylistsController < ApplicationController
       render :action => 'new'
     end
   end
+
+  def edit
+    @playlist = Playlist.find(params[:id])
+  end
+
+  def update
+    @playlist = Playlist.find(params[:id])
+    @playlist.update_attributes params[:playlist]
+    redirect_to :action => 'index'
+  end
 end
