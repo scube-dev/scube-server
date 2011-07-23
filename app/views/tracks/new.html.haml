@@ -1,0 +1,6 @@
+= form_for @track, :html => { :multipart => true } do |t|
+  = t.label :name
+  = t.text_field :name
+  = t.label :file
+  = t.file_field :file
+  = t.submit 'Upload'
