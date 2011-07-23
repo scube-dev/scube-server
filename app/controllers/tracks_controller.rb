@@ -9,10 +9,10 @@ class TracksController < ApplicationController
 
   def create
     @track = Track.new(:name => params[:track][:name])
-    if params[:track][:file]
-      @track.uploaded_file = params[:track][:file]
-    end
-    if @track.save
+    if @track.save_with_file(
+        params[:track][:file].tempfile,
+        params[:track][:file].content_type
+      )
       redirect_to @track
     else
       render :new
@@ -20,5 +20,8 @@ class TracksController < ApplicationController
   end
 
   def stream
+    track = Track.find params[:id]
+    self.content_type = track.mime_type
+    self.response_body = Streamer.new(track.filepath)
   end
 end

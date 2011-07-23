@@ -1,3 +1,3 @@
 Given /^a playlist named "([^"]*)"$/ do |name|
-  Playlist.create!(:name => name)
+  Factory.create(:playlist, :name => name)
 end

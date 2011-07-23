@@ -13,7 +13,7 @@ Feature: Tracks
     Given I am on the playlists page
     When I follow "Add a track"
     And I fill in "Name" with "Mega song"
-    And I attach the file "features/data/test.mp3" to "File"
+    And I attach the file "features/fixtures/test.mp3" to "File"
     And I press "Upload"
     Then I should see "Mega song" within "h1"
 

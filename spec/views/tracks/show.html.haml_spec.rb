@@ -20,6 +20,16 @@ describe 'tracks/show.html.haml' do
       rendered.should have_selector('audio[src]')
     end
 
+    it 'provides controls' do
+      render
+      rendered.should have_selector('audio[controls]')
+    end
+
+    it 'has autoplay activated' do
+      render
+      rendered.should have_selector('audio[autoplay]')
+    end
+
     it 'displays a text fallback for UA without support' do
       render
       rendered.should have_selector('audio',
