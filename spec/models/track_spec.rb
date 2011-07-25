@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Track do
   subject { track }
-  let(:track) { Track.new :name => 'Mega song' }
+  let(:track) { FactoryGirl.build(:track) }
 
   context 'with valid attributes' do
     it { should be_valid }

@@ -1,15 +1,9 @@
 require 'spec_helper'
 
 describe TracksController do
-  def valid_attributes
-    {
-      :name => 'Mega song'
-    }
-  end
-
   describe 'GET show' do
     it 'assigns the requested track as @track' do
-      track = Track.create! valid_attributes
+      track = Factory.create(:track)
       get :show, :id => track.id.to_s
       assigns[:track].should == track
     end
@@ -28,9 +22,9 @@ describe TracksController do
 
     it 'creates a new track' do
       Track.should_receive(:new).
-        with(:name => 'Mega song').
+        with(Factory.attributes_for(:track)).
         and_return(track)
-      post :create, :track => valid_attributes
+      post :create, :track => Factory.attributes_for(:track)
     end
 
     it 'saves the track' do
@@ -46,7 +40,7 @@ describe TracksController do
 
     context 'when the track saves successfully' do
       it 'redirects to the track page' do
-        post :create, :track => valid_attributes
+        post :create, :track => Factory.attributes_for(:track)
         response.should redirect_to(track)
       end
     end

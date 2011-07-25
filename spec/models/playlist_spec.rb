@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Playlist do
   subject { playlist }
-  let(:playlist) { Playlist.new :name => 'Electro' }
+  let(:playlist) { FactoryGirl.build(:playlist) }
 
   context 'with valid attributes' do
     it { should be_valid }
