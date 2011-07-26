@@ -1,0 +1,23 @@
+scube installation
+------------------
+
+  You'll need ruby, rubygems and bundler gem installed.
+
+
+* After you have cloned the repository, install required dependencies
+  using bundler:
+
+  `bundle install`
+
+* Alternatively, you can run `bundle check` and manually install the
+  missing dependencies.
+
+* Then you'll need to create the database and run the migrations. Edit
+  config/database.yml to suit your needs and execute the db:migrate
+  rake task using bundler:
+
+  `bundle exec rake db:migrate`
+
+* Eventually you can launch the application:
+
+  `./script/rails server`
