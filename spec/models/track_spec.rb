@@ -56,4 +56,12 @@ describe Track do
       `rm -f #{Rails.root}/data/tracks/*`
     end
   end
+
+  describe '.latest' do
+    it 'returns latest tracks in descending creation date order' do
+      track1 = Factory.create(:track, :created_at => '2011-07-27 19:13:42')
+      track2 = Factory.create(:track, :created_at => '2011-07-27 19:58:57')
+      Track.latest.should == [track2, track1]
+    end
+  end
 end

@@ -15,4 +15,8 @@ class Track < ActiveRecord::Base
     end
     save!
   end
+
+  def self.latest
+    Track.order('created_at DESC')
+  end
 end

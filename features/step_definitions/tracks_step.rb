@@ -4,6 +4,12 @@ Given /^a track named "([^"]*)"$/ do |name|
   @track.save_with_file(file, 'audio/mpeg')
 end
 
+Given /^the following tracks:$/ do |table|
+  table.hashes.each do |h|
+    Factory.create(:track, h)
+  end
+end
+
 Then /^I should see an audio player$/ do
   page.should have_xpath '//audio'
 end
