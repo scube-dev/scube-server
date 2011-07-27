@@ -21,9 +21,4 @@ describe 'playlists/index.html.haml' do
     render
     rendered.should have_selector('a', :text => 'Electro')
   end
-
-  it 'displays a link to create a new track' do
-    render
-    rendered.should have_selector('a', :text => 'Add a track')
-  end
 end

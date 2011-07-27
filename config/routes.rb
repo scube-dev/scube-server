@@ -3,4 +3,6 @@ Scube::Application.routes.draw do
     get 'stream', :on => :member
   end
   resources :playlists
+
+  root :to => 'home#index'
 end

@@ -10,7 +10,7 @@ Feature: Tracks
     Then I should see "Mega song" within "h1"
 
   Scenario: Create track
-    Given I am on the playlists page
+    Given I am on the home page
     When I follow "Add a track"
     And I fill in "Name" with "Mega song"
     And I attach the file "features/fixtures/test.mp3" to "File"
