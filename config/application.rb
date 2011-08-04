@@ -38,5 +38,8 @@ module Scube
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # BestStandardsSupport is setting this fucking X-UA-Compatible header...
+    config.middleware.delete ActionDispatch::BestStandardsSupport
   end
 end
