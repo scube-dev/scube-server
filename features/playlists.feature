@@ -4,6 +4,9 @@ Feature: Playlists
   As a listener
   I want to manage some playlists
 
+  Background:
+    Given I am signed in
+
   Scenario: List playlists
     Given a playlist named "Electro"
     And a playlist named "Reggae"

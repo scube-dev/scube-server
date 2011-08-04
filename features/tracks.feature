@@ -4,6 +4,9 @@ Feature: Tracks
   As a listener
   I want to add, manage and listen some tracks
 
+  Background:
+    Given I am signed in
+
   Scenario: Show track
     Given a track named "Mega song"
     When I go to the track page for "Mega song"

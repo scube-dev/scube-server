@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe TracksController do
+  before do
+    controller.current_user = Factory.create(:user)
+  end
+
   describe 'GET show' do
     it 'assigns the requested track as @track' do
       track = Factory.create(:track)

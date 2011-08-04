@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe PlaylistsController do
+  before do
+    controller.current_user = Factory.create(:user)
+  end
+
   describe 'GET index' do
     it 'assigns all playlists as @playlists' do
       playlist = Factory.create(:playlist)

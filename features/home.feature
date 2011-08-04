@@ -4,6 +4,9 @@ Feature: Home
   As a listener
   I want to access the main features and valuable content from the homepage
 
+  Background:
+    Given I am signed in
+
   Scenario: Playlist access
     Given a playlist named "Electro"
     When I am on the home page

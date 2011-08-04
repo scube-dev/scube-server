@@ -16,6 +16,5 @@ end
 
 Then /^it should provide an audio stream for "([^"]*)"$/ do |name|
   page.should have_xpath "//audio[@src='#{stream_track_path(@track)}']"
-  get find('audio')[:src]
-  last_response.status.should == 200
+  visit find('audio')[:src]
 end
