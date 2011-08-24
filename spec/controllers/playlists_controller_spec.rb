@@ -58,24 +58,36 @@ describe PlaylistsController do
   end
 
   describe 'PUT update' do
-    it 'updates the playlist' do
-      playlist = Factory.create(:playlist)
-      Playlist.any_instance.should_receive(:update_attributes).
-        with({'name' => 'Rock'})
-      put :update, :id => playlist.id.to_s, :playlist => {:name => 'Rock'}
+    let (:playlist) { Factory.create(:playlist) }
+
+    def do_update
+      put :update, :id => playlist.id.to_s, :playlist => { :name => 'Rock' }
     end
 
-    it 'assigns the requested playlist as @playlist' do
-      playlist = Factory.create(:playlist)
-      put :update, :id => playlist.id.to_s, :playlist => {:name => 'Rock'}
-      assigns[:playlist].should == playlist
-    end
+    context 'whith valid params' do
+      it 'updates the playlist' do
+        Playlist.any_instance.should_receive(:update_attributes).
+          with({'name' => 'Rock'})
+        do_update
+      end
 
-    context 'when the playlist updates successfully' do
       it 'redirects to the playlists index' do
-        playlist = Factory.create(:playlist)
-        put :update, :id => playlist.id.to_s, :playlist => Factory.attributes_for(:playlist)
+        do_update
         response.should redirect_to(:action => 'index')
+      end
+    end
+
+    context 'with invalid params' do
+      before { Playlist.any_instance.stub(:save).and_return(false) }
+
+      it 'assigns the requested playlist as @playlist' do
+        do_update
+        assigns[:playlist].should == playlist
+      end
+
+      it 'renders the edit template' do
+        do_update
+        response.should render_template('edit')
       end
     end
   end

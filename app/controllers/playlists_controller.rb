@@ -22,7 +22,10 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = Playlist.find(params[:id])
-    @playlist.update_attributes params[:playlist]
-    redirect_to :action => 'index'
+    if @playlist.update_attributes params[:playlist]
+      redirect_to :action => 'index'
+    else
+      render :action => 'edit'
+    end
   end
 end
