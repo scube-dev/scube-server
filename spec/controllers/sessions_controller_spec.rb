@@ -12,7 +12,7 @@ describe SessionsController do
       it 'renders the new template' do
         User.stub(:authenticate).and_return(false)
         post :create,
-          :session => Factory.attributes_for(:user, :password => 'WRONG')
+          :session => Factory.attributes_for(:user)
         response.should render_template('new')
       end
     end
