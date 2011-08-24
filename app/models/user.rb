@@ -28,6 +28,6 @@ class User < ActiveRecord::Base
   end
 
   def bcrypt(string)
-    return Password.create(string)
+    Password.create(string)
   end
 end
