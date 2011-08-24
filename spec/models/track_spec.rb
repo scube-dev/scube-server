@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Track do
   subject { track }
-  let(:track) { FactoryGirl.build(:track) }
+  let(:track) { Factory.build(:track) }
 
   context 'with valid attributes' do
     it { should be_valid }
