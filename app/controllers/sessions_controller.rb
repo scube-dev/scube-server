@@ -2,15 +2,12 @@ class SessionsController < ApplicationController
   skip_before_filter :authenticate!, :only => [:new, :create]
 
   def create
-    user = User.authenticate(
-      params[:session][:email],
-      params[:session][:password]
-    )
-    if ! user
-      render 'new'
-    else
+    user = User.find_by_email(params[:session][:email])
+    if user.try(:authenticate?, params[:session][:password])
       self.current_user = user
       redirect_to :root
+    else
+      render 'new'
     end
   end
 end
