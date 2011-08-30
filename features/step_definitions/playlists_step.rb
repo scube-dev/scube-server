@@ -3,10 +3,10 @@ Given /^a playlist named "([^"]*)"$/ do |name|
 end
 
 Then /^I should see "([^"]*)" and "([^"]*)" in a list$/ do |pl1, pl2|
-  page.should have_selector('ul>li:first-child', :text => pl1)
-  page.should have_selector('ul>li:first-child+li', :text => pl2)
+  Then "I should see \"#{pl1}\" within \"ul>li:first-child\""
+  Then "I should see \"#{pl2}\" within \"ul>li:first-child+li\""
 end
 
 Then /^I should see "([^"]*)" in the list$/ do |playlist_name|
-  page.should have_selector('ul>li', :text => playlist_name)
+  Then "I should see \"#{playlist_name}\" within \"ul>li\""
 end

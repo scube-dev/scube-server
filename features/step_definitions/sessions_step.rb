@@ -3,11 +3,8 @@ Given /^I am not signed in$/ do
 end
 
 Given /^I am signed in$/ do
-  user = Factory.create(:user)
   visit new_session_path
-  fill_in('Email', :with => user.email)
-  fill_in('Password', :with => user.password)
-  click_button('Sign in')
+  When "I submit valid credentials"
 end
 
 Then /^I should be redirected to the sign in page$/ do
