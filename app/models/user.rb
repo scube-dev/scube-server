@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   attr_reader :password
   attr_accessible :email, :password, :password_confirmation
 
+  has_many :playlists
+
   validates_presence_of :email, :password_hash
   validates_confirmation_of :password
 

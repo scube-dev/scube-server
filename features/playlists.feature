@@ -11,15 +11,14 @@ Feature: Playlists
     Given a playlist named "Electro"
     And a playlist named "Reggae"
     When I am on the playlists page
-    Then I should see "Electro" within "ul>li:first-child"
-    And I should see "Reggae" within "ul>li:first-child+li"
+    Then I should see "Electro" and "Reggae" in a list
 
   Scenario: Create playlist
     Given I am on the playlists page
     When I follow "Create playlist"
     And I fill in "Name" with "Electro"
     And I press "Create"
-    Then I should see "Electro" within "ul>li:first-child"
+    Then I should see "Electro" in the list
 
   Scenario: Edit playlist
     Given a playlist named "Electro"
@@ -27,4 +26,4 @@ Feature: Playlists
     When I follow "Electro"
     And I fill in "Name" with "Rock"
     And I press "Save"
-    Then I should see "Rock"
+    Then I should see "Rock" in the list

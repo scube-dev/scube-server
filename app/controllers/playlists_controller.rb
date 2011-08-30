@@ -8,7 +8,7 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Playlist.new(:name => params[:playlist][:name])
+    @playlist = current_user.playlists.build(params[:playlist])
     if @playlist.save
       redirect_to :action => 'index'
     else
