@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20110830110346) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "bcrypt_password"
     t.string   "password_hash"
   end
 
