@@ -48,3 +48,5 @@ end
 #     DatabaseCleaner.strategy = :transaction
 #   end
 #
+
+load "#{Rails.root.to_s}/db/schema.rb"
