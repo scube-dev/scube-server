@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 module BCrypt
   class Engine
     [:DEFAULT_COST, :MIN_COST].each do |sym|
