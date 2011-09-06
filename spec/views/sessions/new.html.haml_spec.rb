@@ -23,4 +23,9 @@ describe 'sessions/new.html.haml' do
     rendered.should \
       have_selector('label[for=session_password]', :text => 'Password')
   end
+
+  it 'renders a link to the sign in page' do
+    render
+    rendered.should have_selector("a[href='#{new_user_path}']", :text => 'Sign up')
+  end
 end

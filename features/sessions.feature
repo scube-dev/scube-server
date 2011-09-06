@@ -15,3 +15,9 @@ Feature: User
     Then I should be redirected to the sign in page
     When I submit valid credentials
     Then I should be redirected to the home page
+
+  Scenario: User registration
+    Given I go to the home page
+    When I follow the sign up link
+    And I fill in the sign up form
+    Then I should be redirected to the home page
