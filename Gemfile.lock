@@ -61,6 +61,13 @@ GEM
     ffi (1.0.9)
     gherkin (2.4.1)
       json (>= 1.4.6)
+    guard (0.6.3)
+      thor (~> 0.14.6)
+    guard-rspec (0.4.4)
+      guard (>= 0.4.0)
+    guard-spork (0.2.1)
+      guard (>= 0.2.2)
+      spork (>= 0.8.4)
     haml (3.1.2)
     i18n (0.5.0)
     json (1.5.3)
@@ -93,6 +100,8 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.4)
     rake (0.9.2)
+    rb-inotify (0.8.6)
+      ffi (>= 0.5.0)
     rdoc (3.8)
     rspec (2.6.0)
       rspec-core (~> 2.6.0)
@@ -132,8 +141,12 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   factory_girl_rails
+  guard
+  guard-rspec
+  guard-spork
   haml
   rails (= 3.0.9)
+  rb-inotify
   rspec-rails
   spork (~> 0.9.0.rc)
   sqlite3

@@ -15,4 +15,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-inotify'
 end
