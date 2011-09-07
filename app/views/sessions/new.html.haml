@@ -1,7 +1,14 @@
 = form_for(:session, :url => sessions_path) do |f|
-  = f.label :email
-  = f.text_field :email
-  = f.label :password
-  = f.password_field :password
-  = f.submit 'Sign in'
+  %table
+    %tbody
+      %tr
+        %th= f.label :email
+        %td= f.text_field :email
+      %tr
+        %th= f.label :password
+        %td= f.password_field :password
+    %tfoot
+      %tr
+        %td= f.submit 'Sign in'
+
 = link_to 'Sign up', new_user_path

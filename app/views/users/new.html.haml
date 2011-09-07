@@ -1,8 +1,15 @@
 = form_for(@user, :url => users_path) do |f|
-  = f.label :email
-  = f.text_field :email
-  = f.label :password
-  = f.password_field :password
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
-  = f.submit 'Sign up'
+  %table
+    %tbody
+      %tr
+        %th= f.label :email
+        %td= f.text_field :email
+      %tr
+        %th= f.label :password
+        %td= f.password_field :password
+      %tr
+        %th= f.label :password_confirmation
+        %td= f.password_field :password_confirmation
+    %tfoot
+      %tr
+        %td= f.submit 'Sign up'

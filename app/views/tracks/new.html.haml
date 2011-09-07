@@ -1,6 +1,12 @@
 = form_for @track, :html => { :multipart => true } do |t|
-  = t.label :name
-  = t.text_field :name
-  = t.label :file
-  = t.file_field :file
-  = t.submit 'Upload'
+  %table
+    %tbody
+      %tr
+        %th= t.label :name
+        %td= t.text_field :name
+      %tr
+        %th= t.label :file
+        %td= t.file_field :file
+    %tfoot
+      %tr
+        %td= t.submit 'Upload'
