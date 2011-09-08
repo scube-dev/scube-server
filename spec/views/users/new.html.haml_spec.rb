@@ -45,4 +45,15 @@ describe 'users/new.html.haml' do
       :text => 'Password confirmation'
     )
   end
+
+  context 'when the user has some validation errors' do
+    it 'on the email address uniqueness' do
+      user = Factory.create(:user, :email => 'unique@example.net')
+      new_user = Factory.build(:user, :email => user.email)
+      new_user.save
+      assign :user, new_user
+      render
+      rendered.should have_content 'Email has already been taken'
+    end
+  end
 end

@@ -8,7 +8,10 @@ class User < ActiveRecord::Base
 
   has_many :playlists
 
-  validates_presence_of :email, :password_hash
+  validates :email,
+    :presence => true,
+    :uniqueness => true
+  validates_presence_of :password_hash
   validates_confirmation_of :password
 
   def password=(plain_password)

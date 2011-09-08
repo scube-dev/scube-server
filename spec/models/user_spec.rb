@@ -32,6 +32,14 @@ describe User do
     it { should_not be_valid }
   end
 
+  context 'when a user with the same email address already exists' do
+    it 'should not be valid' do
+      user = Factory.create(:user, :email => 'unique@example.net')
+      new_user = Factory.build(:user, :email => user.email)
+      new_user.should_not be_valid
+    end
+  end
+
   describe '#password=' do
     it 'stores a bcrypt hash of the password in password_hash' do
       BCrypt::Password.new(user.password_hash).should == user.password

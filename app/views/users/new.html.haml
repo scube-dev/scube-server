@@ -1,4 +1,8 @@
 = form_for(@user, :url => users_path) do |f|
+  - if @user.errors.any?
+    %ul
+      - @user.errors.full_messages.each do |m|
+        %li= m
   %table
     %tbody
       %tr
