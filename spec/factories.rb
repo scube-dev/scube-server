@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :playlist do
     name 'Electro'
-    association :user
+    user
   end
 
   factory :track do
