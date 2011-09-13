@@ -16,6 +16,14 @@ describe User do
     it { should_not be_valid }
   end
 
+  context 'when password empty' do
+    before do
+      user.password = ''
+    end
+
+    it { should_not be_valid }
+  end
+
   context 'when password_confirmation does not match password' do
     before do
       user.password_confirmation = user.password + 'INVALID'

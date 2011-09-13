@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
   validates :email,
     :presence => true,
     :uniqueness => true
+  validates :password,
+    :presence => true,
+    :confirmation => true
   validates_presence_of :password_hash
-  validates_confirmation_of :password
 
   def password=(plain_password)
     @password = plain_password
