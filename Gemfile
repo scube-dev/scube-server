@@ -10,7 +10,6 @@ gem 'bcrypt-ruby'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'

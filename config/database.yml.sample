@@ -15,6 +15,3 @@ test: &test
 production:
   <<: *common
   database: scube_production
-
-cucumber:
-  <<: *test
