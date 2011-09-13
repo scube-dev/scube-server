@@ -1,0 +1,20 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: scube
+
+development:
+  <<: *common
+  database: scube_development
+
+test: &test
+  <<: *common
+  database: scube_test
+
+production:
+  <<: *common
+  database: scube_production
+
+cucumber:
+  <<: *test
