@@ -1,4 +1,6 @@
 Scube::Application.routes.draw do
+  resources :sounds, :only => [:show]
+
   resources :users, :only => [:new, :create]
 
   resources :sessions, :only => [:new, :create]

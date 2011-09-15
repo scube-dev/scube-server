@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Track do
-  subject { track }
+  subject     { track }
   let(:track) { Factory.build(:track) }
 
   context 'with valid attributes' do
@@ -13,47 +13,49 @@ describe Track do
     it { should_not be_valid }
   end
 
-  context 'when mime_type empty' do
-    before { track.mime_type = '' }
-    it { should_not be_valid }
-  end
-
-  context 'when sha256 empty' do
-    before { track.sha256 = '' }
-    it { should_not be_valid }
-  end
-
-  describe '#filepath' do
-    it 'returns the path to the track file' do
-      track.filepath.should == "#{Rails.root}/data/tracks/#{track.sha256}"
+  describe '#file=' do
+    it 'builds a new related sound with the file' do
+      file = Factory.attributes_for(:track_with_sound)[:file]
+      sounds = mock('sounds association proxy')
+      track.stub(:sounds => sounds)
+      sounds.should_receive(:build).with({:file => file})
+      track.file = file
     end
   end
 
-  describe '#save_with_file' do
-    let(:file) { File.new("#{Rails.root}/spec/fixtures/test.mp3") }
+  describe '#sounds' do
+    it 'responds to sound' do
+      track.should respond_to(:sounds)
+    end
+  end
 
-    it 'calls save' do
-      Track.any_instance.should_receive(:save!)
-      track.save_with_file(file, 'audio/ogg')
+  describe '#sound' do
+    context 'with a sound' do
+      before do
+        track.sounds << Factory.create(:sound)
+      end
+
+      it 'returns a sound' do
+        track.sound.should be_a(Sound)
+      end
+    end
+  end
+
+  describe '#sound?' do
+    context 'without a sound' do
+      it 'returns false' do
+        track.sound?.should be_false
+      end
     end
 
-    it 'saves the file content' do
-      track.save_with_file(file, 'audio/ogg')
-      File.read(track.filepath).should == File.read(file.path)
-    end
+    context 'with a sound' do
+      before do
+        track.sounds << Factory.create(:sound)
+      end
 
-    it 'saves the file SHA256 digest' do
-      track.save_with_file(file, 'audio/ogg')
-      track.sha256.should == Digest::SHA256.file(file.path).hexdigest
-    end
-
-    it 'saves the file mime type' do
-      track.save_with_file(file, 'audio/mpeg')
-      track.mime_type.should == 'audio/mpeg'
-    end
-
-    after do
-      `rm -f #{Rails.root}/data/tracks/*`
+      it 'returns true' do
+        track.sound?.should be_true
+      end
     end
   end
 

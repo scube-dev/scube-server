@@ -28,17 +28,15 @@ feature 'Tracks' do
   end
 
   scenario 'plays track' do
-    track = Factory.create(:track, :name => 'Mega song')
-    file = File.new("#{Rails.root}/spec/fixtures/test.mp3")
-    track.save_with_file(file, 'audio/mpeg')
+    track = Factory.create(:track_with_sound)
 
     visit track_path(track)
 
-    page.should have_xpath "//audio[@src='#{download_track_path(track)}']"
+    page.should have_xpath "//audio[@src='#{sound_path(track.sound)}']"
     visit find('audio')[:src]
   end
 
   after do
-    `rm -f #{Rails.root}/data/tracks/*`
+    `rm -f #{Rails.root}/data/sounds/*`
   end
 end

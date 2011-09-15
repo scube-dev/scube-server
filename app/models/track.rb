@@ -1,19 +1,20 @@
 class Track < ActiveRecord::Base
-  validates_presence_of :name
-  validates_presence_of :mime_type
-  validates_presence_of :sha256
+  has_many :sounds
 
-  def filepath
-   "#{Rails.root}/data/tracks/#{sha256}"
+  attr_accessible :name, :file
+
+  validates_presence_of :name
+
+  def file=(file)
+    sounds.build({:file => file})
   end
 
-  def save_with_file(file, mime_type)
-    self.sha256 = Digest::SHA256.file(file.path).hexdigest
-    self.mime_type = mime_type
-    File.open(filepath, 'w') do |f|
-      f.write file.read
-    end
-    save!
+  def sound
+    sounds.first
+  end
+
+  def sound?
+    sounds.any?
   end
 
   def self.latest

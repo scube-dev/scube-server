@@ -8,19 +8,11 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new(:name => params[:track][:name])
-    if @track.save_with_file(
-        params[:track][:file],
-        params[:track][:file].content_type
-      )
+    @track = Track.new params[:track]
+    if @track.save
       redirect_to @track
     else
       render :new
     end
-  end
-
-  def download
-    track = Track.find params[:id]
-    send_file track.filepath, :type => track.mime_type
   end
 end

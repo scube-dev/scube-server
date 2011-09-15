@@ -1,16 +1,24 @@
+def build_sound_file
+  file = File.new("#{Rails.root}/spec/fixtures/test.mp3")
+  file.stub(:content_type => 'audio/mpeg')
+  file
+end
+
 FactoryGirl.define do
   factory :playlist do
     name 'Electro'
     user
   end
 
+  factory :sound do
+    file { build_sound_file }
+  end
+
   factory :track do
     name 'Mega song'
-    mime_type 'audio/ogg'
-    sha256 '94a5486a69a7261da350c57f9e5a1eaa789e08752cfc56a1989976a6ad82f7a8'
 
-    after_create do |t|
-      t.save_with_file(File.new("#{Rails.root}/spec/fixtures/test.mp3"), 'audio/mpeg')
+    factory :track_with_sound do
+      file { build_sound_file }
     end
   end
 

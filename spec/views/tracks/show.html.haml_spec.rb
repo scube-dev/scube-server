@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 describe 'tracks/show.html.haml' do
-  let(:track) do
-    mock_model('Track', :name => 'Mega song')
-  end
+  let(:track) { Factory.create(:track) }
 
   before do
     assign :track, track
@@ -14,7 +12,9 @@ describe 'tracks/show.html.haml' do
     rendered.should have_selector('h1', :text => 'Mega song')
   end
 
-  context 'audio tag' do
+  context 'when track has a sound' do
+    let(:track) { Factory.create(:track_with_sound) }
+
     it 'provides an audio stream for the track' do
       render
       rendered.should have_selector('audio[src]')
