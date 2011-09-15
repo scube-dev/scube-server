@@ -34,7 +34,7 @@ feature 'Tracks' do
 
     visit track_path(track)
 
-    page.should have_xpath "//audio[@src='#{stream_track_path(track)}']"
+    page.should have_xpath "//audio[@src='#{download_track_path(track)}']"
     visit find('audio')[:src]
   end
 

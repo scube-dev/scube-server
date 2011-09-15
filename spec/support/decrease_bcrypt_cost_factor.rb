@@ -2,9 +2,7 @@ require 'bcrypt'
 
 module BCrypt
   class Engine
-    [:DEFAULT_COST, :MIN_COST].each do |sym|
-      remove_const  sym
-      const_set     sym, 1
-    end
+    remove_const  :DEFAULT_COST
+    const_set     :DEFAULT_COST, 4
   end
 end

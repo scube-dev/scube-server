@@ -13,21 +13,16 @@ describe TracksController do
     end
   end
 
-  describe 'GET stream' do
+  describe 'GET download' do
     let(:track) { Factory.create(:track) }
 
     it 'streams the requested track' do
-      get :stream, :id => track.id.to_s
+      get :download, :id => track.id.to_s
       response.should be_success
     end
 
-    it 'creates a streamer instance' do
-      Streamer.should_receive(:new).with(track.filepath)
-      get :stream, :id => track.id.to_s
-    end
-
     it 'returns the track mime-type as content-type' do
-      get :stream, :id => track.id.to_s
+      get :download, :id => track.id.to_s
       response.content_type.should == track.mime_type
     end
   end
@@ -42,10 +37,7 @@ describe TracksController do
   describe 'POST create' do
     let(:track) { mock_model(Track).as_null_object }
     let(:file) {
-      file = mock(Rack::Test::UploadedFile)
-      file.stub(:tempfile => File.new("#{Rails.root}/spec/fixtures/test.mp3"))
-      file.stub(:content_type => 'audio/ogg')
-      file
+      fixture_file_upload("#{Rails.root}/spec/fixtures/test.mp3", 'audio/mpeg')
     }
     before { Track.stub(:new).and_return(track) }
 
@@ -62,7 +54,7 @@ describe TracksController do
 
     it 'saves the track with a file' do
       track.should_receive(:save_with_file).
-        with(file.tempfile, 'audio/ogg')
+        with(file, 'audio/mpeg')
       post :create, :track => { :file => file }
     end
 
