@@ -3,10 +3,10 @@ require 'spec_helper'
 describe 'home/index.html.haml' do
   before do
     assign :playlists, [
-      mock_model('Playlist', :name => 'Electro')
+      mock_model(Playlist, :name => 'Electro')
     ]
     assign :tracks, [
-      mock_model('Track', :name => 'Mega song')
+      mock_model(Track, :name => 'Mega song')
     ]
   end
 

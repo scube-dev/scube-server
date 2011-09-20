@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'tracks/new.html.haml' do
   let(:track) do
-    mock_model('Track').as_new_record.as_null_object
+    mock_model(Track).as_new_record.as_null_object
   end
 
   before do

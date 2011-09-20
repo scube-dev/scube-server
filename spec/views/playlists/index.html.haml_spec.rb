@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'playlists/index.html.haml' do
   before do
     assign :playlists, [
-      mock_model('Playlist', :name => 'Electro')
+      mock_model(Playlist, :name => 'Electro')
     ]
   end
 
