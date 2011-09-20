@@ -10,5 +10,8 @@ Spork.prefork do
   RSpec.configure do |config|
     config.mock_with :rspec
     config.use_transactional_fixtures = true
+    config.after(:all) do
+      `rm -f #{Rails.root}/data/sounds/*`
+    end
   end
 end

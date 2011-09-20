@@ -39,8 +39,4 @@ describe Sound do
       sound.mime_type.should == 'audio/mpeg'
     end
   end
-
-  after do
-    `rm -f #{Rails.root}/data/sounds/*`
-  end
 end

@@ -35,8 +35,4 @@ feature 'Tracks' do
     page.should have_xpath "//audio[@src='#{sound_path(track.sound)}']"
     visit find('audio')[:src]
   end
-
-  after do
-    `rm -f #{Rails.root}/data/sounds/*`
-  end
 end
