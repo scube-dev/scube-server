@@ -10,8 +10,12 @@ describe Sound do
   it { should validate_presence_of :mime_type }
 
   describe '#path' do
+    it 'starts by the path specified in Rails.configuration.sound_path' do
+      sound.path.should match(/\A#{Rails.configuration.sounds_path}/)
+    end
+
     it 'returns the sound file path based on the SHA256 digest' do
-      sound.path.should == "#{Rails.root}/data/sounds/#{sound.sha256}"
+      sound.path.should == "#{Rails.configuration.sounds_path}/#{sound.sha256}"
     end
   end
 

@@ -7,7 +7,7 @@ class Sound < ActiveRecord::Base
   validates_presence_of :mime_type
 
   def path
-    "#{Rails.root}/data/sounds/#{sha256}"
+    "#{Rails.configuration.sounds_path}/#{sha256}"
   end
 
   def file=(file)
