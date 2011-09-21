@@ -18,4 +18,5 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'rb-inotify'
+  gem 'shoulda-matchers'
 end

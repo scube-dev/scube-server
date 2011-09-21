@@ -4,14 +4,9 @@ describe Track do
   subject     { track }
   let(:track) { Factory.build(:track) }
 
-  context 'with valid attributes' do
-    it { should be_valid }
-  end
-
-  context 'when name empty' do
-    before { track.name = '' }
-    it { should_not be_valid }
-  end
+  it { should be_valid }
+  it { should have_many :sounds }
+  it { should validate_presence_of :name }
 
   describe '#file=' do
     it 'builds a new related sound with the file' do

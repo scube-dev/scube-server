@@ -1,27 +1,20 @@
 require 'spec_helper'
 
 describe User do
-  subject { user }
-  let(:user) { Factory.build(:user) }
+  subject     { user }
+  let(:user)  { Factory.build(:user) }
 
-  context 'with valid attributes' do
-    it { should be_valid }
-  end
+  it { should be_valid }
+  it { should validate_presence_of :email }
+  it { should validate_presence_of :password }
+  it { should validate_presence_of :password_hash }
 
-  context 'when email empty' do
-    before do
-      user.email = ''
+  context 'when a user with the same email address already exists' do
+    it 'should not be valid' do
+      user = Factory.create(:user, :email => 'unique@example.net')
+      new_user = Factory.build(:user, :email => user.email)
+      new_user.should_not be_valid
     end
-
-    it { should_not be_valid }
-  end
-
-  context 'when password empty' do
-    before do
-      user.password = ''
-    end
-
-    it { should_not be_valid }
   end
 
   context 'when password_confirmation does not match password' do
@@ -30,22 +23,6 @@ describe User do
     end
 
     it { should_not be_valid }
-  end
-
-  context 'when password_hash empty' do
-    before do
-      user.password_hash = ''
-    end
-
-    it { should_not be_valid }
-  end
-
-  context 'when a user with the same email address already exists' do
-    it 'should not be valid' do
-      user = Factory.create(:user, :email => 'unique@example.net')
-      new_user = Factory.build(:user, :email => user.email)
-      new_user.should_not be_valid
-    end
   end
 
   describe '#password=' do

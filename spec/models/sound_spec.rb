@@ -4,19 +4,10 @@ describe Sound do
   subject     { sound }
   let(:sound) { Factory.build(:sound) }
 
-  context 'with valid attributes' do
-    it { should be_valid }
-  end
-
-  context 'when sha256 empty' do
-    before { sound.sha256 = '' }
-    it { should_not be_valid }
-  end
-
-  context 'when mime_type empty' do
-    before { sound.mime_type = '' }
-    it { should_not be_valid }
-  end
+  it { should be_valid }
+  it { should belong_to :track }
+  it { should validate_presence_of :sha256 }
+  it { should validate_presence_of :mime_type }
 
   describe '#path' do
     it 'returns the sound file path based on the SHA256 digest' do
