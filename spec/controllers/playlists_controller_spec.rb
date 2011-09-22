@@ -29,15 +29,19 @@ describe PlaylistsController do
   end
 
   describe 'POST create' do
+    def do_create
+      post :create, :playlist => Factory.attributes_for(:playlist)
+    end
+
     context 'whith valid params' do
-      it 'creates a new playlist' do
+      it 'creates a new playlist for the current user' do
         expect {
-          post :create, :playlist => Factory.attributes_for(:playlist)
-        }.to change(Playlist, :count).by(1)
+          do_create
+        }.to change(controller.current_user.playlists, :count).by(1)
       end
 
       it 'redirects to the playlists index' do
-        post :create, :playlist => Factory.attributes_for(:playlist)
+        do_create
         response.should redirect_to(:action => 'index')
       end
     end
@@ -46,12 +50,12 @@ describe PlaylistsController do
       before { Playlist.any_instance.stub(:save).and_return(false) }
 
       it 'assigns the playlist as @playlist' do
-        post :create, :playlist => {}
+        do_create
         assigns[:playlist].should be_a_new(Playlist)
       end
 
       it 'renders the new template' do
-        post :create, :playlist => {}
+        do_create
         response.should render_template('new')
       end
     end
