@@ -43,7 +43,7 @@ describe Track do
   end
 
   describe '#sound?' do
-    context 'without a sound' do
+    context 'without any sound' do
       it 'returns false' do
         track.sound?.should be_false
       end
