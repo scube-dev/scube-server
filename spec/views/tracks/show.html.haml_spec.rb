@@ -32,7 +32,8 @@ describe 'tracks/show.html.haml' do
 
     it 'displays a text fallback for UA without support' do
       render
-      rendered.should have_selector('audio',
+      rendered.should have_selector(
+        'audio',
         :text => 'Your browser does not support the audio element'
       )
     end

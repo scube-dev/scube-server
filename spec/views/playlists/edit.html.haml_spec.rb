@@ -11,17 +11,16 @@ describe 'playlists/edit.html.haml' do
 
   it 'renders a form to edit a playlist' do
     render
-    rendered.should \
-      have_selector("form[method=post][action='#{playlists_path}']")
+    rendered.should have_selector("form[method=post][action='#{playlists_path}']")
     rendered.should have_selector('input[type=submit]')
   end
 
   it 'renders a text field with a label for the playlists name' do
     playlist.stub(:name => 'Electro')
     render
-    rendered.should \
-      have_selector("input[type=text][name='playlist[name]'][value=Electro]")
-    rendered.should \
-      have_selector("label[for=playlist_name]", :text => 'Name')
+    rendered.should have_selector(
+      "input[type=text][name='playlist[name]'][value=Electro]"
+    )
+    rendered.should have_selector("label[for=playlist_name]", :text => 'Name')
   end
 end
