@@ -12,12 +12,12 @@ describe SoundsController do
       get :show, :id => sound.id
     end
 
-    it 'sends the sound file as the response body' do
+    it 'sets the sound file content as the response body' do
       do_show
       response.body.should == File.read(sound.path)
     end
 
-    it 'sets the sound file mime-type as the response content-type' do
+    it 'sets the sound mime-type as the response content-type' do
       do_show
       response.content_type.should == sound.mime_type
     end
