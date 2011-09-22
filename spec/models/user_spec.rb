@@ -5,6 +5,7 @@ describe User do
   let(:user)  { Factory.build(:user) }
 
   it { should be_valid }
+  it { should have_many :playlists }
   it { should validate_presence_of :email }
   it { should validate_presence_of :password }
   it { should validate_presence_of :password_hash }
