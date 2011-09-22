@@ -3,14 +3,26 @@ require 'spec_helper'
 describe Track do
   subject     { track }
   let(:track) { Factory.build(:track) }
+  let(:file)  { Factory.attributes_for(:track_with_sound)[:file] }
 
   it { should be_valid }
   it { should have_many :sounds }
   it { should validate_presence_of :name }
 
+  context 'with a file' do
+    before do
+      track.file = file
+    end
+
+    it 'creates a sound for the track' do
+      expect {
+        track.save
+      }.to change(track.sounds, :count).by(1)
+    end
+  end
+
   describe '#file=' do
     it 'builds a new related sound with the file' do
-      file = Factory.attributes_for(:track_with_sound)[:file]
       sounds = mock('sounds association proxy')
       track.stub(:sounds => sounds)
       sounds.should_receive(:build).with({:file => file})
