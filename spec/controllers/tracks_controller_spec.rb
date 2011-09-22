@@ -20,43 +20,37 @@ describe TracksController do
     end
   end
 
-  describe 'POST create' do
-    let(:track)       { mock_model(Track).as_null_object }
-    let(:attributes)  { Factory.attributes_for(:track).stringify_keys }
-
-    before do
-      Track.stub(:new).and_return(track)
-    end
-
+  describe 'POST create new' do
     def do_create
-      post :create, :track => attributes
+      post :create, :track => Factory.attributes_for(:track).merge({
+        :file => fixture_file_upload(
+          "#{Rails.root}/spec/fixtures/test.mp3",
+          'audio/mpeg'
+        )
+      })
     end
 
-    it 'creates a new track' do
-      Track.should_receive(:new).with(attributes)
-      do_create
-    end
+    context 'whith valid params' do
+      it 'creates a new track' do
+        expect {
+          do_create
+        }.to change(Track, :count).by(1)
+      end
 
-    it 'saves the track' do
-      track.should_receive :save
-      do_create
-    end
-
-    context 'when the track saves successfully' do
       it 'redirects to the track page' do
         do_create
-        response.should redirect_to(track)
+        response.should redirect_to(Track.last)
       end
     end
 
-    context 'when the track fails to save' do
+    context 'whith invalid params' do
       before do
-        track.stub(:save).and_return(false)
+        Track.any_instance.stub(:save).and_return(false)
       end
 
       it 'assigns the track as @track' do
         do_create
-        assigns[:track].should == track
+        assigns[:track].should be_a_new(Track)
       end
 
       it 'renders the new template' do
