@@ -30,12 +30,6 @@ describe Track do
     end
   end
 
-  describe '#sounds' do
-    it 'responds to sound' do
-      track.should respond_to(:sounds)
-    end
-  end
-
   describe '#sound' do
     context 'with a sound' do
       before do
