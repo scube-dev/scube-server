@@ -14,7 +14,7 @@ describe SoundsController do
 
     it 'sets the sound file content as the response body' do
       do_show
-      response.body.should == File.read(sound.path)
+      response.body.should == File.read(sound.path, :encoding => 'BINARY')
     end
 
     it 'sets the sound mime-type as the response content-type' do
