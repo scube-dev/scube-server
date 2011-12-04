@@ -1,22 +1,24 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '~> 3.1'
 
-gem 'pg'
+gem 'pg', '~> 0.11'
 
-gem 'haml'
+gem 'haml', '~> 3.1'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.0'
 
 group :development, :test do
-  gem 'rspec-rails'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 2.6'
+  gem 'capybara', '~> 1.1'
+  gem 'database_cleaner', '~> 0.6'
+  gem 'factory_girl_rails', '~> 1.2'
   gem 'spork', '~> 0.9.0.rc'
-  gem 'guard'
-  gem 'guard-rspec'
-  gem 'guard-spork'
-  gem 'rb-inotify'
-  gem 'shoulda-matchers'
+  gem 'guard', '~> 0.8'
+  gem 'guard-rspec', '~> 0.4'
+  gem 'guard-spork', '~> 0.2'
+  if RbConfig::CONFIG['target_os'] =~ /linux/i
+    gem 'rb-inotify', '~> 0.8'
+  end
+  gem 'shoulda-matchers', '~> 1.0'
 end
