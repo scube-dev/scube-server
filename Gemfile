@@ -11,7 +11,6 @@ gem 'bcrypt-ruby', '~> 3.0'
 group :development, :test do
   gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.1'
-  gem 'database_cleaner', '~> 0.6'
   gem 'factory_girl_rails', '~> 1.2'
   gem 'spork', '~> 0.9.0.rc'
   gem 'guard', '~> 0.8'
