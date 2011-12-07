@@ -18,6 +18,7 @@ group :development, :test do
   gem 'guard-spork', '~> 0.2'
   if RbConfig::CONFIG['target_os'] =~ /linux/i
     gem 'rb-inotify', '~> 0.8'
+    gem 'libnotify', '~> 0.6'
   end
   gem 'shoulda-matchers', '~> 1.0'
 end
