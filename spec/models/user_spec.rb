@@ -11,11 +11,12 @@ describe User do
   it { should validate_presence_of :password_hash }
 
   context 'when a user with the same email address already exists' do
-    it 'should not be valid' do
-      user = Factory.create(:user, :email => 'unique@example.net')
-      new_user = Factory.build(:user, :email => user.email)
-      new_user.should_not be_valid
-    end
+    let(:old_user)  { Factory.create(:user, :email => 'unique@example.net') }
+    subject         { Factory.build(:user, :email => old_user.email) }
+
+    it { should_not be_valid }
+
+    it { should have(1).error_on(:email) }
   end
 
   context 'when password_confirmation does not match password' do
