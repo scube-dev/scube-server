@@ -20,4 +20,6 @@ guard 'rspec', :cli => '--drb', :notification => false do
   watch(%r{^lib/(.+)\.rb$})           { |m| "spec/lib/#{m[1]}_spec.rb" }
 
   watch('app/controllers/application_controller.rb')  { 'spec/controllers' }
+
+  watch(%r{^app/views/layouts/})      { 'spec/integration' }
 end
