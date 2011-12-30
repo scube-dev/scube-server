@@ -1,7 +1,9 @@
 = link_to 'Add a track', new_track_path
+
 %ul
   - @playlists.each do |p|
     %li= p.name
+
 %ul
   - @tracks.each do |t|
     %li= t.name

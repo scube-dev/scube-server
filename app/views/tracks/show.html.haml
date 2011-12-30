@@ -1,4 +1,5 @@
 %h1= @track.name
+
 - if @track.sound?
   %audio{:src => sound_path(@track.sound), :controls => true, :autoplay => true}
     Your browser does not support the audio element
