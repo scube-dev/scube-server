@@ -9,6 +9,7 @@ describe User do
   it { should validate_presence_of :email }
   it { should validate_presence_of :password }
   it { should validate_presence_of :password_hash }
+  it { should_not allow_mass_assignment_of :password_hash }
 
   context 'when a user with the same email address already exists' do
     let(:old_user)  { Factory.create(:user, :email => 'unique@example.net') }
