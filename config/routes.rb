@@ -3,6 +3,8 @@ Scube::Application.routes.draw do
     namespace :v0 do
       resources :playlists, :only => [:index]
     end
+
+    match '*all' => 'application#cor_preflight', :via => :options
   end
 
   resources :sounds, :only => [:show]
