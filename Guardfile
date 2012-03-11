@@ -22,4 +22,8 @@ guard 'rspec', :cli => '--drb', :notification => false do
   watch('app/controllers/application_controller.rb')  { 'spec/controllers' }
 
   watch(%r{^app/views/layouts/})      { 'spec/integration' }
+
+  watch(%r{^app/views/(.+)/(?:[^/]+).rabl}) do |m|
+    "spec/controllers/#{m[1]}_controller_spec.rb"
+  end
 end

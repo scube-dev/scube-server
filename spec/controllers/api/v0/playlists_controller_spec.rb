@@ -20,6 +20,10 @@ describe Api::V0::PlaylistsController do
       do_get.should have(2).items
     end
 
+    it 'lists playlists with their id' do
+      do_get.each { |t| t.keys.should include 'id' }
+    end
+
     it 'lists playlists with their name' do
       do_get.each { |t| t.keys.should include 'name' }
     end

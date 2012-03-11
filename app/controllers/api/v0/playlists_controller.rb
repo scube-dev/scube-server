@@ -3,6 +3,5 @@ class Api::V0::PlaylistsController < Api::ApplicationController
 
   def index
     @playlists = Playlist.all
-    respond_with @playlists
   end
 end

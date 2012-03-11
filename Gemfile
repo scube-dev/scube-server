@@ -8,6 +8,8 @@ gem 'haml', '~> 3.1'
 
 gem 'bcrypt-ruby', '~> 3.0'
 
+gem 'rabl', '~> 0.6'
+
 group :development, :test do
   gem 'rspec-rails', '~> 2.6'
   gem 'capybara', '~> 1.1'
