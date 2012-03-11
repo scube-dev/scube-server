@@ -13,7 +13,7 @@ describe Api::V0::PlaylistsController do
 
     def do_get
       get :index, :format => :json
-      JSON.parse(response.body)
+      JSON response.body
     end
 
     it 'lists all playlists' do
