@@ -3,6 +3,7 @@ class Api::ApplicationController < ApplicationController
 
   def cor_filter
     headers['Access-Control-Allow-Origin'] = request.headers['Origin']
+    headers['Access-Control-Allow-Credentials'] = 'true'
   end
 
   def cor_preflight

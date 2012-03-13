@@ -24,6 +24,7 @@ feature 'API cross origin request' do
     )
 
     response.headers['Access-Control-Allow-Origin'].should == origin
+    response.headers['Access-Control-Allow-Credentials'].should == 'true'
     response.headers['Access-Control-Allow-Methods'].should ==
       'GET, POST, PUT, DELETE'
     response.headers['Access-Control-Allow-Headers'].should ==
@@ -37,5 +38,6 @@ feature 'API cross origin request' do
     }
 
     response.headers['Access-Control-Allow-Origin'].should == origin
+    response.headers['Access-Control-Allow-Credentials'].should == 'true'
   end
 end
