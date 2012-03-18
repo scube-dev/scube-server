@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::V0::PlaylistsController do
+describe Api::PlaylistsController do
   before do
     controller.current_user = Factory.create(:user)
   end

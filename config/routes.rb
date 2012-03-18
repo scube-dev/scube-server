@@ -1,9 +1,7 @@
 Scube::Application.routes.draw do
   namespace :api do
-    namespace :v0 do
-      resources :playlists, :only => [:index]
-      resources :sessions, :only => [:create]
-    end
+    resources :playlists, :only => [:index]
+    resources :sessions, :only => [:create]
 
     match '*all' => 'application#cor_preflight', :via => :options
   end

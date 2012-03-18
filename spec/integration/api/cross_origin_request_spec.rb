@@ -18,7 +18,7 @@ feature 'API cross origin request' do
     # FIXME: request without redirect
     request_via_redirect(
       :options,
-      api_v0_playlists_path(:format => :json),
+      api_playlists_path(:format => :json),
       nil,
       { 'Origin' => origin }
     )
@@ -33,7 +33,7 @@ feature 'API cross origin request' do
 
   scenario 'basic request' do
     # FIXME: replace with a more stable/generic action
-    get api_v0_playlists_path(:format => :json), nil, {
+    get api_playlists_path(:format => :json), nil, {
       'Origin' => origin
     }
 
