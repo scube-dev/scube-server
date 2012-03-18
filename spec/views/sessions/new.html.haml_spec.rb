@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'sessions/new.html.haml' do
+describe 'sessions/new' do
   it 'renders a form to sign in' do
     render
     rendered.should have_selector(

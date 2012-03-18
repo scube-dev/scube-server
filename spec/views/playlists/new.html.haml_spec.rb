@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'playlists/new.html.haml' do
+describe 'playlists/new' do
   let(:playlist) do
     mock_model(Playlist).as_new_record.as_null_object
   end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'tracks/show.html.haml' do
+describe 'tracks/show' do
   let(:track) { Factory.create(:track) }
 
   before do

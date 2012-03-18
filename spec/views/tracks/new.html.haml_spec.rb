@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'tracks/new.html.haml' do
+describe 'tracks/new' do
   let(:track) do
     mock_model(Track).as_new_record.as_null_object
   end

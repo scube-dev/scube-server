@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'playlists/index.html.haml' do
+describe 'playlists/index' do
   before do
     assign :playlists, [
       mock_model(Playlist, :name => 'Electro')
