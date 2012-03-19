@@ -6,4 +6,13 @@ module UserIntegrationHelpers
     fill_in 'Password', :with => user.password
     click_button('Sign in')
   end
+
+  def api_sign_in
+    user = Factory.create :user
+
+    post api_sessions_path, :format => :json, :session => {
+      :email    => user.email,
+      :password => user.password
+    }
+  end
 end
