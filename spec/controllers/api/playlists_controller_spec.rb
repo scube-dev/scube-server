@@ -30,4 +30,23 @@ describe Api::PlaylistsController do
       do_get.each { |t| t.keys.should include 'name' }
     end
   end
+
+  describe 'POST create' do
+    def do_create
+      post :create,
+        :format => :json,
+        :playlist => Factory.attributes_for(:playlist)
+    end
+
+    it 'creates a new playlist for the current user' do
+      expect {
+        do_create
+      }.to change(controller.current_user.playlists, :count).by(1)
+    end
+
+    it 'assigns the playlist' do
+      do_create
+      assigns[:playlist].should be_a Playlist
+    end
+  end
 end
