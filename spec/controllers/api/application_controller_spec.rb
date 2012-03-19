@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe Api::ApplicationController do
+  include UserControllerHelpers
+
   before do
-    controller.current_user = Factory.create(:user)
+    sign_in
   end
 
   context 'CORS: Cross-Origin Ressource Sharing' do

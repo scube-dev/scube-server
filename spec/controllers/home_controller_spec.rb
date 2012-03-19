@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe HomeController do
+  include UserControllerHelpers
+
   before do
-    controller.current_user = Factory.create(:user)
+    sign_in
   end
 
   describe 'GET index' do
