@@ -30,7 +30,7 @@ describe Api::ApplicationController do
       it 'sets Access-Control-Allow-Methods header' do
         options :index
         response.headers['Access-Control-Allow-Headers'].should ==
-          'Content-Type, X-Requested-With'
+          'Content-Type, Content-Length, X-Requested-With'
       end
     end
 

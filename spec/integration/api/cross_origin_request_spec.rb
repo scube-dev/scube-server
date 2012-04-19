@@ -28,7 +28,7 @@ feature 'API cross origin request' do
     response.headers['Access-Control-Allow-Methods'].should ==
       'GET, POST, PUT, DELETE'
     response.headers['Access-Control-Allow-Headers'].should ==
-      'Content-Type, X-Requested-With'
+      'Content-Type, Content-Length, X-Requested-With'
   end
 
   scenario 'basic request' do
@@ -39,6 +39,7 @@ feature 'API cross origin request' do
 
     response.headers['Access-Control-Allow-Origin'].should == origin
     response.headers['Access-Control-Allow-Credentials'].should == 'true'
+    response.headers['Access-Control-Expose-Headers'].should == 'Content-Length'
   end
 
   scenario 'request without origin' do

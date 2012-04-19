@@ -9,11 +9,13 @@ class Api::ApplicationController < ApplicationController
       request.headers['Origin'] :
       ''
     headers['Access-Control-Allow-Credentials'] = 'true'
+    headers['Access-Control-Expose-Headers'] = 'Content-Length'
   end
 
   def cor_preflight
     headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
-    headers['Access-Control-Allow-Headers'] = 'Content-Type, X-Requested-With'
+    headers['Access-Control-Allow-Headers'] =
+      'Content-Type, Content-Length, X-Requested-With'
 
     head :ok
   end
