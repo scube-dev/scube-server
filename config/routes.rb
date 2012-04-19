@@ -1,5 +1,6 @@
 Scube::Application.routes.draw do
   namespace :api do
+    resources :sounds, :only => [:show]
     resources :playlists, :only => [:index, :create]
     resources :sessions, :only => [:create]
 
