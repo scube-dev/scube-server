@@ -40,4 +40,11 @@ feature 'API cross origin request' do
     response.headers['Access-Control-Allow-Origin'].should == origin
     response.headers['Access-Control-Allow-Credentials'].should == 'true'
   end
+
+  scenario 'request without origin' do
+    # FIXME: replace with a more stable/generic action
+    get api_playlists_path(:format => :json)
+
+    response.headers['Access-Control-Allow-Origin'].should == ''
+  end
 end

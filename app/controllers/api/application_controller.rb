@@ -5,7 +5,9 @@ class Api::ApplicationController < ApplicationController
   before_filter :cor_filter
 
   def cor_filter
-    headers['Access-Control-Allow-Origin'] = request.headers['Origin']
+    headers['Access-Control-Allow-Origin'] = request.headers['Origin'] ?
+      request.headers['Origin'] :
+      ''
     headers['Access-Control-Allow-Credentials'] = 'true'
   end
 
