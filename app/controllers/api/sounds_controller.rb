@@ -1,4 +1,4 @@
-class Api::SoundsController < Api::ApplicationController
+class API::SoundsController < API::ApplicationController
   # FIXME: add some tests!
   def show
     sound = Sound.find params[:id]

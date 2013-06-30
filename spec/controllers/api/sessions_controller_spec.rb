@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::SessionsController do
+describe API::SessionsController do
   describe 'POST create' do
     let(:user) { Factory.create(:user) }
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::ApplicationController do
+describe API::ApplicationController do
   include UserControllerHelpers
 
   before do
@@ -13,7 +13,7 @@ describe Api::ApplicationController do
     end
 
     context 'preflight' do
-      controller(Api::ApplicationController) do
+      controller(API::ApplicationController) do
         alias_method :index, :cor_preflight
       end
 
@@ -35,7 +35,7 @@ describe Api::ApplicationController do
     end
 
     describe 'before filter' do
-      controller(Api::ApplicationController) do
+      controller(API::ApplicationController) do
         def index
           head :ok
         end

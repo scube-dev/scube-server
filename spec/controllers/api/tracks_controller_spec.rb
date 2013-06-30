@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::TracksController do
+describe API::TracksController do
   include UserControllerHelpers
 
   before do

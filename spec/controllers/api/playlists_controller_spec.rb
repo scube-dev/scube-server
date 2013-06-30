@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::PlaylistsController do
+describe API::PlaylistsController do
   include UserControllerHelpers
 
   before do
