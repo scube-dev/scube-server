@@ -10,7 +10,7 @@ group :development, :test do
   gem 'rspec-rails',        '~> 2.6'
   gem 'capybara',           '~> 2.2'
   gem 'factory_girl_rails', '~> 4.4'
-  gem 'shoulda-matchers',   '~> 1.0'
+  gem 'shoulda-matchers',   '~> 2.5'
 end
 
 eval File.read('Gemfile-custom.rb') if File.exist?('Gemfile-custom.rb')
