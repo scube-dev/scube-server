@@ -8,8 +8,8 @@ feature 'Playlists' do
   end
 
   scenario 'lists playlists' do
-    Factory.create(:playlist, :name => 'Electro')
-    Factory.create(:playlist, :name => 'Reggae')
+    FactoryGirl.create(:playlist, :name => 'Electro')
+    FactoryGirl.create(:playlist, :name => 'Reggae')
 
     visit playlists_path
 
@@ -28,7 +28,7 @@ feature 'Playlists' do
   end
 
   scenario 'edits playlist' do
-    Factory.create(:playlist, :name => 'Electro')
+    FactoryGirl.create(:playlist, :name => 'Electro')
     visit playlists_path
 
     click_link 'Electro'

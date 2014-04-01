@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'API cross origin request' do
   include UserIntegrationHelpers
 
-  let(:user)    { Factory.create(:user) }
+  let(:user)    { FactoryGirl.create(:user) }
   let(:origin)  { 'http://origin.example/' }
 
   background do

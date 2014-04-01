@@ -8,7 +8,7 @@ describe SoundsController do
   end
 
   describe 'GET show' do
-    let(:sound) { Factory.create(:sound) }
+    let(:sound) { FactoryGirl.create(:sound) }
 
     def do_show
       get :show, :id => sound.id

@@ -8,7 +8,7 @@ feature 'API playlists' do
   end
 
   scenario 'creates playlist' do
-    playlist = Factory.attributes_for :playlist
+    playlist = FactoryGirl.attributes_for :playlist
 
     post api_playlists_path,
       :format => :json,

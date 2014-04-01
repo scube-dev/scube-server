@@ -12,17 +12,17 @@ describe UsersController do
     context 'whith valid params' do
       it 'creates a new user' do
         expect {
-          post :create, :user => Factory.attributes_for(:user)
+          post :create, :user => FactoryGirl.attributes_for(:user)
         }.to change(User, :count).by(1)
       end
 
       it 'signs the user in' do
-        post :create, :user => Factory.attributes_for(:user)
+        post :create, :user => FactoryGirl.attributes_for(:user)
         controller.current_user.should_not be_nil
       end
 
       it 'redirects to the home page' do
-        post :create, :user => Factory.attributes_for(:user)
+        post :create, :user => FactoryGirl.attributes_for(:user)
         response.should redirect_to(:root)
       end
     end

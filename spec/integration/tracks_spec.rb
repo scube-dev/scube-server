@@ -8,7 +8,7 @@ feature 'Tracks' do
   end
 
   scenario 'shows track' do
-    track = Factory.create(:track, :name => 'Mega song')
+    track = FactoryGirl.create(:track, :name => 'Mega song')
 
     visit track_path(track)
 
@@ -28,7 +28,7 @@ feature 'Tracks' do
   end
 
   scenario 'plays track' do
-    track = Factory.create(:track_with_sound)
+    track = FactoryGirl.create(:track_with_sound)
 
     visit track_path(track)
 

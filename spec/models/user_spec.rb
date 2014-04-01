@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   subject     { user }
-  let(:user)  { Factory.build(:user) }
+  let(:user)  { FactoryGirl.build(:user) }
 
   it { should be_valid }
   it { should have_many :playlists }
@@ -12,8 +12,8 @@ describe User do
   it { should_not allow_mass_assignment_of :password_hash }
 
   context 'when a user with the same email address already exists' do
-    let(:old_user)  { Factory.create(:user, :email => 'unique@example.net') }
-    subject         { Factory.build(:user, :email => old_user.email) }
+    let(:old_user)  { FactoryGirl.create(:user, :email => 'unique@example.net') }
+    subject         { FactoryGirl.build(:user, :email => old_user.email) }
 
     it { should_not be_valid }
 
