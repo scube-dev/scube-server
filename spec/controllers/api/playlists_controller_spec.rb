@@ -8,6 +8,8 @@ describe API::PlaylistsController do
   end
 
   describe 'GET index' do
+    render_views
+
     before do
       playlist_1 = Factory.create(:playlist, :name => 'Playlist 1')
       playlist_2 = Factory.create(:playlist, :name => 'Playlist 2')
