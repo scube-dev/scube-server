@@ -5,9 +5,9 @@ feature 'User sign up' do
 
   background do
     visit new_user_path
-    fill_in 'Email', :with => user.email
-    fill_in 'Password', :with => user.password
-    fill_in 'Password confirmation', :with => user.password
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    fill_in 'Password confirmation', with: user.password
   end
 
   scenario 'creates the user' do

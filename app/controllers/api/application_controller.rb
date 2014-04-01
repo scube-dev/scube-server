@@ -1,6 +1,6 @@
 class API::ApplicationController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  skip_before_filter :authenticate!, :only => [:cor_preflight]
+  skip_before_filter :authenticate!, only: [:cor_preflight]
 
   before_filter :cor_filter
 

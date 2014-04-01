@@ -5,9 +5,9 @@ describe API::SessionsController do
     let(:user) { FactoryGirl.create(:user) }
 
     def do_create
-      post :create, :format => :json, :session => {
-        :email    => user.email,
-        :password => user.password
+      post :create, format: :json, session: {
+        email:    user.email,
+        password: user.password
       }
     end
 

@@ -1,4 +1,4 @@
-guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', rspec_env: { RAILS_ENV: 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/routes.rb')
@@ -8,7 +8,7 @@ guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' } do
   watch(%r{^spec/support/.+\.rb$})
 end
 
-guard 'rspec', :cmd => 'bundle exec rspec --drb -f doc' do
+guard 'rspec', cmd: 'bundle exec rspec --drb -f doc' do
   watch(%r{^spec/.+_spec\.rb$})
 
   watch('spec/spec_helper.rb')        { 'spec' }

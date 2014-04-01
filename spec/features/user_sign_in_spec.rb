@@ -11,8 +11,8 @@ feature 'User sign in' do
     user = FactoryGirl.create(:user)
 
     visit new_session_path
-    fill_in 'Email', :with => user.email
-    fill_in 'Password', :with => user.password
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
     click_button 'Sign in'
 
     current_path.should == root_path

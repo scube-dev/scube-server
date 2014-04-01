@@ -9,7 +9,7 @@ describe 'tracks/show' do
 
   it 'displays the name of the track' do
     render
-    rendered.should have_selector('h1', :text => 'Mega song')
+    rendered.should have_selector('h1', text: 'Mega song')
   end
 
   context 'when track has a sound' do
@@ -34,7 +34,7 @@ describe 'tracks/show' do
       render
       rendered.should have_selector(
         'audio',
-        :text => 'Your browser does not support the audio element'
+        text: 'Your browser does not support the audio element'
       )
     end
   end

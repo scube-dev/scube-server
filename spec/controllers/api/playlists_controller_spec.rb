@@ -11,12 +11,12 @@ describe API::PlaylistsController do
     render_views
 
     before do
-      playlist_1 = FactoryGirl.create(:playlist, :name => 'Playlist 1')
-      playlist_2 = FactoryGirl.create(:playlist, :name => 'Playlist 2')
+      playlist_1 = FactoryGirl.create(:playlist, name: 'Playlist 1')
+      playlist_2 = FactoryGirl.create(:playlist, name: 'Playlist 2')
     end
 
     def do_get
-      get :index, :format => :json
+      get :index, format: :json
       JSON response.body
     end
 
@@ -36,8 +36,8 @@ describe API::PlaylistsController do
   describe 'POST create' do
     def do_create
       post :create,
-        :format => :json,
-        :playlist => FactoryGirl.attributes_for(:playlist)
+        format: :json,
+        playlist: FactoryGirl.attributes_for(:playlist)
     end
 
     it 'creates a new playlist for the current user' do

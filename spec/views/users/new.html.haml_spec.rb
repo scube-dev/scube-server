@@ -21,7 +21,7 @@ describe 'users/new' do
       "input[type=text][name='user[email]']"
     )
     rendered.should have_selector(
-      'label[for=user_email]', :text => 'Email'
+      'label[for=user_email]', text: 'Email'
     )
   end
 
@@ -31,7 +31,7 @@ describe 'users/new' do
       "input[type=password][name='user[password]']"
     )
     rendered.should have_selector(
-      'label[for=user_password]', :text => 'Password'
+      'label[for=user_password]', text: 'Password'
     )
   end
 
@@ -42,14 +42,14 @@ describe 'users/new' do
     )
     rendered.should have_selector(
       'label[for=user_password_confirmation]',
-      :text => 'Password confirmation'
+      text: 'Password confirmation'
     )
   end
 
   context 'when the user has some validation errors' do
     it 'on the email address uniqueness' do
-      user = FactoryGirl.create(:user, :email => 'unique@example.net')
-      new_user = FactoryGirl.build(:user, :email => user.email)
+      user = FactoryGirl.create(:user, email: 'unique@example.net')
+      new_user = FactoryGirl.build(:user, email: user.email)
       new_user.save
       assign :user, new_user
       render

@@ -16,7 +16,7 @@ describe API::TracksController do
     end
 
     def do_get
-      get :index, :format => :json
+      get :index, format: :json
       JSON response.body
     end
 

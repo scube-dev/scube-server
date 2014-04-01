@@ -11,9 +11,9 @@ describe SessionsController do
     let(:user) { FactoryGirl.create(:user) }
 
     def do_create
-      post :create, :session => {
-        :email    => user.email,
-        :password => user.password
+      post :create, session: {
+        email:    user.email,
+        password: user.password
       }
     end
 

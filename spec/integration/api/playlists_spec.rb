@@ -11,8 +11,8 @@ feature 'API playlists' do
     playlist = FactoryGirl.attributes_for :playlist
 
     post api_playlists_path,
-      :format => :json,
-      :playlist => playlist
+      format: :json,
+      playlist: playlist
 
     json = JSON response.body
 

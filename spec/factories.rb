@@ -1,6 +1,6 @@
 def build_sound_file
   file = File.new("#{Rails.root}/spec/fixtures/test.mp3")
-  file.stub(:content_type => 'audio/mpeg')
+  file.stub(content_type: 'audio/mpeg')
   file
 end
 

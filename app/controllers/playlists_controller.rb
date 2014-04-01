@@ -10,9 +10,9 @@ class PlaylistsController < ApplicationController
   def create
     @playlist = current_user.playlists.build(params[:playlist])
     if @playlist.save
-      redirect_to :action => 'index'
+      redirect_to action: 'index'
     else
-      render :action => 'new'
+      render action: 'new'
     end
   end
 
@@ -23,9 +23,9 @@ class PlaylistsController < ApplicationController
   def update
     @playlist = Playlist.find(params[:id])
     if @playlist.update_attributes params[:playlist]
-      redirect_to :action => 'index'
+      redirect_to action: 'index'
     else
-      render :action => 'edit'
+      render action: 'edit'
     end
   end
 end

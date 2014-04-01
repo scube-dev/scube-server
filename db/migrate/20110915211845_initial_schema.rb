@@ -9,7 +9,7 @@ class InitialSchema < ActiveRecord::Migration
     end
 
     create_table :sessions do |t|
-      t.string   :session_id, :null => false
+      t.string   :session_id, null: false
       t.text     :data
 
       t.timestamps
@@ -31,7 +31,7 @@ class InitialSchema < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :users, :email, :unique => true
+    add_index :users, :email, unique: true
 
   end
 

@@ -7,9 +7,9 @@ feature 'API cross origin request' do
   let(:origin)  { 'http://origin.example/' }
 
   background do
-    post sessions_path, :session => {
-      :email    => user.email,
-      :password => user.password
+    post sessions_path, session: {
+      email:    user.email,
+      password: user.password
     }
   end
 
@@ -17,7 +17,7 @@ feature 'API cross origin request' do
     @integration_session.send(
       :process,
       :options,
-      api_playlists_path(:format => :json),
+      api_playlists_path(format: :json),
       nil,
       { 'Origin' => origin }
     )
@@ -32,7 +32,7 @@ feature 'API cross origin request' do
 
   scenario 'basic request' do
     # FIXME: replace with a more stable/generic action
-    get api_playlists_path(:format => :json), nil, {
+    get api_playlists_path(format: :json), nil, {
       'Origin' => origin
     }
 
@@ -43,7 +43,7 @@ feature 'API cross origin request' do
 
   scenario 'request without origin' do
     # FIXME: replace with a more stable/generic action
-    get api_playlists_path(:format => :json)
+    get api_playlists_path(format: :json)
 
     response.headers['Access-Control-Allow-Origin'].should == ''
   end

@@ -25,14 +25,14 @@ describe PlaylistsController do
   describe 'GET edit' do
     it 'assigns the requested playlist as @playlist' do
       playlist = FactoryGirl.create(:playlist)
-      get :edit, :id => playlist.id.to_s
+      get :edit, id: playlist.id.to_s
       assigns[:playlist].should == playlist
     end
   end
 
   describe 'POST create' do
     def do_create
-      post :create, :playlist => FactoryGirl.attributes_for(:playlist)
+      post :create, playlist: FactoryGirl.attributes_for(:playlist)
     end
 
     context 'whith valid params' do
@@ -44,7 +44,7 @@ describe PlaylistsController do
 
       it 'redirects to the playlists index' do
         do_create
-        response.should redirect_to(:action => 'index')
+        response.should redirect_to(action: 'index')
       end
     end
 
@@ -67,19 +67,19 @@ describe PlaylistsController do
     let (:playlist) { FactoryGirl.create(:playlist) }
 
     def do_update
-      put :update, :id => playlist.id.to_s, :playlist => { :name => 'Rock' }
+      put :update, id: playlist.id.to_s, playlist: { name: 'Rock' }
     end
 
     context 'whith valid params' do
       it 'updates the playlist' do
-        Playlist.any_instance.should_receive(:update_attributes).
-          with({'name' => 'Rock'})
+        Playlist.any_instance.should_receive(:update_attributes)
+          .with({'name' => 'Rock'})
         do_update
       end
 
       it 'redirects to the playlists index' do
         do_update
-        response.should redirect_to(:action => 'index')
+        response.should redirect_to(action: 'index')
       end
     end
 

@@ -9,11 +9,11 @@ class User < ActiveRecord::Base
   has_many :playlists
 
   validates :email,
-    :presence => true,
-    :uniqueness => true
+    presence: true,
+    uniqueness: true
   validates :password,
-    :presence => true,
-    :confirmation => true
+    presence: true,
+    confirmation: true
   validates_presence_of :password_hash
 
   def password=(plain_password)

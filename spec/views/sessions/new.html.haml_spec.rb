@@ -12,7 +12,7 @@ describe 'sessions/new' do
   it 'renders a text field with a label for the mail address' do
     render
     rendered.should have_selector("input[type=text][name='session[email]']")
-    rendered.should have_selector('label[for=session_email]', :text => 'Email')
+    rendered.should have_selector('label[for=session_email]', text: 'Email')
   end
 
   it 'renders a password field with a label for the password' do
@@ -21,7 +21,7 @@ describe 'sessions/new' do
       "input[type=password][name='session[password]']"
     )
     rendered.should have_selector(
-      'label[for=session_password]', :text => 'Password'
+      'label[for=session_password]', text: 'Password'
     )
   end
 
@@ -29,7 +29,7 @@ describe 'sessions/new' do
     render
     rendered.should have_selector(
       "a[href='#{new_user_path}']",
-      :text => 'Sign up'
+      text: 'Sign up'
     )
   end
 end

@@ -8,7 +8,7 @@ feature 'Tracks' do
   end
 
   scenario 'shows track' do
-    track = FactoryGirl.create(:track, :name => 'Mega song')
+    track = FactoryGirl.create(:track, name: 'Mega song')
 
     visit track_path(track)
 
@@ -19,7 +19,7 @@ feature 'Tracks' do
     visit root_path
 
     click_link 'Add a track'
-    fill_in 'Name', :with => 'Mega song'
+    fill_in 'Name', with: 'Mega song'
     attach_file 'File', File.expand_path('spec/fixtures/test.mp3')
     click_button 'Upload'
 

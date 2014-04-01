@@ -4,9 +4,9 @@ feature 'API sign in' do
   let(:user)  { FactoryGirl.create(:user) }
 
   def do_create
-    post api_sessions_path, :format => :json, :session => {
-      :email    => user.email,
-      :password => user.password
+    post api_sessions_path, format: :json, session: {
+      email:    user.email,
+      password: user.password
     }
   end
 

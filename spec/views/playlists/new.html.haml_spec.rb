@@ -18,11 +18,11 @@ describe 'playlists/new' do
   end
 
   it 'renders a text field with a label for the playlists name' do
-    playlist.stub(:name => 'Electro')
+    playlist.stub(name: 'Electro')
     render
     rendered.should have_selector(
       "input[type=text][name='playlist[name]'][value=Electro]"
     )
-    rendered.should have_selector("label[for=playlist_name]", :text => 'Name')
+    rendered.should have_selector("label[for=playlist_name]", text: 'Name')
   end
 end
