@@ -1,5 +1,7 @@
-class API::TracksController < API::ApplicationController
-  def index
-    @tracks = Track.all
+module API
+  class TracksController < ApplicationController
+    def index
+      @tracks = Track.all
+    end
   end
 end
