@@ -1,6 +1,5 @@
 class InitialSchema < ActiveRecord::Migration
   def up
-
     create_table :playlists do |t|
       t.integer  :user_id
       t.string   :name
@@ -32,7 +31,6 @@ class InitialSchema < ActiveRecord::Migration
     end
 
     add_index :users, :email, unique: true
-
   end
 
   def down
