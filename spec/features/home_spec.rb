@@ -12,7 +12,7 @@ feature 'Home page' do
 
     visit root_path
 
-    page.should have_content('Electro')
+    expect(page).to have_content 'Electro'
   end
 
   scenario 'displays last track added' do
@@ -27,6 +27,6 @@ feature 'Home page' do
 
     visit root_path
 
-    page.body.should match(/Mega song 2.+Mega song 1/m)
+    expect(page.body).to match /Mega song 2.+Mega song 1/m
   end
 end

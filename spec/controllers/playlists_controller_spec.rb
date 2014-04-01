@@ -11,14 +11,14 @@ describe PlaylistsController do
     it 'assigns all playlists as @playlists' do
       playlist = FactoryGirl.create(:playlist)
       get :index
-      assigns[:playlists].should == [playlist]
+      expect(assigns[:playlists]).to eq [playlist]
     end
   end
 
   describe 'GET new' do
     it 'assigns a new playlist as @playlist' do
       get :new
-      assigns[:playlist].should be_a_new(Playlist)
+      expect(assigns[:playlist]).to be_a_new Playlist
     end
   end
 
@@ -26,7 +26,7 @@ describe PlaylistsController do
     it 'assigns the requested playlist as @playlist' do
       playlist = FactoryGirl.create(:playlist)
       get :edit, id: playlist.id.to_s
-      assigns[:playlist].should == playlist
+      expect(assigns[:playlist]).to eq playlist
     end
   end
 
@@ -44,21 +44,21 @@ describe PlaylistsController do
 
       it 'redirects to the playlists index' do
         do_create
-        response.should redirect_to(action: 'index')
+        expect(response).to redirect_to action: 'index'
       end
     end
 
     context 'whith invalid params' do
-      before { Playlist.any_instance.stub(:save).and_return(false) }
+      before { allow_any_instance_of(Playlist).to receive(:save) { false } }
 
       it 'assigns the playlist as @playlist' do
         do_create
-        assigns[:playlist].should be_a_new(Playlist)
+        expect(assigns[:playlist]).to be_a_new Playlist
       end
 
       it 'renders the new template' do
         do_create
-        response.should render_template('new')
+        expect(response).to render_template 'new'
       end
     end
   end
@@ -72,28 +72,28 @@ describe PlaylistsController do
 
     context 'whith valid params' do
       it 'updates the playlist' do
-        Playlist.any_instance.should_receive(:update_attributes)
-          .with({'name' => 'Rock'})
+        expect_any_instance_of(Playlist)
+          .to receive(:update_attributes).with({'name' => 'Rock'})
         do_update
       end
 
       it 'redirects to the playlists index' do
         do_update
-        response.should redirect_to(action: 'index')
+        expect(response).to redirect_to(action: 'index')
       end
     end
 
     context 'with invalid params' do
-      before { Playlist.any_instance.stub(:save).and_return(false) }
+      before { allow_any_instance_of(Playlist).to receive(:save) { false } }
 
       it 'assigns the requested playlist as @playlist' do
         do_update
-        assigns[:playlist].should == playlist
+        expect(assigns[:playlist]).to eq playlist
       end
 
       it 'renders the edit template' do
         do_update
-        response.should render_template('edit')
+        expect(response).to render_template 'edit'
       end
     end
   end

@@ -11,11 +11,12 @@ describe Sound do
 
   describe '#path' do
     it 'starts by the path specified in Rails.configuration.sound_path' do
-      sound.path.should match(/\A#{Rails.configuration.sounds_path}/)
+      expect(sound.path).to match /\A#{Rails.configuration.sounds_path}/
     end
 
     it 'returns the sound file path based on the SHA256 digest' do
-      sound.path.should == "#{Rails.configuration.sounds_path}/#{sound.sha256}"
+      expect(sound.path)
+        .to eq "#{Rails.configuration.sounds_path}/#{sound.sha256}"
     end
   end
 
@@ -23,15 +24,15 @@ describe Sound do
     let (:file) { FactoryGirl.attributes_for(:sound)[:file] }
 
     it 'saves the file SHA256 digest' do
-      sound.sha256.should == Digest::SHA256.file(file.path).hexdigest
+      expect(sound.sha256).to eq Digest::SHA256.file(file.path).hexdigest
     end
 
     it 'copies the file to #path' do
-      File.read(sound.path).should == file.read
+      expect(File.read(sound.path)).to eq file.read
     end
 
     it 'saves the file MIME type' do
-      sound.mime_type.should == 'audio/mpeg'
+      expect(sound.mime_type).to eq 'audio/mpeg'
     end
   end
 end

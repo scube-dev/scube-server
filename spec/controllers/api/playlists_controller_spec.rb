@@ -21,15 +21,15 @@ describe API::PlaylistsController do
     end
 
     it 'lists all playlists' do
-      do_get.should have(2).items
+      expect(do_get).to have(2).items
     end
 
     it 'lists playlists with their id' do
-      do_get.each { |t| t.keys.should include 'id' }
+      do_get.each { |t| expect(t.keys).to include 'id' }
     end
 
     it 'lists playlists with their name' do
-      do_get.each { |t| t.keys.should include 'name' }
+      do_get.each { |t| expect(t.keys).to include 'name' }
     end
   end
 
@@ -48,7 +48,7 @@ describe API::PlaylistsController do
 
     it 'assigns the playlist' do
       do_create
-      assigns[:playlist].should be_a Playlist
+      expect(assigns[:playlist]).to be_a Playlist
     end
   end
 end

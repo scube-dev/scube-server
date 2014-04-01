@@ -23,14 +23,14 @@ describe API::ApplicationController do
 
       it 'sets Access-Control-Allow-Methods header' do
         options :index
-        response.headers['Access-Control-Allow-Methods'].should ==
-          'GET, POST, PUT, DELETE'
+        expect(response.headers['Access-Control-Allow-Methods'])
+          .to eq 'GET, POST, PUT, DELETE'
       end
 
       it 'sets Access-Control-Allow-Methods header' do
         options :index
-        response.headers['Access-Control-Allow-Headers'].should ==
-          'Content-Type, Content-Length, X-Requested-With'
+        expect(response.headers['Access-Control-Allow-Headers'])
+          .to eq 'Content-Type, Content-Length, X-Requested-With'
       end
     end
 
@@ -43,8 +43,8 @@ describe API::ApplicationController do
 
       it 'sets Access-Control-Allow-Origin header' do
         get :index
-        response.headers['Access-Control-Allow-Origin']
-          .should == request.headers['Origin']
+        expect(response.headers['Access-Control-Allow-Origin'])
+          .to eq request.headers['Origin']
       end
     end
   end

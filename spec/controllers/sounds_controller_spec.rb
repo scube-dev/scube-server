@@ -16,12 +16,12 @@ describe SoundsController do
 
     it 'sets the sound file content as the response body' do
       do_show
-      response.body.should == File.read(sound.path, encoding: 'BINARY')
+      expect(response.body).to eq File.read(sound.path, encoding: 'BINARY')
     end
 
     it 'sets the sound mime-type as the response content-type' do
       do_show
-      response.content_type.should == sound.mime_type
+      expect(response.content_type).to eq sound.mime_type
     end
   end
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe SessionsController do
   describe 'GET new' do
     it 'responds successfully' do
-      response.should be_success
+      expect(response).to be_success
     end
   end
 
@@ -20,24 +20,24 @@ describe SessionsController do
     context 'with valid credentials' do
       it 'signs the user in' do
         do_create
-        controller.current_user.should == user
+        expect(controller.current_user).to eq user
       end
 
       it 'redirects to the home page' do
         do_create
-        response.should redirect_to(:root)
+        expect(response).to redirect_to :root
       end
     end
 
     [:email, :password].each do |attr|
       context "with invalid credentials (#{attr})" do
         before do
-          user.stub(attr => user.send(attr) + '_INVALID')
+          allow(user).to receive(attr).and_return(user.send(attr) + '_INVALID')
         end
 
         it 'renders the new template' do
           do_create
-          response.should render_template('new')
+          expect(response).to render_template 'new'
         end
       end
     end

@@ -19,6 +19,6 @@ feature 'User sign up' do
   scenario 'redirects to the home page' do
     click_button 'Sign up'
 
-    current_path.should == root_path
+    expect(current_path).to eq root_path
   end
 end

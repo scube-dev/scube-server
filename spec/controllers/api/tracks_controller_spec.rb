@@ -21,19 +21,19 @@ describe API::TracksController do
     end
 
     it 'lists all tracks' do
-      do_get.should have(2).items
+      expect(do_get).to have(2).items
     end
 
     it 'lists tracks with their id' do
-      do_get.each { |p| p.should include 'id' }
+      do_get.each { |p| expect(p).to include 'id' }
     end
 
     it 'lists tracks with their name' do
-      do_get.each { |p| p.should include 'name' }
+      do_get.each { |p| expect(p).to include 'name' }
     end
 
     it 'lists tracks with sound URL' do
-      do_get.each { |p| p.should include 'sound_url' }
+      do_get.each { |p| expect(p).to include 'sound_url' }
     end
   end
 end

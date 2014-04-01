@@ -12,7 +12,7 @@ feature 'Tracks' do
 
     visit track_path(track)
 
-    page.should have_content('Mega song')
+    expect(page).to have_content 'Mega song'
   end
 
   scenario 'creates track' do
@@ -23,8 +23,8 @@ feature 'Tracks' do
     attach_file 'File', File.expand_path('spec/fixtures/test.mp3')
     click_button 'Upload'
 
-    current_path.should == track_path(Track.first)
-    page.should have_content('Mega song')
+    expect(current_path).to eq track_path Track.first
+    expect(page).to have_content 'Mega song'
   end
 
   scenario 'plays track' do
@@ -32,7 +32,7 @@ feature 'Tracks' do
 
     visit track_path(track)
 
-    page.should have_xpath "//audio[@src='#{sound_path(track.sound)}']"
+    expect(page).to have_xpath "//audio[@src='#{sound_path track.sound}']"
     visit find('audio')[:src]
   end
 end

@@ -17,31 +17,31 @@ describe API::SessionsController do
       end
 
       it 'signs the user in' do
-        controller.current_user.should == user
+        expect(controller.current_user).to eq user
       end
 
       it 'assigns the user' do
-        assigns[:user].should == user
+        expect(assigns[:user]).to eq user
       end
     end
 
     [:email, :password].each do |attr|
       context "with invalid credentials (#{attr})" do
         before do
-          user.stub(attr => user.send(attr) + '_INVALID')
+          allow(user).to receive(attr).and_return(user.send(attr) + '_INVALID')
           do_create
         end
 
         it 'returns a not found response' do
-          response.should be_not_found
+          expect(response).to be_not_found
         end
 
         it 'returns an empty body' do
-          response.body.should be_empty
+          expect(response.body).to be_empty
         end
 
         it 'assigns no user' do
-          assigns[:user].should be_nil
+          expect(assigns[:user]).to be_nil
         end
       end
     end

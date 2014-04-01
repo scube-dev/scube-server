@@ -27,8 +27,8 @@ describe Track do
   describe '#file=' do
     it 'builds a new related sound with the file' do
       sounds = double 'sounds association proxy'
-      track.stub(sounds: sounds)
-      sounds.should_receive(:build).with({file: file})
+      allow(track).to receive(:sounds) { sounds }
+      expect(sounds).to receive(:build).with({file: file})
       track.file = file
     end
   end
@@ -40,7 +40,7 @@ describe Track do
       end
 
       it 'returns a sound' do
-        track.sound.should be_a(Sound)
+        expect(track.sound).to be_a Sound
       end
     end
   end
@@ -48,7 +48,7 @@ describe Track do
   describe '#sound?' do
     context 'without any sound' do
       it 'returns false' do
-        track.sound?.should be_false
+        expect(track.sound?).to be false
       end
     end
 
@@ -58,7 +58,7 @@ describe Track do
       end
 
       it 'returns true' do
-        track.sound?.should be_true
+        expect(track.sound?).to be true
       end
     end
   end
@@ -67,7 +67,7 @@ describe Track do
     it 'returns latest tracks in descending creation date order' do
       track1 = FactoryGirl.create(:track, created_at: '2011-07-27 19:13:42')
       track2 = FactoryGirl.create(:track, created_at: '2011-07-27 19:58:57')
-      Track.latest.should == [track2, track1]
+      expect(Track.latest).to eq [track2, track1]
     end
   end
 end

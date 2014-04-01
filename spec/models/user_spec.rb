@@ -30,20 +30,20 @@ describe User do
 
   describe '#password=' do
     it 'stores a bcrypt hash of the password in password_hash' do
-      BCrypt::Password.new(user.password_hash).should == user.password
+      expect(BCrypt::Password.new(user.password_hash)).to eq user.password
     end
   end
 
   describe '#authenticate?' do
     context 'with a valid password' do
       it 'returns true' do
-        user.authenticate?(user.password).should be_true
+        expect(user.authenticate?(user.password)).to be true
       end
     end
 
     context 'with an invalid password' do
       it 'returns false' do
-        user.authenticate?(user.password + '_INVALID').should be_false
+        expect(user.authenticate?(user.password + '_INVALID')).to be false
       end
     end
   end

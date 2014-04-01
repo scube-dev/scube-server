@@ -13,17 +13,17 @@ feature 'API sign in' do
   scenario 'signs the user in with valid credentials' do
     do_create
 
-    response.should be_success
-    (JSON response.body).should include 'id'
+    expect(response).to be_success
+    expect(JSON response.body).to include 'id'
   end
 
   [:email, :password].each do |attr|
     scenario "rejects authentication with invalid credentials (#{attr})" do
-      user.stub(attr => user.send(attr) + '_INVALID')
+      allow(user).to receive(attr).and_return(user.send(attr) + '_INVALID')
       do_create
 
-      response.should be_not_found
-      response.body.should be_empty
+      expect(response).to be_not_found
+      expect(response.body).to be_empty
     end
   end
 end

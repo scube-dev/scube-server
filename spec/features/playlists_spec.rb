@@ -13,7 +13,7 @@ feature 'Playlists' do
 
     visit playlists_path
 
-    page.body.should match(/Electro.+Reggae/m)
+    expect(page.body).to match /Electro.+Reggae/m
   end
 
   scenario 'creates playlist' do
@@ -23,8 +23,8 @@ feature 'Playlists' do
     fill_in 'Name', with: 'Electro'
     click_button 'Create'
 
-    current_path.should == playlists_path
-    page.should have_content('Electro')
+    expect(current_path).to eq playlists_path
+    expect(page).to have_content 'Electro'
   end
 
   scenario 'edits playlist' do
@@ -35,7 +35,7 @@ feature 'Playlists' do
     fill_in 'Name', with: 'Rock'
     click_button 'Save'
 
-    current_path.should == playlists_path
-    page.should have_content('Rock')
+    expect(current_path).to eq playlists_path
+    expect(page).to have_content 'Rock'
   end
 end

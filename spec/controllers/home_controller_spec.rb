@@ -11,14 +11,14 @@ describe HomeController do
     it 'assigns all playlists as @playlists' do
       playlist = FactoryGirl.create(:playlist)
       get :index
-      assigns[:playlists].should == [playlist]
+      expect(assigns[:playlists]).to eq [playlist]
     end
 
     it 'assigns latest tracks as @tracks' do
       track1 = FactoryGirl.create(:track, created_at: '2011-07-27 19:13:42')
       track2 = FactoryGirl.create(:track, created_at: '2011-07-27 19:58:57')
       get :index
-      assigns[:tracks].should == Track.latest
+      expect(assigns[:tracks]).to eq Track.latest
     end
   end
 end

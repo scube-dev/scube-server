@@ -13,7 +13,7 @@ feature 'API tracks' do
 
     get api_tracks_path, format: :json
 
-    response.body.should == [
+    expect(response.body).to eq [
       {
         id: track_1.id,
         name: 'Track 1',

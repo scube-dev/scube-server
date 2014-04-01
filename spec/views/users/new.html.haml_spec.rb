@@ -11,36 +11,31 @@ describe 'users/new' do
 
   it 'renders a form to sign up' do
     render
-    rendered.should have_selector("form[method=post][action='#{users_path}']")
-    rendered.should have_selector('input[type=submit]')
+    expect(rendered)
+      .to have_selector "form[method=post][action='#{users_path}']"
+    expect(rendered).to have_selector 'input[type=submit]'
   end
 
   it 'renders a text field with a label for the mail address' do
     render
-    rendered.should have_selector(
-      "input[type=text][name='user[email]']"
-    )
-    rendered.should have_selector(
-      'label[for=user_email]', text: 'Email'
-    )
+    expect(rendered).to have_selector "input[type=text][name='user[email]']"
+    expect(rendered)
+      .to have_selector 'label[for=user_email]', text: 'Email'
   end
 
   it 'renders a password field with a label for the password' do
     render
-    rendered.should have_selector(
-      "input[type=password][name='user[password]']"
-    )
-    rendered.should have_selector(
-      'label[for=user_password]', text: 'Password'
-    )
+    expect(rendered)
+      .to have_selector "input[type=password][name='user[password]']"
+    expect(rendered)
+      .to have_selector 'label[for=user_password]', text: 'Password'
   end
 
   it 'renders a password field with a label for the password confirmation' do
     render
-    rendered.should have_selector(
-      "input[type=password][name='user[password_confirmation]']"
-    )
-    rendered.should have_selector(
+    expect(rendered)
+      .to have_selector "input[type=password][name='user[password_confirmation]']"
+    expect(rendered).to have_selector(
       'label[for=user_password_confirmation]',
       text: 'Password confirmation'
     )
@@ -53,7 +48,7 @@ describe 'users/new' do
       new_user.save
       assign :user, new_user
       render
-      rendered.should have_content 'Email has already been taken'
+      expect(rendered).to have_content 'Email has already been taken'
     end
   end
 end

@@ -4,7 +4,7 @@ describe UsersController do
   describe 'GET new' do
     it 'assigns a new user as @user' do
       get :new
-      assigns[:user].should be_a_new(User)
+      expect(assigns[:user]).to be_a_new(User)
     end
   end
 
@@ -18,26 +18,26 @@ describe UsersController do
 
       it 'signs the user in' do
         post :create, user: FactoryGirl.attributes_for(:user)
-        controller.current_user.should_not be_nil
+        expect(controller.current_user).not_to be_nil
       end
 
       it 'redirects to the home page' do
         post :create, user: FactoryGirl.attributes_for(:user)
-        response.should redirect_to(:root)
+        expect(response).to redirect_to :root
       end
     end
 
     context 'whith invalid params' do
-      before { User.any_instance.stub(:save).and_return(false) }
+      before { allow_any_instance_of(User).to receive(:save) { false } }
 
       it 'assigns the user as @user' do
         post :create, user: {}
-        assigns[:user].should be_a_new(User)
+        expect(assigns[:user]).to be_a_new User
       end
 
       it 'renders the new template' do
         post :create, user: {}
-        response.should render_template('new')
+        expect(response).to render_template 'new'
       end
     end
   end

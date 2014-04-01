@@ -16,7 +16,7 @@ feature 'API playlists' do
 
     json = JSON response.body
 
-    json['id'].should be_a Fixnum
-    json['name'].should == playlist[:name]
+    expect(json['id']).to be_a Fixnum
+    expect(json['name']).to eq playlist[:name]
   end
 end
