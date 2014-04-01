@@ -3,6 +3,8 @@ require 'fileutils'
 class Sound < ActiveRecord::Base
   belongs_to :track
 
+  attr_accessible :file
+
   validates_presence_of :sha256
   validates_presence_of :mime_type
 
