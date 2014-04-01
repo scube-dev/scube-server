@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails',        '~> 3.1'
-gem 'pg',           '~> 0.11'
-gem 'haml',         '~> 3.1'
-gem 'bcrypt-ruby',  '~> 3.0'
-gem 'rabl',         '~> 0.6'
+gem 'rails',  '~> 3.1'
+gem 'pg',     '~> 0.11'
+gem 'haml',   '~> 3.1'
+gem 'bcrypt', '~> 3.0'
+gem 'rabl',   '~> 0.6'
 
 group :development, :test do
   gem 'rspec-rails',        '~> 2.6'
