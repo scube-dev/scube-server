@@ -1,14 +1,10 @@
 Contributing to scube
 ---------------------
 
-* Clone scube official repository and create a branch from master for
-  your changes.
+* Clone scube-server official repository and create a branch from
+  master for your changes.
 
-* Make sure all cucumber features pass:
-
-  `bundle exec rake cucumber`
-
-* And rspec examples as well:
+* Make sure all rspec examples pass:
 
   `bundle exec rake spec`
 
