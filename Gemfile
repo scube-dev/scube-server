@@ -1,10 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails',  '~> 3.1'
+gem 'rails',  '~> 4.0'
 gem 'pg',     '~> 0.17'
 gem 'haml',   '~> 4.0'
 gem 'bcrypt', '~> 3.0'
 gem 'rabl',   '~> 0.6'
+
+gem 'protected_attributes', '~> 1.0'
 
 group :development, :test do
   gem 'rspec-rails',        '~> 2.6'

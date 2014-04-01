@@ -15,6 +15,8 @@ describe Track do
       track.file = file
     end
 
+    it { should be_valid }
+
     it 'creates a sound for the track' do
       expect {
         track.save

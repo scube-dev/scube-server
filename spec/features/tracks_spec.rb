@@ -23,7 +23,7 @@ feature 'Tracks' do
     attach_file 'File', File.expand_path('spec/fixtures/test.mp3')
     click_button 'Upload'
 
-    current_path.should == track_path(Track.find(:first))
+    current_path.should == track_path(Track.first)
     page.should have_content('Mega song')
   end
 

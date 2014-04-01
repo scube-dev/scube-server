@@ -14,9 +14,8 @@ feature 'API cross origin request' do
   end
 
   scenario 'preflight request' do
-    # FIXME: replace with a more stable/generic action
-    # FIXME: request without redirect
-    request_via_redirect(
+    @integration_session.send(
+      :process,
       :options,
       api_playlists_path(:format => :json),
       nil,
