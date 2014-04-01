@@ -13,8 +13,8 @@ describe HomeController do
     end
 
     it 'assigns latest tracks as @tracks' do
-      track1 = FactoryGirl.create(:track, created_at: '2011-07-27 19:13:42')
-      track2 = FactoryGirl.create(:track, created_at: '2011-07-27 19:58:57')
+      FactoryGirl.create(:track, created_at: '2011-07-27 19:13:42')
+      FactoryGirl.create(:track, created_at: '2011-07-27 19:58:57')
       get :index
       expect(assigns[:tracks]).to eq Track.latest
     end

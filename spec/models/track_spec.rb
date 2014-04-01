@@ -26,7 +26,7 @@ describe Track do
     it 'builds a new related sound with the file' do
       sounds = double 'sounds association proxy'
       allow(track).to receive(:sounds) { sounds }
-      expect(sounds).to receive(:build).with({file: file})
+      expect(sounds).to receive(:build).with(file: file)
       track.file = file
     end
   end

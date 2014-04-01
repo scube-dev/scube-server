@@ -7,7 +7,8 @@ describe 'playlists/edit' do
 
   it 'renders a form to edit a playlist' do
     render
-    expect(rendered).to have_selector("form[method=post][action='#{playlists_path}']")
+    expect(rendered)
+      .to have_selector("form[method=post][action='#{playlists_path}']")
     expect(rendered).to have_selector('input[type=submit]')
   end
 

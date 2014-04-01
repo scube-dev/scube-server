@@ -19,7 +19,7 @@ feature 'API cross origin request' do
       :options,
       api_playlists_path(format: :json),
       nil,
-      { 'Origin' => origin }
+      'Origin' => origin
     )
 
     expect(response.headers['Access-Control-Allow-Origin']).to eq origin
@@ -32,9 +32,7 @@ feature 'API cross origin request' do
 
   scenario 'basic request' do
     # FIXME: replace with a more stable/generic action
-    get api_playlists_path(format: :json), nil, {
-      'Origin' => origin
-    }
+    get api_playlists_path(format: :json), nil, 'Origin' => origin
 
     expect(response.headers['Access-Control-Allow-Origin']).to eq origin
     expect(response.headers['Access-Control-Allow-Credentials']).to eq 'true'

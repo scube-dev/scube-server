@@ -21,7 +21,7 @@ describe Sound do
   end
 
   describe '#file=' do
-    let (:file) { FactoryGirl.attributes_for(:sound)[:file] }
+    let(:file) { FactoryGirl.attributes_for(:sound)[:file] }
 
     it 'saves the file SHA256 digest' do
       expect(sound.sha256).to eq Digest::SHA256.file(file.path).hexdigest

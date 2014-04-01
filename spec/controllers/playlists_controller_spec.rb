@@ -62,7 +62,7 @@ describe PlaylistsController do
   end
 
   describe 'PUT update' do
-    let (:playlist) { FactoryGirl.create(:playlist) }
+    let(:playlist) { FactoryGirl.create(:playlist) }
 
     def do_update
       put :update, id: playlist.id.to_s, playlist: { name: 'Rock' }
@@ -71,7 +71,7 @@ describe PlaylistsController do
     context 'whith valid params' do
       it 'updates the playlist' do
         expect_any_instance_of(Playlist)
-          .to receive(:update_attributes).with({'name' => 'Rock'})
+          .to receive(:update_attributes).with('name' => 'Rock')
         do_update
       end
 

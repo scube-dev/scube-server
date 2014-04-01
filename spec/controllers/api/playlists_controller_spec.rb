@@ -9,8 +9,8 @@ describe API::PlaylistsController do
     render_views
 
     before do
-      playlist_1 = FactoryGirl.create(:playlist, name: 'Playlist 1')
-      playlist_2 = FactoryGirl.create(:playlist, name: 'Playlist 2')
+      FactoryGirl.create(:playlist, name: 'Playlist 1')
+      FactoryGirl.create(:playlist, name: 'Playlist 2')
     end
 
     def do_get

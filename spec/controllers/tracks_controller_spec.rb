@@ -22,12 +22,12 @@ describe TracksController do
 
   describe 'POST create new' do
     def do_create
-      post :create, track: FactoryGirl.attributes_for(:track).merge({
+      post :create, track: FactoryGirl.attributes_for(:track).merge(
         file: fixture_file_upload(
           "#{Rails.root}/spec/fixtures/test.mp3",
           'audio/mpeg'
         )
-      })
+      )
     end
 
     context 'whith valid params' do

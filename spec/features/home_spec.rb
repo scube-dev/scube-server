@@ -6,7 +6,7 @@ feature 'Home page' do
   background { sign_in }
 
   scenario 'displays playlists' do
-    playlist = FactoryGirl.create(:playlist, name: 'Electro')
+    FactoryGirl.create(:playlist, name: 'Electro')
 
     visit root_path
 
