@@ -24,7 +24,7 @@ describe Track do
 
   describe '#file=' do
     it 'builds a new related sound with the file' do
-      sounds = mock('sounds association proxy')
+      sounds = double 'sounds association proxy'
       track.stub(:sounds => sounds)
       sounds.should_receive(:build).with({:file => file})
       track.file = file
