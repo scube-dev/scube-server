@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails',  '~> 3.1'
-gem 'pg',     '~> 0.11'
+gem 'pg',     '~> 0.17'
 gem 'haml',   '~> 3.1'
 gem 'bcrypt', '~> 3.0'
 gem 'rabl',   '~> 0.6'
