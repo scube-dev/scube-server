@@ -4,7 +4,7 @@ class API::SessionsController < API::ApplicationController
   def create
     user = User.find_by_email(params[:session][:email])
 
-    if ! user.try(:authenticate?, params[:session][:password])
+    if !user.try(:authenticate?, params[:session][:password])
       return render json: '', status: :not_found
     end
 

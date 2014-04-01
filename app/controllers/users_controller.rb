@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    if ! @user.save
+    if !@user.save
       render :new
     else
       self.current_user =  @user
