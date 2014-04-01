@@ -3,9 +3,7 @@ require 'spec_helper'
 feature 'API playlists' do
   include UserIntegrationHelpers
 
-  background do
-    api_sign_in
-  end
+  background { api_sign_in }
 
   scenario 'creates playlist' do
     playlist = FactoryGirl.attributes_for :playlist

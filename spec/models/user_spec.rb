@@ -21,9 +21,7 @@ describe User do
   end
 
   context 'when password_confirmation does not match password' do
-    before do
-      user.password_confirmation = user.password + 'INVALID'
-    end
+    before { user.password_confirmation = user.password + 'INVALID' }
 
     it { should_not be_valid }
   end

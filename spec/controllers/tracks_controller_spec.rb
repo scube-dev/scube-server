@@ -3,9 +3,7 @@ require 'spec_helper'
 describe TracksController do
   include UserControllerHelpers
 
-  before do
-    sign_in
-  end
+  before { sign_in }
 
   describe 'GET show' do
     it 'assigns the requested track as @track' do
@@ -46,9 +44,7 @@ describe TracksController do
     end
 
     context 'whith invalid params' do
-      before do
-        allow_any_instance_of(Track).to receive(:save) { false }
-      end
+      before { allow_any_instance_of(Track).to receive(:save) { false } }
 
       it 'assigns the track as @track' do
         do_create

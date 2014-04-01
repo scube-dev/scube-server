@@ -3,9 +3,7 @@ require 'spec_helper'
 describe 'tracks/show' do
   let(:track) { FactoryGirl.create(:track) }
 
-  before do
-    assign :track, track
-  end
+  before { assign :track, track }
 
   it 'displays the name of the track' do
     render

@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 describe 'users/new' do
-  let(:user) do
-    mock_model(User).as_new_record.as_null_object
-  end
+  let(:user) { mock_model(User).as_new_record.as_null_object }
 
-  before do
-    assign :user, user
-  end
+  before { assign :user, user }
 
   it 'renders a form to sign up' do
     render
@@ -19,8 +15,7 @@ describe 'users/new' do
   it 'renders a text field with a label for the mail address' do
     render
     expect(rendered).to have_selector "input[type=text][name='user[email]']"
-    expect(rendered)
-      .to have_selector 'label[for=user_email]', text: 'Email'
+    expect(rendered).to have_selector 'label[for=user_email]', text: 'Email'
   end
 
   it 'renders a password field with a label for the password' do

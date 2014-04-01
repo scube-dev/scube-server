@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 describe 'playlists/edit' do
-  let(:playlist) do
-    mock_model(Playlist).as_new_record.as_null_object
-  end
+  let(:playlist) { mock_model(Playlist).as_new_record.as_null_object }
 
-  before do
-    assign :playlist, playlist
-  end
+  before { assign :playlist, playlist }
 
   it 'renders a form to edit a playlist' do
     render

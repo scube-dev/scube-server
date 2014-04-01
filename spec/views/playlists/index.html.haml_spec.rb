@@ -1,11 +1,7 @@
 require 'spec_helper'
 
 describe 'playlists/index' do
-  before do
-    assign :playlists, [
-      mock_model(Playlist, name: 'Electro')
-    ]
-  end
+  before { assign :playlists, [mock_model(Playlist, name: 'Electro')] }
 
   it 'displays a list of playlists' do
     render

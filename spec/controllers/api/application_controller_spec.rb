@@ -3,14 +3,10 @@ require 'spec_helper'
 describe API::ApplicationController do
   include UserControllerHelpers
 
-  before do
-    sign_in
-  end
+  before { sign_in }
 
   context 'CORS: Cross-Origin Ressource Sharing' do
-    before do
-      request.headers['Origin'] = 'http://origin.example/'
-    end
+    before { request.headers['Origin'] = 'http://origin.example/' }
 
     context 'preflight' do
       controller(API::ApplicationController) do

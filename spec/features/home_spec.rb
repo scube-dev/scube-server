@@ -3,9 +3,7 @@ require 'spec_helper'
 feature 'Home page' do
   include UserIntegrationHelpers
 
-  background do
-    sign_in
-  end
+  background { sign_in }
 
   scenario 'displays playlists' do
     playlist = FactoryGirl.create(:playlist, name: 'Electro')

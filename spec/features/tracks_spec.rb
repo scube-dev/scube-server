@@ -3,9 +3,7 @@ require 'spec_helper'
 feature 'Tracks' do
   include UserIntegrationHelpers
 
-  background do
-    sign_in
-  end
+  background { sign_in }
 
   scenario 'shows track' do
     track = FactoryGirl.create(:track, name: 'Mega song')

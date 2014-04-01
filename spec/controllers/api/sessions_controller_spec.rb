@@ -12,9 +12,7 @@ describe API::SessionsController do
     end
 
     context 'with valid credentials' do
-      before do
-        do_create
-      end
+      before { do_create }
 
       it 'signs the user in' do
         expect(controller.current_user).to eq user

@@ -3,9 +3,7 @@ require 'spec_helper'
 describe SoundsController do
   include UserControllerHelpers
 
-  before do
-    sign_in
-  end
+  before { sign_in }
 
   describe 'GET show' do
     let(:sound) { FactoryGirl.create(:sound) }

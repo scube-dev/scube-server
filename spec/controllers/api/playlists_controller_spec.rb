@@ -3,9 +3,7 @@ require 'spec_helper'
 describe API::PlaylistsController do
   include UserControllerHelpers
 
-  before do
-    sign_in
-  end
+  before { sign_in }
 
   describe 'GET index' do
     render_views

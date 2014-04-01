@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 describe 'tracks/new' do
-  let(:track) do
-    mock_model(Track).as_new_record.as_null_object
-  end
+  let(:track) { mock_model(Track).as_new_record.as_null_object }
 
-  before do
-    assign :track, track
-  end
+  before { assign :track, track }
 
   it 'renders a form to create a track' do
     render
@@ -21,8 +17,7 @@ describe 'tracks/new' do
     render
     expect(rendered)
       .to have_selector "input[type=text][name='track[name]'][value='Mega song']"
-    expect(rendered)
-      .to have_selector('label[for=track_name]', text: 'Name')
+    expect(rendered).to have_selector('label[for=track_name]', text: 'Name')
   end
 
   it 'renders a file field with a label for the tracks file' do

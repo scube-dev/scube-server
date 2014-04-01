@@ -11,9 +11,7 @@ describe Track do
   it { should_not allow_mass_assignment_of :sounds }
 
   context 'with a file' do
-    before do
-      track.file = file
-    end
+    before { track.file = file }
 
     it { should be_valid }
 
@@ -35,9 +33,7 @@ describe Track do
 
   describe '#sound' do
     context 'with a sound' do
-      before do
-        track.sounds << FactoryGirl.create(:sound)
-      end
+      before { track.sounds << FactoryGirl.create(:sound) }
 
       it 'returns a sound' do
         expect(track.sound).to be_a Sound
@@ -53,9 +49,7 @@ describe Track do
     end
 
     context 'with a sound' do
-      before do
-        track.sounds << FactoryGirl.create(:sound)
-      end
+      before { track.sounds << FactoryGirl.create(:sound) }
 
       it 'returns true' do
         expect(track.sound?).to be true

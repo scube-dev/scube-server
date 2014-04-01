@@ -3,9 +3,7 @@ require 'spec_helper'
 describe PlaylistsController do
   include UserControllerHelpers
 
-  before do
-    sign_in
-  end
+  before { sign_in }
 
   describe 'GET index' do
     it 'assigns all playlists as @playlists' do

@@ -3,9 +3,7 @@ require 'spec_helper'
 feature 'API tracks' do
   include UserIntegrationHelpers
 
-  background do
-    api_sign_in
-  end
+  background { api_sign_in }
 
   scenario 'lists tracks' do
     track_1 = FactoryGirl.create(:track_with_sound, name: 'Track 1')
