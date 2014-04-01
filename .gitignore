@@ -1,3 +1,4 @@
+/Gemfile-custom.rb
 /config/database.yml
 /data/
 /log/*.log
