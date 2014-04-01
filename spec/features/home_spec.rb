@@ -8,7 +8,7 @@ feature 'Home page' do
   end
 
   scenario 'displays playlists' do
-    playlist = Factory.create(:playlist, :name => 'Electro')
+    playlist = FactoryGirl.create(:playlist, :name => 'Electro')
 
     visit root_path
 
@@ -16,11 +16,11 @@ feature 'Home page' do
   end
 
   scenario 'displays last track added' do
-    Factory.create(:track,
+    FactoryGirl.create(:track,
       :name       => 'Mega song 1',
       :created_at => '2011-07-27 19:13:42'
     )
-    Factory.create(:track,
+    FactoryGirl.create(:track,
       :name       => 'Mega song 2',
       :created_at => '2011-07-27 19:58:57'
     )

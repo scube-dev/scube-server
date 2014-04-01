@@ -9,7 +9,7 @@ describe API::ApplicationController do
 
   context 'CORS: Cross-Origin Ressource Sharing' do
     before do
-      request.env['Origin'] = 'http://origin.example/'
+      request.headers['Origin'] = 'http://origin.example/'
     end
 
     context 'preflight' do
@@ -18,7 +18,7 @@ describe API::ApplicationController do
       end
 
       def options(action)
-        process action, nil, nil, nil, 'OPTIONS'
+        process action, 'OPTIONS'
       end
 
       it 'sets Access-Control-Allow-Methods header' do
@@ -43,8 +43,8 @@ describe API::ApplicationController do
 
       it 'sets Access-Control-Allow-Origin header' do
         get :index
-        response.headers['Access-Control-Allow-Origin'].should ==
-          request.env['Origin']
+        response.headers['Access-Control-Allow-Origin']
+          .should == request.headers['Origin']
       end
     end
   end

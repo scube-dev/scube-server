@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'API cross origin request' do
   include UserIntegrationHelpers
 
-  let(:user)    { Factory.create(:user) }
+  let(:user)    { FactoryGirl.create(:user) }
   let(:origin)  { 'http://origin.example/' }
 
   background do
@@ -14,9 +14,8 @@ feature 'API cross origin request' do
   end
 
   scenario 'preflight request' do
-    # FIXME: replace with a more stable/generic action
-    # FIXME: request without redirect
-    request_via_redirect(
+    @integration_session.send(
+      :process,
       :options,
       api_playlists_path(:format => :json),
       nil,

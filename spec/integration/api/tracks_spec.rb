@@ -8,8 +8,8 @@ feature 'API tracks' do
   end
 
   scenario 'lists tracks' do
-    track_1 = Factory.create(:track_with_sound, :name => 'Track 1')
-    track_2 = Factory.create(:track, :name => 'Track 2')
+    track_1 = FactoryGirl.create(:track_with_sound, :name => 'Track 1')
+    track_2 = FactoryGirl.create(:track, :name => 'Track 2')
 
     get api_tracks_path, :format => :json
 

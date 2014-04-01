@@ -8,7 +8,7 @@ feature 'Tracks' do
   end
 
   scenario 'shows track' do
-    track = Factory.create(:track, :name => 'Mega song')
+    track = FactoryGirl.create(:track, :name => 'Mega song')
 
     visit track_path(track)
 
@@ -23,12 +23,12 @@ feature 'Tracks' do
     attach_file 'File', File.expand_path('spec/fixtures/test.mp3')
     click_button 'Upload'
 
-    current_path.should == track_path(Track.find(:first))
+    current_path.should == track_path(Track.first)
     page.should have_content('Mega song')
   end
 
   scenario 'plays track' do
-    track = Factory.create(:track_with_sound)
+    track = FactoryGirl.create(:track_with_sound)
 
     visit track_path(track)
 

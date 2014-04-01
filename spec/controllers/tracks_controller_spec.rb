@@ -9,7 +9,7 @@ describe TracksController do
 
   describe 'GET show' do
     it 'assigns the requested track as @track' do
-      track = Factory.create(:track)
+      track = FactoryGirl.create(:track)
       get :show, :id => track.id.to_s
       assigns[:track].should == track
     end
@@ -24,7 +24,7 @@ describe TracksController do
 
   describe 'POST create new' do
     def do_create
-      post :create, :track => Factory.attributes_for(:track).merge({
+      post :create, :track => FactoryGirl.attributes_for(:track).merge({
         :file => fixture_file_upload(
           "#{Rails.root}/spec/fixtures/test.mp3",
           'audio/mpeg'

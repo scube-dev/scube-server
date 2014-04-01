@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'tracks/show' do
-  let(:track) { Factory.create(:track) }
+  let(:track) { FactoryGirl.create(:track) }
 
   before do
     assign :track, track
@@ -13,7 +13,7 @@ describe 'tracks/show' do
   end
 
   context 'when track has a sound' do
-    let(:track) { Factory.create(:track_with_sound) }
+    let(:track) { FactoryGirl.create(:track_with_sound) }
 
     it 'provides an audio stream for the track' do
       render

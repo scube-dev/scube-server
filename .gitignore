@@ -1,4 +1,5 @@
 /Gemfile-custom.rb
+/Gemfile.lock
 /config/database.yml
 /data/
 /log/*.log

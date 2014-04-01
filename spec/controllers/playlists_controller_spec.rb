@@ -9,7 +9,7 @@ describe PlaylistsController do
 
   describe 'GET index' do
     it 'assigns all playlists as @playlists' do
-      playlist = Factory.create(:playlist)
+      playlist = FactoryGirl.create(:playlist)
       get :index
       assigns[:playlists].should == [playlist]
     end
@@ -24,7 +24,7 @@ describe PlaylistsController do
 
   describe 'GET edit' do
     it 'assigns the requested playlist as @playlist' do
-      playlist = Factory.create(:playlist)
+      playlist = FactoryGirl.create(:playlist)
       get :edit, :id => playlist.id.to_s
       assigns[:playlist].should == playlist
     end
@@ -32,7 +32,7 @@ describe PlaylistsController do
 
   describe 'POST create' do
     def do_create
-      post :create, :playlist => Factory.attributes_for(:playlist)
+      post :create, :playlist => FactoryGirl.attributes_for(:playlist)
     end
 
     context 'whith valid params' do
@@ -64,7 +64,7 @@ describe PlaylistsController do
   end
 
   describe 'PUT update' do
-    let (:playlist) { Factory.create(:playlist) }
+    let (:playlist) { FactoryGirl.create(:playlist) }
 
     def do_update
       put :update, :id => playlist.id.to_s, :playlist => { :name => 'Rock' }

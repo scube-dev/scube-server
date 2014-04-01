@@ -48,8 +48,8 @@ describe 'users/new' do
 
   context 'when the user has some validation errors' do
     it 'on the email address uniqueness' do
-      user = Factory.create(:user, :email => 'unique@example.net')
-      new_user = Factory.build(:user, :email => user.email)
+      user = FactoryGirl.create(:user, :email => 'unique@example.net')
+      new_user = FactoryGirl.build(:user, :email => user.email)
       new_user.save
       assign :user, new_user
       render

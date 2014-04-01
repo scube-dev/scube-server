@@ -8,9 +8,11 @@ describe API::TracksController do
   end
 
   describe 'GET index' do
+    render_views
+
     before do
-      Factory.create(:track_with_sound)
-      Factory.create(:track_with_sound)
+      FactoryGirl.create(:track_with_sound)
+      FactoryGirl.create(:track_with_sound)
     end
 
     def do_get

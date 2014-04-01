@@ -8,7 +8,7 @@ describe SessionsController do
   end
 
   describe 'POST create' do
-    let(:user) { Factory.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     def do_create
       post :create, :session => {

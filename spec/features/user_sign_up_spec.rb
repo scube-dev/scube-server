@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'User sign up' do
-  let(:user) { Factory.build(:user) }
+  let(:user) { FactoryGirl.build(:user) }
 
   background do
     visit new_user_path

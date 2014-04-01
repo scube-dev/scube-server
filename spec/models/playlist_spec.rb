@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Playlist do
   subject         { playlist }
-  let(:playlist)  { Factory.build(:playlist) }
+  let(:playlist)  { FactoryGirl.build(:playlist) }
 
   it { should be_valid }
   it { should belong_to :user }

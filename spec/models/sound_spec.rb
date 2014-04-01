@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Sound do
   subject     { sound }
-  let(:sound) { Factory.build(:sound) }
+  let(:sound) { FactoryGirl.build(:sound) }
 
   it { should be_valid }
   it { should belong_to :track }
@@ -20,7 +20,7 @@ describe Sound do
   end
 
   describe '#file=' do
-    let (:file) { Factory.attributes_for(:sound)[:file] }
+    let (:file) { FactoryGirl.attributes_for(:sound)[:file] }
 
     it 'saves the file SHA256 digest' do
       sound.sha256.should == Digest::SHA256.file(file.path).hexdigest
