@@ -8,7 +8,6 @@ describe Track do
   it { should be_valid }
   it { should have_many :sounds }
   it { should validate_presence_of :name }
-  it { should_not allow_mass_assignment_of :sounds }
 
   context 'with a file' do
     before { track.file = file }

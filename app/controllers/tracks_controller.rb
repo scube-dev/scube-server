@@ -8,11 +8,17 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new params[:track]
+    @track = Track.new track_params
     if @track.save
       redirect_to @track
     else
       render :new
     end
+  end
+
+  private
+
+  def track_params
+    params.require(:track).permit(:name, :file)
   end
 end

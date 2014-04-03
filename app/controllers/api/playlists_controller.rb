@@ -7,8 +7,14 @@ module API
     end
 
     def create
-      @playlist = current_user.playlists.build(params[:playlist].slice(:name))
+      @playlist = current_user.playlists.build(playlist_params)
       @playlist.save
+    end
+
+    private
+
+    def playlist_params
+      params.require(:playlist).permit(:name)
     end
   end
 end

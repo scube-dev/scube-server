@@ -1,8 +1,6 @@
 class Track < ActiveRecord::Base
   has_many :sounds
 
-  attr_accessible :name, :file
-
   validates_presence_of :name
 
   def file=(file)

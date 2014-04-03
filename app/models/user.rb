@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   include BCrypt
 
   attr_reader :password
-  attr_accessible :email, :password, :password_confirmation
 
   has_many :playlists
 
