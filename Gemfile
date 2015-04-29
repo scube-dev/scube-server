@@ -8,6 +8,7 @@ gem 'rabl',   '~> 0.6'
 
 group :development, :test do
   gem 'rspec-rails',        '~> 2.6'
+  gem 'rspec-activemodel-mocks'
   gem 'spork',              '~> 1.0rc'
   gem 'capybara',           '~> 2.2'
   gem 'factory_girl_rails', '~> 4.4'
