@@ -178,7 +178,6 @@ GEM
       rspec-core (~> 2.99.0)
       rspec-expectations (~> 2.99.0)
       rspec-mocks (~> 2.99.0)
-    rspec-support (3.2.2)
     shellany (0.0.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -210,20 +209,20 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.0)
-  capybara (~> 2.2)
-  factory_girl_rails (~> 4.4)
+  bcrypt
+  capybara
+  factory_girl_rails
   guard
   guard-rspec
   guard-spork
-  haml (~> 4.0)
-  pg (~> 0.17)
+  haml
+  pg
   pry-rails
-  rabl (~> 0.6)
+  rabl
   rails (~> 4.2.1)
   rb-kqueue
   rspec-activemodel-mocks
-  rspec-rails (~> 2.6)
-  shoulda-matchers (~> 2.5)
+  rspec-rails
+  shoulda-matchers
   spork!
   unicorn-rails

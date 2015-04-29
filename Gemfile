@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails',  '~> 4.2.1'
-gem 'pg',     '~> 0.17'
-gem 'bcrypt', '~> 3.0'
+gem 'pg'
+gem 'bcrypt'
 gem 'unicorn-rails'
 
-gem 'haml',   '~> 4.0'
-gem 'rabl',   '~> 0.6'
+gem 'haml'
+gem 'rabl'
 
 
 group :development, :test do
@@ -14,12 +14,13 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails',        '~> 2.6'
+  gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
-  gem 'spork',              github: 'tjouan/spork', branch: 'rspec-3'
-  gem 'capybara',           '~> 2.2'
-  gem 'factory_girl_rails', '~> 4.4'
-  gem 'shoulda-matchers',   '~> 2.5'
+
+  gem 'spork', github: 'tjouan/spork', branch: 'rspec-3'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 
   gem 'rb-kqueue',      require: false
   gem 'guard',          require: false
