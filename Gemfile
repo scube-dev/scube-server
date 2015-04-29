@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails',  '~> 4.2.1'
 gem 'pg',     '~> 0.17'
-gem 'haml',   '~> 4.0'
 gem 'bcrypt', '~> 3.0'
+
+gem 'haml',   '~> 4.0'
 gem 'rabl',   '~> 0.6'
+
 
 group :development, :test do
   gem 'rspec-rails',        '~> 2.6'
