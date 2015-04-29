@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-feature 'API playlists' do
+describe 'API playlists' do
   include UserIntegrationHelpers
 
-  background { api_sign_in }
+  before { api_sign_in }
 
-  scenario 'creates playlist' do
+  it 'creates playlist' do
     playlist = FactoryGirl.attributes_for :playlist
 
-    post api_playlists_path,
+    post_via_redirect api_playlists_path,
       format: :json,
       playlist: playlist
 

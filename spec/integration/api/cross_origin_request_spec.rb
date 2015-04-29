@@ -1,19 +1,19 @@
 require 'spec_helper'
 
-feature 'API cross origin request' do
+describe 'API cross origin request' do
   include UserIntegrationHelpers
 
   let(:user)    { FactoryGirl.create(:user) }
   let(:origin)  { 'http://origin.example/' }
 
-  background do
+  before do
     post sessions_path, session: {
       email:    user.email,
       password: user.password
     }
   end
 
-  scenario 'preflight request' do
+  it 'responds to preflight request' do
     @integration_session.send(
       :process,
       :options,
@@ -30,7 +30,7 @@ feature 'API cross origin request' do
       .to eq 'Content-Type, Content-Length, X-Requested-With'
   end
 
-  scenario 'basic request' do
+  it 'responds to basic request' do
     # FIXME: replace with a more stable/generic action
     get api_playlists_path(format: :json), nil, 'Origin' => origin
 
@@ -40,7 +40,7 @@ feature 'API cross origin request' do
       .to eq 'Content-Length'
   end
 
-  scenario 'request without origin' do
+  it 'responds to request without origin' do
     # FIXME: replace with a more stable/generic action
     get api_playlists_path(format: :json)
 

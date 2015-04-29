@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'API sign in' do
+describe 'API sign in' do
   let(:user)  { FactoryGirl.create(:user) }
 
   def do_create
@@ -10,7 +10,7 @@ feature 'API sign in' do
     }
   end
 
-  scenario 'signs the user in with valid credentials' do
+  it 'signs the user in with valid credentials' do
     do_create
 
     expect(response).to be_success
@@ -18,7 +18,7 @@ feature 'API sign in' do
   end
 
   [:email, :password].each do |attr|
-    scenario "rejects authentication with invalid credentials (#{attr})" do
+    it "rejects authentication with invalid credentials (#{attr})" do
       allow(user).to receive(attr).and_return(user.send(attr) + '_INVALID')
       do_create
 

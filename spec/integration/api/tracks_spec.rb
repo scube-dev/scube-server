@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-feature 'API tracks' do
+describe 'API tracks' do
   include UserIntegrationHelpers
 
-  background { api_sign_in }
+  before { api_sign_in }
 
-  scenario 'lists tracks' do
+  it 'lists tracks' do
     track_1 = FactoryGirl.create(:track_with_sound, name: 'Track 1')
     track_2 = FactoryGirl.create(:track, name: 'Track 2')
 
