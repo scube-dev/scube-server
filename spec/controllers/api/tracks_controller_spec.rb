@@ -19,7 +19,7 @@ describe API::TracksController do
     end
 
     it 'lists all tracks' do
-      expect(do_get).to have(2).items
+      expect(do_get.size).to eq 2
     end
 
     it 'lists tracks with their id' do

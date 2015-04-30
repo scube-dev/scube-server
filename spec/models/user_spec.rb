@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  subject     { user }
-  let(:user)  { FactoryGirl.build(:user) }
+  subject(:user) { FactoryGirl.build(:user) }
 
   it { should be_valid }
   it { should have_many :playlists }
@@ -12,11 +11,14 @@ describe User do
 
   context 'when a user with the same email address already exists' do
     let(:old_user)  { FactoryGirl.create(:user, email: 'unique@example.net') }
-    subject         { FactoryGirl.build(:user, email: old_user.email) }
+    subject(:user)  { FactoryGirl.build(:user, email: old_user.email) }
 
     it { should_not be_valid }
 
-    it { should have(1).error_on(:email) }
+    it 'has an error on email attribute' do
+      user.valid?
+      expect(user.errors[:email].size).to eq 1
+    end
   end
 
   context 'when password_confirmation does not match password' do

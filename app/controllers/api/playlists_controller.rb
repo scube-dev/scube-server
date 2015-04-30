@@ -1,7 +1,5 @@
 module API
   class PlaylistsController < ApplicationController
-    respond_to :json
-
     def index
       @playlists = Playlist.all
     end

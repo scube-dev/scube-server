@@ -1,4 +1,4 @@
-Scube::Application.routes.draw do
+Rails.application.routes.draw do
   namespace :api do
     resources :sounds, only: [:show]
     resources :tracks, only: [:index]

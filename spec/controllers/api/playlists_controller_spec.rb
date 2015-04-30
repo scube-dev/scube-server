@@ -19,7 +19,7 @@ describe API::PlaylistsController do
     end
 
     it 'lists all playlists' do
-      expect(do_get).to have(2).items
+      expect(do_get.size).to eq 2
     end
 
     it 'lists playlists with their id' do

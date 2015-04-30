@@ -1,7 +1,7 @@
 def build_sound_file
-  file = File.new("#{Rails.root}/spec/fixtures/test.mp3")
-  file.stub(content_type: 'audio/mpeg')
-  file
+  File.new("#{Rails.root}/spec/fixtures/test.mp3").tap do |o|
+    o.define_singleton_method(:content_type) { 'audio/mpeg' }
+  end
 end
 
 FactoryGirl.define do

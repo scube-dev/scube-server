@@ -8,6 +8,7 @@ Spork.prefork do
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
   RSpec.configure do |config|
+    config.infer_spec_type_from_file_location!
     config.mock_with :rspec
     config.use_transactional_fixtures = true
     Rails.configuration.sounds_path = "#{Rails.root}/tmp/spec/data/sounds"

@@ -10,7 +10,7 @@ module UserIntegrationHelpers
   def api_sign_in
     user = FactoryGirl.create :user
 
-    post api_sessions_path, format: :json, session: {
+    post_via_redirect api_sessions_path, format: :json, session: {
       email:    user.email,
       password: user.password
     }
