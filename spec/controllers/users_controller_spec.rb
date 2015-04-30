@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe UsersController do
   let(:attributes) { FactoryGirl.attributes_for(:user) }
 

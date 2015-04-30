@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe API::SessionsController do
   describe 'POST create' do
     let(:user) { FactoryGirl.create(:user) }

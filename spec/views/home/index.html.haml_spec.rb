@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'home/index' do
   before do
     assign :playlists,  [mock_model(Playlist, name: 'Electro')]

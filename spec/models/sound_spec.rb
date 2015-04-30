@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Sound do
   subject     { sound }
   let(:sound) { FactoryGirl.build(:sound) }

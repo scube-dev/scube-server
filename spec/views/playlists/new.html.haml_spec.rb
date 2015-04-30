@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'playlists/new' do
   let(:playlist) { mock_model(Playlist).as_new_record.as_null_object }
 

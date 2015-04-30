@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Playlist do
   subject         { playlist }
   let(:playlist)  { FactoryGirl.build(:playlist) }

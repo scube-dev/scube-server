@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe Track do
   subject     { track }
   let(:track) { FactoryGirl.build(:track) }

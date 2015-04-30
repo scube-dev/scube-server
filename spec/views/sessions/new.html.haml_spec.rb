@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'sessions/new' do
   it 'renders a form to sign in' do
     render

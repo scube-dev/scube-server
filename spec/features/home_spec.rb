@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'Home page' do
   include UserIntegrationHelpers
 

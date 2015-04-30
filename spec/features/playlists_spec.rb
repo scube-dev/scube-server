@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'Playlists' do
   include UserIntegrationHelpers
 

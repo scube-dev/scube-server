@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'User sign up' do
   let(:user) { FactoryGirl.build(:user) }
 

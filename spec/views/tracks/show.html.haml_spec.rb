@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'tracks/show' do
   let(:track) { FactoryGirl.create(:track) }
 

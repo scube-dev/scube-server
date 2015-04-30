@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'API cross origin request' do
   include UserIntegrationHelpers
 

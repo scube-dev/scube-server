@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'tracks/new' do
   let(:track) { mock_model(Track).as_new_record.as_null_object }
 

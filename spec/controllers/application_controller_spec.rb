@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe ApplicationController do
   let(:user) { FactoryGirl.create(:user) }
 

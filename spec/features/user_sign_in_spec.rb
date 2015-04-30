@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 feature 'User sign in' do
   scenario 'redirects to the home page when not signed in' do
     visit root_path

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'API sign in' do
   let(:user)  { FactoryGirl.create(:user) }
 

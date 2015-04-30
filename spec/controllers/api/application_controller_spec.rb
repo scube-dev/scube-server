@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe API::ApplicationController do
   include UserControllerHelpers
 

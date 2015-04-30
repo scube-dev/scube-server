@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'API tracks' do
   include UserIntegrationHelpers
 

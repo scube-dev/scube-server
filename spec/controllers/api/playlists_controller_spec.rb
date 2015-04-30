@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe API::PlaylistsController do
   include UserControllerHelpers
 
