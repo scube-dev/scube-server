@@ -6,6 +6,9 @@ rvm:
   - 2.0
   - 2.1
   - rbx-2
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - bundle exec rake db:create db:migrate db:test:prepare
 matrix:
   fast_finish: true
   allow_failures:
