@@ -32,5 +32,9 @@ module Scube
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_dispatch.default_headers.clear
+
+    config.sounds_path = Rails.env.test? ?
+      File.join('data', Rails.env, 'sources') :
+      File.join('data', 'sources')
   end
 end
