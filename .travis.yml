@@ -1,0 +1,15 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.2
+  - ruby-head
+  - 2.0
+  - 2.1
+  - rbx-2
+matrix:
+  allow_failures:
+    - rvm: ruby-head
+    - rvm: rbx-2
+notifications:
+  email:
+    - tj+scube_server@a13.fr
