@@ -8,7 +8,8 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = current_user.playlists.build(playlist_params)
+    @playlist = current_user.playlists.build playlist_params
+
     if @playlist.save
       redirect_to action: 'index'
     else
@@ -22,6 +23,7 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = Playlist.find(params[:id])
+
     if @playlist.update_attributes playlist_params
       redirect_to action: 'index'
     else
@@ -29,9 +31,10 @@ class PlaylistsController < ApplicationController
     end
   end
 
+
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit :name
   end
 end

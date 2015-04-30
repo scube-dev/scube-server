@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_filter :authenticate!, only: [:new, :create]
+  skip_before_filter :authenticate!, only: %i[new create]
 
   def new
     @user = User.new
@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if !@user.save
       render :new
     else
@@ -18,6 +19,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit %i[email password password_confirmation]
   end
 end

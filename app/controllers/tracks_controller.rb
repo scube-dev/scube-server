@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   def show
-    @track = Track.find params[:id]
+    @track = Track.find(params[:id])
   end
 
   def new
@@ -8,7 +8,8 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new track_params
+    @track = Track.new(track_params)
+
     if @track.save
       redirect_to @track
     else
@@ -19,6 +20,6 @@ class TracksController < ApplicationController
   private
 
   def track_params
-    params.require(:track).permit(:name, :file)
+    params.require(:track).permit %i[name file]
   end
 end

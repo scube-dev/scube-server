@@ -10,7 +10,7 @@ class Sound < ActiveRecord::Base
     "#{Rails.configuration.sounds_path}/#{sha256}"
   end
 
-  def file=(file)
+  def file= file
     self.sha256 = Digest::SHA256.file(file.path).hexdigest
     FileUtils.cp file.path, path
     self.mime_type = file.content_type

@@ -15,12 +15,12 @@ class User < ActiveRecord::Base
     confirmation: true
   validates_presence_of :password_hash
 
-  def password=(plain_password)
+  def password= plain_password
     @password = plain_password
     self.password_hash = Password.create(plain_password)
   end
 
-  def authenticate?(password)
+  def authenticate? password
     Password.new(password_hash) == password
   end
 end
