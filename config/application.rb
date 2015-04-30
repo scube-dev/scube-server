@@ -34,7 +34,7 @@ module Scube
     config.action_dispatch.default_headers.clear
 
     config.sounds_path = Rails.env.test? ?
-      File.join('data', Rails.env, 'sources') :
-      File.join('data', 'sources')
+      File.join('data', Rails.env, 'sounds') :
+      File.join('data', 'sounds')
   end
 end
