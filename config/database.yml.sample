@@ -2,7 +2,6 @@ common: &common
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: scube
 
 development:
   <<: *common
