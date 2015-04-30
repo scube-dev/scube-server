@@ -11,7 +11,6 @@ Spork.prefork do
     config.infer_spec_type_from_file_location!
     config.mock_with :rspec
     config.use_transactional_fixtures = true
-    Rails.configuration.sounds_path = "#{Rails.root}/tmp/spec/data/sounds"
     config.after(:all) do
       `rm -f #{Rails.configuration.sounds_path}/*`
     end
