@@ -3,14 +3,14 @@ describe Track do
   let(:track) { FactoryGirl.build(:track) }
   let(:file)  { FactoryGirl.attributes_for(:track_with_sound)[:file] }
 
-  it { should be_valid }
-  it { should have_many :sounds }
-  it { should validate_presence_of :name }
+  it { is_expected.to be_valid }
+  it { is_expected.to have_many :sounds }
+  it { is_expected.to validate_presence_of :name }
 
   context 'with a file' do
     before { track.file = file }
 
-    it { should be_valid }
+    it { is_expected.to be_valid }
 
     it 'creates a sound for the track' do
       expect {

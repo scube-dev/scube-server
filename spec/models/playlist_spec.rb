@@ -2,8 +2,8 @@ describe Playlist do
   subject         { playlist }
   let(:playlist)  { FactoryGirl.build(:playlist) }
 
-  it { should be_valid }
-  it { should belong_to :user }
-  it { should validate_presence_of :user }
-  it { should validate_presence_of :name }
+  it { is_expected.to be_valid }
+  it { is_expected.to belong_to :user }
+  it { is_expected.to validate_presence_of :user }
+  it { is_expected.to validate_presence_of :name }
 end

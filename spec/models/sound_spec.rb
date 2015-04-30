@@ -2,10 +2,10 @@ describe Sound do
   subject     { sound }
   let(:sound) { FactoryGirl.build(:sound) }
 
-  it { should be_valid }
-  it { should belong_to :track }
-  it { should validate_presence_of :sha256 }
-  it { should validate_presence_of :mime_type }
+  it { is_expected.to be_valid }
+  it { is_expected.to belong_to :track }
+  it { is_expected.to validate_presence_of :sha256 }
+  it { is_expected.to validate_presence_of :mime_type }
 
   describe '#path' do
     it 'starts by the path specified in Rails.configuration.sound_path' do
