@@ -9,6 +9,8 @@ rvm:
 before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:create db:migrate db:test:prepare
+  # GNU echo requires non-stardard option `-e' to interpret escapes sequences
+  - 'echo -e "test:\n  secret_key_base: $(bundle exec rake secret)" > config/secrets.yml'
 matrix:
   fast_finish: true
   allow_failures:
