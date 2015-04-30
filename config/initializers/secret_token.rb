@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Scube::Application.config.secret_key_base = 'd0fb5028d03e9030435af05646555d948bbb65cef3910016c9dc34f5799a5bc6c8d41a248e02df21a27fef348eecc9dc5f9662dc277e0c17210a7cfc513200aa'
+Rails.application.config.secret_key_base = 'd0fb5028d03e9030435af05646555d948bbb65cef3910016c9dc34f5799a5bc6c8d41a248e02df21a27fef348eecc9dc5f9662dc277e0c17210a7cfc513200aa'
