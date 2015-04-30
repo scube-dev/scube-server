@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 20110916003929) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "playlists", force: true do |t|
+  create_table "playlists", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sessions", force: true do |t|
+  create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
     t.datetime "created_at"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20110916003929) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
-  create_table "sounds", force: true do |t|
+  create_table "sounds", force: :cascade do |t|
     t.integer  "track_id"
     t.string   "sha256"
     t.string   "mime_type"
@@ -41,13 +41,13 @@ ActiveRecord::Schema.define(version: 20110916003929) do
     t.datetime "updated_at"
   end
 
-  create_table "tracks", force: true do |t|
+  create_table "tracks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_hash"
     t.datetime "created_at"
