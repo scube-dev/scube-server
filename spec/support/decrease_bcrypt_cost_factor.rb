@@ -1,5 +1,3 @@
-require 'bcrypt'
-
 module BCrypt
   class Engine
     remove_const  :DEFAULT_COST

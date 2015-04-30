@@ -1,5 +1,3 @@
-require 'fileutils'
-
 class Sound < ActiveRecord::Base
   belongs_to :track
 

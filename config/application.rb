@@ -12,6 +12,8 @@ require 'action_view/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require 'fileutils'
+
 module Scube
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
