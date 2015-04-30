@@ -1,3 +1,5 @@
+directories %w[app config spec]
+
 guard 'spork', rspec_env: { RAILS_ENV: 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
