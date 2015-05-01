@@ -14,12 +14,13 @@ guard :rspec, cmd: 'bundle exec rspec --drb -f doc' do
 
   watch('config/routes.rb')           { 'spec' }
   watch('spec/spec_helper.rb')        { 'spec' }
-  watch(%r{^spec/support/.+\.rb$})    { 'spec' }
+  watch('spec/support/')              { 'spec' }
   watch('spec/factories.rb')          { 'spec' }
 
   watch(%r{^app/(.+)\.rb$})           { |m| "spec/#{m[1]}_spec.rb" }
-  watch(%r{^lib/(.+)\.rb$})           { |m| "spec/lib/#{m[1]}_spec.rb" }
 
-  watch(%r{^app/views/})              { 'spec/features' }
-  watch(%r{^app/views/api/})          { 'spec/integration' }
+  watch(%r{^app/controllers/})        { 'spec/features' }
+  watch(%r{^app/controllers/api})     { 'spec/integration/api' }
+  watch(%r{^app/views/.+\.haml})      { 'spec/features' }
+  watch(%r{^app/views/api/.+\.rabl})  { 'spec/integration/api' }
 end
