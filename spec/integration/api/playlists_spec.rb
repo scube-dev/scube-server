@@ -3,16 +3,27 @@ describe 'API playlists' do
 
   before { api_sign_in }
 
-  it 'creates playlist' do
-    playlist = FactoryGirl.attributes_for :playlist
+  it 'lists playlists' do
+    playlist = create :playlist
+    get api_playlists_path, format: json
 
-    post_via_redirect api_playlists_path,
+    expect(json).to match [
+      a_hash_including(
+        id:   an_instance_of(Fixnum),
+        name: playlist[:name]
+      )
+    ]
+  end
+
+  it 'creates playlist' do
+    playlist = attributes_for :playlist
+    post api_playlists_path,
       format: :json,
       playlist: playlist
 
-    json = JSON response.body
-
-    expect(json['id']).to be_a Fixnum
-    expect(json['name']).to eq playlist[:name]
+    expect(json).to match(
+      id:   an_instance_of(Fixnum),
+      name: playlist[:name]
+    )
   end
 end

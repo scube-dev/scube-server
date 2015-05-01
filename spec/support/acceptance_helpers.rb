@@ -25,12 +25,18 @@ module AcceptanceHelpers
     playlist
   end
 
-  def create_track
-    track = attributes_for :track
+  def create_track file: false
+    track = attributes_for(file ? :track_with_sound : :track)
     visit tracks_path
     click_link 'Create track'
     fill_in 'Name', with: track[:name]
+    attach_file 'File', track[:file].path if file
     click_button 'Upload'
     track
+  end
+
+  def json
+    expect(response).to be_success
+    JSON.parse(response.body, symbolize_names: true)
   end
 end
