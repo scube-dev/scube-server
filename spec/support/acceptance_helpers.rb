@@ -1,4 +1,8 @@
 module AcceptanceHelpers
+  def options path, options = nil, headers = nil
+    @integration_session.send :process, :options, path, options, headers
+  end
+
   def sign_in
     create :user do |o|
       visit new_session_path
