@@ -6,7 +6,7 @@ feature 'User sign in' do
   end
 
   scenario 'signs the user in' do
-    user = FactoryGirl.create(:user)
+    user = create :user
 
     visit new_session_path
     fill_in 'Email', with: user.email

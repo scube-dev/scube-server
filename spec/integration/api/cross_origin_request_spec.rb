@@ -1,7 +1,7 @@
 describe 'API cross origin request' do
   include AcceptanceHelpers
 
-  let(:user)    { FactoryGirl.create(:user) }
+  let(:user)    { create :user }
   let(:origin)  { 'http://origin.example/' }
 
   before do

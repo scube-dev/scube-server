@@ -1,5 +1,5 @@
 describe User do
-  subject(:user) { FactoryGirl.build(:user) }
+  subject(:user) { build :user }
 
   it { is_expected.to be_valid }
   it { is_expected.to have_many :playlists }
@@ -8,8 +8,8 @@ describe User do
   it { is_expected.to validate_presence_of :password_hash }
 
   context 'when a user with the same email address already exists' do
-    let(:old_user)  { FactoryGirl.create(:user, email: 'unique@example.net') }
-    subject(:user)  { FactoryGirl.build(:user, email: old_user.email) }
+    let(:old_user)  { create :user, email: 'unique@example.net' }
+    subject(:user)  { build :user, email: old_user.email }
 
     it { is_expected.to_not be_valid }
 

@@ -1,7 +1,7 @@
 describe Track do
   subject     { track }
-  let(:track) { FactoryGirl.build(:track) }
-  let(:file)  { FactoryGirl.attributes_for(:track_with_sound)[:file] }
+  let(:track) { build :track }
+  let(:file)  { attributes_for(:track_with_sound)[:file] }
 
   it { is_expected.to be_valid }
   it { is_expected.to have_many :sounds }
@@ -30,7 +30,7 @@ describe Track do
 
   describe '#sound' do
     context 'with a sound' do
-      before { track.sounds << FactoryGirl.create(:sound) }
+      before { track.sounds << create(:sound) }
 
       it 'returns a sound' do
         expect(track.sound).to be_a Sound
@@ -46,7 +46,7 @@ describe Track do
     end
 
     context 'with a sound' do
-      before { track.sounds << FactoryGirl.create(:sound) }
+      before { track.sounds << create(:sound) }
 
       it 'returns true' do
         expect(track.sound?).to be true
@@ -56,8 +56,8 @@ describe Track do
 
   describe '.latest' do
     it 'returns latest tracks in descending creation date order' do
-      track1 = FactoryGirl.create(:track, created_at: '2011-07-27 19:13:42')
-      track2 = FactoryGirl.create(:track, created_at: '2011-07-27 19:58:57')
+      track1 = create :track, created_at: '2011-07-27 19:13:42'
+      track2 = create :track, created_at: '2011-07-27 19:58:57'
       expect(Track.latest).to eq [track2, track1]
     end
   end

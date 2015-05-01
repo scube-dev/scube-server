@@ -4,7 +4,7 @@ feature 'Tracks player' do
   background { sign_in }
 
   scenario 'includes a player in track page' do
-    track = FactoryGirl.create(:track_with_sound)
+    track = create :track_with_sound
 
     visit track_path(track)
 

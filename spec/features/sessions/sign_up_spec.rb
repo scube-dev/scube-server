@@ -1,5 +1,5 @@
 feature 'User sign up' do
-  let(:user) { FactoryGirl.build(:user) }
+  let(:user) { build :user }
 
   background do
     visit new_user_path

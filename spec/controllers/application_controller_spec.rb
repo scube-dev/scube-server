@@ -1,5 +1,5 @@
 describe ApplicationController do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create :user }
 
   describe '#current_user=' do
     it 'stores the user id in the session as :user_id' do
