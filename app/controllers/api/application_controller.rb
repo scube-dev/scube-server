@@ -21,6 +21,10 @@ module API
       head :ok
     end
 
+    def ping
+      render json: { pong: 'ok' }
+    end
+
     def authenticate!
       head :unauthorized if current_user.nil?
     end

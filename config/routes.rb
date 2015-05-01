@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :api do
+    get '/ping' => 'application#ping'
     resources :sounds, only: [:show]
     resources :tracks, only: [:index]
     resources :playlists, only: [:index, :create]
