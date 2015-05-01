@@ -4,6 +4,10 @@ module API
       @playlists = Playlist.all
     end
 
+    def show
+      @playlist = Playlist.find(params[:id])
+    end
+
     def create
       @playlist = current_user.playlists.build playlist_params
       @playlist.save

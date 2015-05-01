@@ -15,6 +15,16 @@ describe 'API playlists' do
     ]
   end
 
+  it 'shows a playlist' do
+    playlist = create :playlist
+    get api_playlist_path playlist, format: :json
+
+    expect(json).to match(
+      id:   playlist.id,
+      name: playlist.name
+    )
+  end
+
   it 'creates playlist' do
     playlist = attributes_for :playlist
     post api_playlists_path,
