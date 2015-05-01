@@ -5,7 +5,7 @@ describe 'API playlists' do
 
   it 'lists playlists' do
     playlist = create :playlist
-    get api_playlists_path, format: json
+    get api_playlists_path, format: :json
 
     expect(json).to match [
       a_hash_including(
