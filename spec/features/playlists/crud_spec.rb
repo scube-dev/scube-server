@@ -1,4 +1,4 @@
-feature 'Playlists' do
+feature 'Playlists CRUD' do
   include UserIntegrationHelpers
 
   background { sign_in }

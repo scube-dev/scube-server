@@ -1,4 +1,4 @@
-feature 'Tracks' do
+feature 'Tracks CRUD' do
   include UserIntegrationHelpers
 
   background { sign_in }
@@ -21,14 +21,5 @@ feature 'Tracks' do
 
     expect(current_path).to eq track_path Track.first
     expect(page).to have_content 'Mega song'
-  end
-
-  scenario 'plays track' do
-    track = FactoryGirl.create(:track_with_sound)
-
-    visit track_path(track)
-
-    expect(page).to have_xpath "//audio[@src='#{sound_path track.sound}']"
-    visit find('audio')[:src]
   end
 end
