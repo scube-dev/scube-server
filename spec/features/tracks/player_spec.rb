@@ -9,6 +9,5 @@ feature 'Tracks player' do
     visit track_path(track)
 
     expect(page).to have_xpath "//audio[@src='#{sound_path track.sound}']"
-    visit find('audio')[:src]
   end
 end
