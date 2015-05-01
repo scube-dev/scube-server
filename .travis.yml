@@ -12,7 +12,7 @@ before_script:
   # GNU echo requires non-stardard option `-e' to interpret escapes sequences
   - 'echo -e "test:\n  secret_key_base: $(bundle exec rake secret)" > config/secrets.yml'
   - mkdir -p data/sounds data/test/sounds
-script: bundle exec rspec
+script: bundle exec rspec -f progress
 matrix:
   fast_finish: true
   allow_failures:
