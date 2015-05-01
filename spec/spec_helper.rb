@@ -9,7 +9,6 @@ Spork.prefork do
 
   RSpec.configure do |config|
     config.infer_spec_type_from_file_location!
-    config.mock_with :rspec
     config.use_transactional_fixtures = true
     config.after(:all) do
       `rm -f #{Rails.configuration.sounds_path}/*`
