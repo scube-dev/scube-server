@@ -18,5 +18,6 @@ Spork.prefork do
 end
 
 Spork.each_run do
+  Rails.application.reload_routes!
   FactoryGirl.reload
 end
