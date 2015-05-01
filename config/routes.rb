@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :sessions, only: :create
     resources :sounds, only: :show
     resources :tracks, only: :index
+    match '*all', to: 'errors#not_found', via: :all
   end
 
   resources :playlists

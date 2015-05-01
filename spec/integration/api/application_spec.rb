@@ -18,4 +18,12 @@ describe 'API application' do
       expect(response.body).to be_empty
     end
   end
+
+  describe 'not found' do
+    it 'responds with a 404 when route does not exist' do
+      get '/api/not_found', format: :json
+      expect(response).to be_not_found
+      expect(response.body).to be_empty
+    end
+  end
 end
