@@ -4,7 +4,7 @@ describe 'API application' do
   before { api_sign_in }
 
   describe 'ping endpoint' do
-    before { get api_ping_path, format: json }
+    before { get api_ping_path, format: :json }
 
     it 'responds with a pong' do
       expect(json).to eq({ pong: 'ok' })
