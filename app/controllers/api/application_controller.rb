@@ -37,7 +37,9 @@ module API
     end
 
     def json_filter!
-      head :not_acceptable if request.format != :json
+      if request.format != :json
+        head :not_acceptable, content_type: 'application/json'
+      end
     end
   end
 end

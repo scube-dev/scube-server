@@ -15,6 +15,7 @@ describe 'API application' do
     it 'responds with a 406 when request format is not JSON' do
       get api_ping_path, format: :xml
       expect(response.status).to be 406
+      expect(response.content_type).to eq :json
       expect(response.body).to be_empty
     end
   end
