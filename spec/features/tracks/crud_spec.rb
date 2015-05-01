@@ -1,5 +1,5 @@
 feature 'Tracks CRUD' do
-  include UserIntegrationHelpers
+  include AcceptanceHelpers
 
   background { sign_in }
 

@@ -1,4 +1,4 @@
-module UserIntegrationHelpers
+module AcceptanceHelpers
   def sign_in
     user = FactoryGirl.create(:user)
     visit new_session_path

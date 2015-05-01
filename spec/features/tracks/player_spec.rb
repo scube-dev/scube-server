@@ -1,5 +1,5 @@
 feature 'Tracks player' do
-  include UserIntegrationHelpers
+  include AcceptanceHelpers
 
   background { sign_in }
 

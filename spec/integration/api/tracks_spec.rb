@@ -1,5 +1,5 @@
 describe 'API tracks' do
-  include UserIntegrationHelpers
+  include AcceptanceHelpers
 
   before { api_sign_in }
 

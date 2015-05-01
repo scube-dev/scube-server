@@ -1,5 +1,5 @@
 describe 'API playlists' do
-  include UserIntegrationHelpers
+  include AcceptanceHelpers
 
   before { api_sign_in }
 
