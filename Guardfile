@@ -21,4 +21,5 @@ guard :rspec, cmd: 'bundle exec rspec --drb -f doc' do
   watch(%r{^lib/(.+)\.rb$})           { |m| "spec/lib/#{m[1]}_spec.rb" }
 
   watch(%r{^app/views/})              { 'spec/features' }
+  watch(%r{^app/views/api/})          { 'spec/integration' }
 end
