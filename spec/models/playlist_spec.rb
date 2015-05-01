@@ -1,6 +1,5 @@
 describe Playlist do
-  subject         { playlist }
-  let(:playlist)  { build :playlist }
+  subject(:playlist) { build :playlist }
 
   it { is_expected.to be_valid }
   it { is_expected.to belong_to :user }

@@ -11,7 +11,7 @@ feature 'User sign up' do
   scenario 'creates the user' do
     expect {
       click_button 'Sign up'
-    }.to change(User, :count).by(1)
+    }.to change(User, :count).by 1
   end
 
   scenario 'redirects to the home page' do

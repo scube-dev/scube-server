@@ -1,6 +1,5 @@
 describe Sound do
-  subject     { sound }
-  let(:sound) { build :sound }
+  subject(:sound) { build :sound }
 
   it { is_expected.to be_valid }
   it { is_expected.to belong_to :track }

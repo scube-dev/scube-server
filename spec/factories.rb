@@ -6,7 +6,7 @@ end
 
 FactoryGirl.define do
   factory :playlist do
-    name 'Electro'
+    name 'Some playlist'
     user
   end
 
@@ -15,7 +15,7 @@ FactoryGirl.define do
   end
 
   factory :track do
-    name 'Mega song'
+    name 'Some track'
 
     factory :track_with_sound do
       file { build_sound_file }
@@ -24,7 +24,7 @@ FactoryGirl.define do
 
   factory :user do
     sequence :email do |n|
-      "alice_#{n}@example.net"
+      "bob_#{n}@example.net"
     end
     password '733tP4s5'
   end

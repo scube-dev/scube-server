@@ -11,7 +11,7 @@ describe User do
     let(:old_user)  { create :user, email: 'unique@example.net' }
     subject(:user)  { build :user, email: old_user.email }
 
-    it { is_expected.to_not be_valid }
+    it { is_expected.not_to be_valid }
 
     it 'has an error on email attribute' do
       user.valid?
@@ -22,7 +22,7 @@ describe User do
   context 'when password_confirmation does not match password' do
     before { user.password_confirmation = user.password + 'INVALID' }
 
-    it { is_expected.to_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe '#password=' do
@@ -34,13 +34,13 @@ describe User do
   describe '#authenticate?' do
     context 'with a valid password' do
       it 'returns true' do
-        expect(user.authenticate?(user.password)).to be true
+        expect(user.authenticate? user.password).to be true
       end
     end
 
     context 'with an invalid password' do
       it 'returns false' do
-        expect(user.authenticate?(user.password + '_INVALID')).to be false
+        expect(user.authenticate? user.password + '_INVALID').to be false
       end
     end
   end

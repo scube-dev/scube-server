@@ -1,7 +1,6 @@
 describe Track do
-  subject     { track }
-  let(:track) { build :track }
-  let(:file)  { attributes_for(:track_with_sound)[:file] }
+  let(:file)      { attributes_for(:track_with_sound)[:file] }
+  subject(:track) { build :track }
 
   it { is_expected.to be_valid }
   it { is_expected.to have_many :sounds }
@@ -13,9 +12,15 @@ describe Track do
     it { is_expected.to be_valid }
 
     it 'creates a sound for the track' do
-      expect {
-        track.save
-      }.to change(track.sounds, :count).by(1)
+      expect { track.save }.to change(track.sounds, :count).by 1
+    end
+  end
+
+  describe '.latest' do
+    it 'returns latest tracks in descending creation date order' do
+      track1 = create :track, created_at: '2011-07-27 19:13:42'
+      track2 = create :track, created_at: '2011-07-27 19:58:57'
+      expect(described_class.latest).to eq [track2, track1]
     end
   end
 
@@ -23,7 +28,7 @@ describe Track do
     it 'builds a new related sound with the file' do
       sounds = double 'sounds association proxy'
       allow(track).to receive(:sounds) { sounds }
-      expect(sounds).to receive(:build).with(file: file)
+      expect(sounds).to receive(:build).with file: file
       track.file = file
     end
   end
@@ -51,14 +56,6 @@ describe Track do
       it 'returns true' do
         expect(track.sound?).to be true
       end
-    end
-  end
-
-  describe '.latest' do
-    it 'returns latest tracks in descending creation date order' do
-      track1 = create :track, created_at: '2011-07-27 19:13:42'
-      track2 = create :track, created_at: '2011-07-27 19:58:57'
-      expect(Track.latest).to eq [track2, track1]
     end
   end
 end
