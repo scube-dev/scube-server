@@ -1,10 +1,16 @@
 module API
   class ApplicationController < ::ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found
+
     skip_before_filter :verify_authenticity_token
     skip_before_filter :authenticate!, only: :cor_preflight
 
     before_filter :cor_filter
     before_filter :json_filter!
+
+    def not_found
+      head :not_found
+    end
 
     def cor_filter
       headers['Access-Control-Allow-Origin'] = request.headers['Origin'] ?

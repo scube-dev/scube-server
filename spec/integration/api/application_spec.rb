@@ -22,7 +22,13 @@ describe 'API application' do
   describe 'not found' do
     it 'responds with a 404 when route does not exist' do
       get '/api/not_found', format: :json
-      expect(response).to be_not_found
+      expect(response.status).to be 404
+      expect(response.body).to be_empty
+    end
+
+    it 'responds with a 404 when a resource (AR) was not found' do
+      get api_playlist_path(id: 1), format: :json
+      expect(response.status).to be 404
       expect(response.body).to be_empty
     end
   end
