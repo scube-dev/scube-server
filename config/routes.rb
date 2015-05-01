@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
   namespace :api do
     resources :sounds, only: [:show]
     resources :tracks, only: [:index]
@@ -20,6 +22,4 @@ Rails.application.routes.draw do
   end
 
   resources :playlists
-
-  root to: 'home#index'
 end
