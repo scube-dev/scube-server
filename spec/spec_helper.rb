@@ -8,6 +8,7 @@ Spork.prefork do
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
   RSpec.configure do |config|
+    config.include FactoryGirl::Syntax::Methods
     config.infer_spec_type_from_file_location!
     config.use_transactional_fixtures = true
     config.after(:all) do
