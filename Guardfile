@@ -18,11 +18,11 @@ guard :rspec, cmd: 'bundle exec rspec --drb -f doc' do
   watch('spec/factories.rb')          { 'spec' }
 
   watch(%r{^app/(.+)\.rb$})           { |m| "spec/#{m[1]}_spec.rb" }
-  watch(%r{^app/(.+)\.haml$})         { |m| "spec/#{m[1]}.haml_spec.rb" }
   watch(%r{^lib/(.+)\.rb$})           { |m| "spec/lib/#{m[1]}_spec.rb" }
 
   watch('app/controllers/application_controller.rb')  { 'spec/controllers' }
 
+  watch(%r{^app/views/})              { 'spec/features' }
   watch(%r{^app/views/layouts/})      { 'spec/integration' }
 
   watch(%r{^app/views/(.+)/(?:[^/]+).rabl}) do |m|
