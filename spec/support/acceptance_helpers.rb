@@ -24,4 +24,13 @@ module AcceptanceHelpers
     click_button 'Create'
     playlist
   end
+
+  def create_track
+    track = attributes_for :track
+    visit tracks_path
+    click_link 'Create track'
+    fill_in 'Name', with: track[:name]
+    click_button 'Upload'
+    track
+  end
 end

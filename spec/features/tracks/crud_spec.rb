@@ -4,22 +4,24 @@ feature 'Tracks CRUD' do
   background { sign_in }
 
   scenario 'shows track' do
-    track = FactoryGirl.create(:track, name: 'Mega song')
+    track = create_track
+    visit tracks_path
 
-    visit track_path(track)
+    click_link track[:name]
 
-    expect(page).to have_content 'Mega song'
+    expect(page).to have_content track[:name]
   end
 
-  scenario 'creates track' do
-    visit root_path
+  scenario 'edits track' do
+    track = create_track
+    visit tracks_path
 
-    click_link 'Add a track'
-    fill_in 'Name', with: 'Mega song'
-    attach_file 'File', File.expand_path('spec/fixtures/test.mp3')
-    click_button 'Upload'
+    click_link track[:name]
+    click_link 'Edit'
+    fill_in 'Name', with: 'new track name'
+    click_button 'Save'
 
-    expect(current_path).to eq track_path Track.first
-    expect(page).to have_content 'Mega song'
+    expect(current_path).to eq tracks_path
+    expect(page).to have_content 'new track name'
   end
 end
