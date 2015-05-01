@@ -4,6 +4,7 @@ module API
     skip_before_filter :authenticate!, only: :cor_preflight
 
     before_filter :cor_filter
+    before_filter :json_filter!
 
     def cor_filter
       headers['Access-Control-Allow-Origin'] = request.headers['Origin'] ?
@@ -27,6 +28,10 @@ module API
 
     def authenticate!
       head :unauthorized if current_user.nil?
+    end
+
+    def json_filter!
+      head :not_acceptable if request.format != :json
     end
   end
 end
