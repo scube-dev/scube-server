@@ -15,4 +15,13 @@ module AcceptanceHelpers
       password: user.password
     }
   end
+
+  def create_playlist
+    playlist = attributes_for :playlist
+    visit playlists_path
+    click_link 'Create playlist'
+    fill_in 'Name', with: playlist[:name]
+    click_button 'Create'
+    playlist
+  end
 end
