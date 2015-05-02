@@ -1,6 +1,14 @@
 class SoundsController < ApplicationController
+  before_filter :set_sound, only: :show
+
   def show
-    sound = Sound.find(params[:id])
-    send_file sound.path, type: sound.mime_type
+    send_file @sound.path, type: @sound.mime_type
+  end
+
+
+  private
+
+  def set_sound
+    @sound = Sound.find(params[:id])
   end
 end

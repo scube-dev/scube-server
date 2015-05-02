@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       redirect_to :root
     else
-      render 'new'
+      render :new
     end
   end
 

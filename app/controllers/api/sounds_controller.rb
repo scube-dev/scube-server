@@ -1,9 +1,16 @@
 module API
   class SoundsController < ApplicationController
-    # FIXME: add some tests!
+    before_action :set_sound, only: :show
+
     def show
-      sound = Sound.find(params[:id])
       send_file sound.path, type: sound.mime_type
+    end
+
+
+    private
+
+    def set_sound
+      @sound = Sound.find(params[:id])
     end
   end
 end
