@@ -20,4 +20,14 @@ describe 'API tracks' do
       }
     ]
   end
+
+  it 'shows a track' do
+    track = create :track
+    get api_track_path track, format: :json
+
+    expect(json).to match(
+      id:   track.id,
+      name: track.name
+    )
+  end
 end

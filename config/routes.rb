@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :playlists, only: %i[index show create]
     resources :sessions, only: :create
     resources :sounds, only: :show
-    resources :tracks, only: :index
+    resources :tracks, only: %i[index show]
     match '*all', to: 'application#not_found', via: :all
   end
 
