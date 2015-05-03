@@ -37,8 +37,11 @@ module API
     end
 
     def json_filter!
-      return if request.format.json?
-      head :not_acceptable, content_type: 'application/json'
+      if request.format.json? || request.accepts.include?(:json)
+        request.format = :json
+      else
+        head :not_acceptable, content_type: 'application/json'
+      end
     end
   end
 end
