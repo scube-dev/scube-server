@@ -40,8 +40,8 @@ module AcceptanceHelpers
     end
   end
 
-  def json
-    expect(response).to be_success
+  def json status = 200
+    expect(response.status).to be status
     JSON.parse(response.body, symbolize_names: true)
   end
 end
