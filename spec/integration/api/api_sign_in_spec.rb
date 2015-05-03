@@ -13,7 +13,7 @@ describe 'API sign in' do
   it 'signs the user in with valid credentials' do
     do_create
 
-    expect(json).to eq(id: user.id)
+    expect(json).to eq(user: { id: user.id })
   end
 
   [:email, :password].each do |attr|
