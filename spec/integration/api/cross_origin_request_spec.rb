@@ -1,15 +1,10 @@
 describe 'API cross origin request' do
   include AcceptanceHelpers
 
-  let(:user)    { create :user }
+  let(:user)    { api_sign_in }
   let(:origin)  { 'http://origin.example/' }
 
-  before do
-    post sessions_path, session: {
-      email:    user.email,
-      password: user.password
-    }
-  end
+  before { user } # sign in
 
   it 'responds to preflight request' do
     options api_playlists_path(format: :json), nil, 'Origin' => origin
