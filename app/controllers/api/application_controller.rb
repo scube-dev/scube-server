@@ -6,7 +6,7 @@ module API
     skip_before_filter :authenticate!, only: :cor_preflight
 
     before_filter :cor_filter
-    before_filter :json_filter!
+    before_filter :json_filter!, except: :cor_preflight
 
     def not_found
       head :not_found
