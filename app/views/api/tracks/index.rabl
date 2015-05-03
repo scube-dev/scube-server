@@ -1,4 +1,4 @@
-collection @tracks
+collection @tracks, root: :tracks, object_root: false
 
 attribute :id
 attribute :name
