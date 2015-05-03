@@ -7,7 +7,6 @@ describe 'API tracks' do
     track_1 = create :track_with_sound, name: 'Track 1'
     track_2 = create :track, name: 'Track 2'
     get api_tracks_path, format: :json
-
     expect(json).to eq(
       tracks: [
         {
@@ -26,7 +25,6 @@ describe 'API tracks' do
   it 'shows a track' do
     track = create :track
     get api_track_path track, format: :json
-
     expect(json).to eq(
       track: {
         id:   track.id,

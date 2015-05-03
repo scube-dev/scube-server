@@ -12,7 +12,6 @@ describe 'API sign in' do
 
   it 'signs the user in with valid credentials' do
     do_create
-
     expect(json).to eq(user: { id: user.id })
   end
 
@@ -21,7 +20,6 @@ describe 'API sign in' do
       it 'rejects authentication' do
         allow(user).to receive(attr).and_return(user.send(attr) + '_INVALID')
         do_create
-
         expect(response).to be_not_found
         expect(response.body).to be_empty
       end

@@ -6,7 +6,6 @@ describe 'API playlists' do
   it 'lists playlists' do
     playlist = create :playlist
     get api_playlists_path, format: :json
-
     expect(json).to eq(
       playlists: [{
         id:   playlist.id,
@@ -18,7 +17,6 @@ describe 'API playlists' do
   it 'shows a playlist' do
     playlist = create :playlist
     get api_playlist_path playlist, format: :json
-
     expect(json).to eq(
       playlist: {
         id:   playlist.id,
@@ -30,7 +28,6 @@ describe 'API playlists' do
   it 'creates playlist' do
     playlist = attributes_for :playlist
     post api_playlists_path, format: :json, playlist: playlist
-
     expect(json).to match(
       playlist: {
         id:   an_instance_of(Fixnum),
