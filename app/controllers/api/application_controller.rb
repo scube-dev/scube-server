@@ -6,7 +6,7 @@ module API
     skip_before_filter :authenticate!, only: :cor_preflight
 
     before_filter :cor_filter
-    before_filter :json_filter!
+    before_filter :json_filter!, except: :cor_preflight
 
     def not_found
       head :not_found
@@ -37,8 +37,11 @@ module API
     end
 
     def json_filter!
-      return if request.format.json?
-      head :not_acceptable, content_type: 'application/json'
+      if request.format.json? || request.accepts.include?(:json)
+        request.format = :json
+      else
+        head :not_acceptable, content_type: 'application/json'
+      end
     end
   end
 end
