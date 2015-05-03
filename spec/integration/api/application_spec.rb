@@ -1,8 +1,6 @@
 describe 'API application' do
   include AcceptanceHelpers
 
-  before { api_sign_in }
-
   describe 'ping endpoint' do
     before { get api_ping_path, format: :json }
 
@@ -12,6 +10,8 @@ describe 'API application' do
   end
 
   describe 'formats handling' do
+    before { api_sign_in }
+
     it 'responds with a 406 when request format is not JSON' do
       get api_ping_path, format: :xml
       expect(response.status).to be 406
@@ -21,6 +21,8 @@ describe 'API application' do
   end
 
   describe 'not found' do
+    before { api_sign_in }
+
     it 'responds with a 404 when route does not exist' do
       get '/api/not_found', format: :json
       expect(response.status).to be 404

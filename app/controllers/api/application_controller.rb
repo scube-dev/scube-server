@@ -3,7 +3,7 @@ module API
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
     skip_before_filter :verify_authenticity_token
-    skip_before_filter :authenticate!, only: :cor_preflight
+    skip_before_filter :authenticate!, only: %i[cor_preflight ping]
 
     before_filter :cor_filter
     before_filter :json_filter!, except: :cor_preflight
