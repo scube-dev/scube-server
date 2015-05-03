@@ -1,6 +1,6 @@
 module API
   class PlaylistsController < ApplicationController
-    before_action :set_playlist, only: :show
+    before_action :set_playlist, only: %i[show update]
 
     def index
       @playlists = Playlist.all
@@ -12,6 +12,11 @@ module API
     def create
       @playlist = current_user.playlists.build playlist_params
       @playlist.save
+    end
+
+    def update
+      @playlist.update playlist_params
+      head :no_content
     end
 
 

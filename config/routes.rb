@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     get '/ping', to: 'application#ping'
     match '*all', to: 'application#cor_preflight', via: :options
-    resources :playlists, only: %i[index show create]
+    resources :playlists, only: %i[index show create update]
     resources :sessions, only: :create
     resources :sounds, only: :show
     resources :tracks, only: %i[index show]

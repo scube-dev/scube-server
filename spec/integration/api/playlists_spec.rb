@@ -23,7 +23,7 @@ describe 'API playlists' do
     )
   end
 
-  it 'creates playlist' do
+  it 'creates a playlist' do
     playlist = attributes_for :playlist
     post api_playlists_path, format: :json, playlist: playlist
     expect(json).to match(
@@ -31,6 +31,17 @@ describe 'API playlists' do
         id:   an_instance_of(Fixnum),
         name: playlist[:name]
       }
+    )
+  end
+
+  it 'updates a playlist' do
+    playlist = create :playlist
+    put api_playlist_path(playlist), format: :json, playlist: {
+      name: 'new name'
+    }
+    get api_playlist_path playlist, format: :json
+    expect(json[:playlist]).to include(
+      name: 'new name'
     )
   end
 end
