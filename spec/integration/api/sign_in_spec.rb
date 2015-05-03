@@ -1,6 +1,4 @@
 describe 'API sign in' do
-  include AcceptanceHelpers
-
   let(:user) { create :user }
 
   def do_create

@@ -10,6 +10,8 @@ Spork.prefork do
   RSpec.configure do |config|
     config.backtrace_exclusion_patterns << /\/bundler\/gems\//
     config.include FactoryGirl::Syntax::Methods
+    config.include AcceptanceHelpers, type: :feature
+    config.include AcceptanceHelpers, type: :request
     config.infer_spec_type_from_file_location!
     config.use_transactional_fixtures = true
     config.after(:all) do

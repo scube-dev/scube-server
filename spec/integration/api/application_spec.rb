@@ -1,6 +1,4 @@
 describe 'API application' do
-  include AcceptanceHelpers
-
   describe 'ping endpoint' do
     before { get api_ping_path, format: :json }
 

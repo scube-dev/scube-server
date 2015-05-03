@@ -1,6 +1,4 @@
 feature 'Sounds CRUD' do
-  include AcceptanceHelpers
-
   background { sign_in }
 
   scenario 'shows sound' do

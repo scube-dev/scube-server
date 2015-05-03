@@ -1,6 +1,4 @@
 feature 'Tracks CRUD' do
-  include AcceptanceHelpers
-
   background { sign_in }
 
   scenario 'shows track' do

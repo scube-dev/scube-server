@@ -1,6 +1,4 @@
 describe 'API tracks' do
-  include AcceptanceHelpers
-
   let(:track)       { create :track_with_sound }
   let(:other_track) { create :track }
 

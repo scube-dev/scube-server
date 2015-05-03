@@ -1,6 +1,4 @@
 describe 'API cross origin request' do
-  include AcceptanceHelpers
-
   let(:user)    { api_sign_in }
   let(:origin)  { 'http://origin.example/' }
 

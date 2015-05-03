@@ -1,6 +1,4 @@
 feature 'Tracks player' do
-  include AcceptanceHelpers
-
   background { sign_in }
 
   scenario 'includes a player in track page' do

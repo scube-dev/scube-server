@@ -1,6 +1,4 @@
 feature 'Playlists CRUD' do
-  include AcceptanceHelpers
-
   background { sign_in }
 
   scenario 'edits playlist' do

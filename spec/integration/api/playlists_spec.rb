@@ -1,6 +1,4 @@
 describe 'API playlists' do
-  include AcceptanceHelpers
-
   before { api_sign_in }
 
   it 'lists playlists' do
