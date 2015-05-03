@@ -44,4 +44,11 @@ describe 'API playlists' do
       name: 'new name'
     )
   end
+
+  it 'destroys a playlist' do
+    playlist = create :playlist
+    expect { delete api_playlist_path(playlist), format: :json }
+      .to change { get api_playlist_path playlist, format: :json }
+      .from(200).to 404
+  end
 end

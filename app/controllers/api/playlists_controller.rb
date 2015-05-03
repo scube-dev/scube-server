@@ -1,6 +1,6 @@
 module API
   class PlaylistsController < ApplicationController
-    before_action :set_playlist, only: %i[show update]
+    before_action :set_playlist, only: %i[show update destroy]
 
     def index
       @playlists = Playlist.all
@@ -16,6 +16,11 @@ module API
 
     def update
       @playlist.update playlist_params
+      head :no_content
+    end
+
+    def destroy
+      @playlist.destroy
       head :no_content
     end
 
