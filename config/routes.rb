@@ -22,5 +22,7 @@ Rails.application.routes.draw do
     get 'download', on: :member
   end
 
+  resources :keys
+
   resources :users, only: %i[new create]
 end
