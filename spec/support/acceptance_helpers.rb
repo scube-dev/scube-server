@@ -41,7 +41,7 @@ module AcceptanceHelpers
   end
 
   def json status = :success
-    expect(response).to have_http_status status
+    expect(response).to have_http_status status unless status == :any
     JSON.parse(response.body, symbolize_names: true)
   end
 end

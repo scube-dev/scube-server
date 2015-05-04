@@ -49,7 +49,7 @@ describe 'API playlists' do
       end
 
       it 'returns errors' do
-        expect(json 422).to match(
+        expect(json :any).to match(
           name: [an_instance_of(String)]
         )
       end
@@ -85,7 +85,7 @@ describe 'API playlists' do
       end
 
       it 'returns errors' do
-        expect(json 422).to match(
+        expect(json :any).to match(
           name: [an_instance_of(String)]
         )
       end
