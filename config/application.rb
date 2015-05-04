@@ -7,6 +7,7 @@ require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'action_view/railtie'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -32,6 +33,8 @@ module Scube
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_dispatch.default_headers.clear
+
+    # config.assets.precompile += %w[]
 
     config.sounds_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sounds') :
