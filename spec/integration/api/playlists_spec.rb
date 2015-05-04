@@ -41,6 +41,11 @@ describe 'API playlists' do
       )
     end
 
+    it 'creates the playlist' do
+      get response.location, format: :json
+      expect(json[:playlist]).to include playlist
+    end
+
     context 'when playlist is invalid' do
       let(:playlist) { attributes_for :playlist, name: '' }
 

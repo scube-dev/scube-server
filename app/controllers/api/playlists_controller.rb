@@ -12,7 +12,7 @@ module API
     def create
       @playlist = current_user.playlists.build playlist_params
       if @playlist.save
-        render :show, status: :created
+        render :show, status: :created, location: api_playlist_path(@playlist)
       else
         render json: @playlist.errors, status: :unprocessable_entity
       end
