@@ -40,8 +40,8 @@ module AcceptanceHelpers
     end
   end
 
-  def json status = 200
-    expect(response.status).to be status
+  def json status = :success
+    expect(response).to have_http_status status
     JSON.parse(response.body, symbolize_names: true)
   end
 end
