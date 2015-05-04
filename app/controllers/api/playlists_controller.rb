@@ -19,8 +19,11 @@ module API
     end
 
     def update
-      @playlist.update playlist_params
-      head :no_content
+      if @playlist.update playlist_params
+        head :no_content
+      else
+        render json: @playlist.errors, status: :unprocessable_entity
+      end
     end
 
     def destroy

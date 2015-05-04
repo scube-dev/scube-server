@@ -56,15 +56,40 @@ describe 'API playlists' do
     end
   end
 
-  it 'updates a playlist' do
-    playlist = create :playlist
-    put api_playlist_path(playlist), format: :json, playlist: {
-      name: 'new name'
-    }
-    get api_playlist_path playlist, format: :json
-    expect(json[:playlist]).to include(
-      name: 'new name'
-    )
+  describe 'playlist update' do
+    let(:name)      { 'new name' }
+    let(:playlist)  { create :playlist }
+
+    before do
+      put api_playlist_path(playlist), format: :json, playlist: {
+        name: name
+      }
+    end
+
+    it 'responds with no content status' do
+      expect(response).to have_http_status 204
+    end
+
+    it 'updates the playlist' do
+      get api_playlist_path playlist, format: :json
+      expect(json[:playlist]).to include(
+        name: 'new name'
+      )
+    end
+
+    context 'when playlist is invalid' do
+      let(:name) { '' }
+
+      it 'responds with unprocessable entity status' do
+        expect(response).to have_http_status 422
+      end
+
+      it 'returns errors' do
+        expect(json 422).to match(
+          name: [an_instance_of(String)]
+        )
+      end
+    end
   end
 
   it 'destroys a playlist' do
