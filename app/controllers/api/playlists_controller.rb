@@ -12,7 +12,7 @@ module API
     def create
       @playlist = current_user.playlists.build playlist_params
       @playlist.save
-      render :show
+      render :show, status: :created
     end
 
     def update

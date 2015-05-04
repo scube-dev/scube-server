@@ -23,15 +23,23 @@ describe 'API playlists' do
     )
   end
 
-  it 'creates a playlist' do
-    playlist = attributes_for :playlist
-    post api_playlists_path, format: :json, playlist: playlist
-    expect(json).to match(
-      playlist: {
-        id:   an_instance_of(Fixnum),
-        name: playlist[:name]
-      }
-    )
+  describe 'playlists create' do
+    let(:playlist) { attributes_for :playlist }
+
+    before { post api_playlists_path, format: :json, playlist: playlist }
+
+    it 'reponds with created status' do
+      expect(response).to have_http_status 201
+    end
+
+    it 'returns the playlist' do
+      expect(json).to match(
+        playlist: {
+          id:   an_instance_of(Fixnum),
+          name: playlist[:name]
+        }
+      )
+    end
   end
 
   it 'updates a playlist' do
