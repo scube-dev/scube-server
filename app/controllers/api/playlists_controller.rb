@@ -11,8 +11,11 @@ module API
 
     def create
       @playlist = current_user.playlists.build playlist_params
-      @playlist.save
-      render :show, status: :created
+      if @playlist.save
+        render :show, status: :created
+      else
+        render json: :nothing, status: :unprocessable_entity
+      end
     end
 
     def update

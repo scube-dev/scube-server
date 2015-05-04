@@ -40,6 +40,14 @@ describe 'API playlists' do
         }
       )
     end
+
+    context 'when playlist is invalid' do
+      let(:playlist) { attributes_for :playlist, name: '' }
+
+      it 'responds with unprocessable entity status' do
+        expect(response).to have_http_status 422
+      end
+    end
   end
 
   it 'updates a playlist' do
