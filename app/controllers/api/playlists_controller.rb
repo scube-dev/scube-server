@@ -14,7 +14,7 @@ module API
       if @playlist.save
         render :show, status: :created
       else
-        render json: :nothing, status: :unprocessable_entity
+        render json: @playlist.errors, status: :unprocessable_entity
       end
     end
 

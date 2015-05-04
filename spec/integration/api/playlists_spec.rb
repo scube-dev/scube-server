@@ -47,6 +47,12 @@ describe 'API playlists' do
       it 'responds with unprocessable entity status' do
         expect(response).to have_http_status 422
       end
+
+      it 'returns errors' do
+        expect(json 422).to match(
+          name: [an_instance_of(String)]
+        )
+      end
     end
   end
 
