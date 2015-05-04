@@ -36,6 +36,10 @@ module Scube
 
     # config.assets.precompile += %w[]
 
+    config.action_view.field_error_proc = proc do |html_tag, instance|
+      html_tag.html_safe
+    end
+
     config.sounds_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sounds') :
       File.join('data', 'sounds')
