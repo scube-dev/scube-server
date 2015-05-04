@@ -28,7 +28,7 @@ describe 'API playlists' do
 
     before { post api_playlists_path, format: :json, playlist: playlist }
 
-    it 'reponds with created status' do
+    it 'responds with created status' do
       expect(response).to have_http_status 201
     end
 
