@@ -8,6 +8,9 @@ gem 'unicorn-rails'
 gem 'haml'
 gem 'rabl'
 
+gem 'uglifier'
+gem 'jquery-rails'
+
 
 group :development, :test do
   gem 'pry-rails'
