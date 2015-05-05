@@ -21,6 +21,15 @@ module AcceptanceHelpers
     end
   end
 
+  def create_key
+    attributes_for :key do |o|
+      visit keys_path
+      click_link 'New key'
+      fill_in 'Name', with: o[:name]
+      click_button 'Create'
+    end
+  end
+
   def create_playlist
     attributes_for :playlist do |o|
       visit playlists_path

@@ -5,6 +5,11 @@ def build_sound_file
 end
 
 FactoryGirl.define do
+  factory :key do
+    name 'Some key'
+    user
+  end
+
   factory :playlist do
     name 'Some playlist'
     user
