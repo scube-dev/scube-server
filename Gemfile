@@ -5,6 +5,8 @@ gem 'pg'
 gem 'bcrypt'
 gem 'unicorn-rails'
 
+gem 'has_secure_token'
+
 gem 'haml'
 gem 'rabl'
 

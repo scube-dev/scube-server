@@ -1,0 +1,13 @@
+%h1
+  Showing
+  key
+
+
+%pre= @key.attributes.to_yaml
+
+
+%ul.actions
+  %li
+    = link_to 'Edit', edit_key_path(@key)
+  %li
+    = link_to 'Destroy', e, method: :delete, data: { confirm: 'Are you sure?' }

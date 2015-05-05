@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   has_many :playlists
+  has_many :keys
 
   validates :email,
     presence: true,
