@@ -3,7 +3,7 @@ describe 'API application' do
     before { get api_ping_path, format: :json }
 
     it 'responds with a pong' do
-      expect(json).to eq(pong: 'ok')
+      expect(json).to eq(pong: true)
     end
   end
 

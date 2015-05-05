@@ -29,7 +29,7 @@ module API
     end
 
     def ping
-      render json: { pong: 'ok' }
+      render json: { pong: true }
     end
 
     def authenticate!
