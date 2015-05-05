@@ -4,7 +4,8 @@ describe 'API sounds' do
   describe 'sound show' do
     let(:sound)           { create :sound }
     let(:request_method)  { :get }
-    let(:request_show)    { send request_method, api_sound_path(sound) }
+    let(:request_path)    { api_sound_path(sound) }
+    let(:request_show)    { send request_method, request_path }
     subject               { response }
 
     before { request_show }
@@ -27,6 +28,12 @@ describe 'API sounds' do
       it 'returns an empty body' do
         expect(response.body).to be_empty
       end
+    end
+
+    context 'when sound is requested by SHA256 digest' do
+      let(:request_path) { api_sound_path id: sound.sha256 }
+
+      it { is_expected.to have_http_status 200 }
     end
   end
 end

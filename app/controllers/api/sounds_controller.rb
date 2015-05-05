@@ -12,7 +12,10 @@ module API
     private
 
     def set_sound
-      @sound = Sound.find(params[:id])
+      @sound = case params[:id]
+        when /\A\d+\z/  then Sound.find(params[:id])
+        when /\A\h+\z/  then Sound.find_by_sha256!(params[:id])
+      end
     end
   end
 end
