@@ -1,8 +1,7 @@
 describe 'API cross origin request' do
-  let(:user)    { api_sign_in }
-  let(:origin)  { 'http://origin.example/' }
+  let(:origin) { 'http://origin.example/' }
 
-  before { user } # sign in
+  before { api_sign_in }
 
   it 'responds to preflight request' do
     options api_playlists_path(format: :json), nil, 'Origin' => origin
