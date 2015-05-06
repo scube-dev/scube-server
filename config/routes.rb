@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     match '*all', to: 'application#cor_preflight', via: :options
     resources :playlists, only: %i[index show create update destroy]
     resources :sessions, only: :create
-    resources :sounds, only: :show
+    resources :sounds, only: %i[show create]
     resources :tracks, only: %i[index show]
     match '*all', to: 'application#not_found', via: :all
   end
