@@ -5,7 +5,7 @@ describe 'API tracks' do
   before { api_sign_in and track and other_track }
 
   it 'lists tracks' do
-    get api_tracks_path, format: :json
+    jget api_tracks_path
     expect(json).to eq(
       tracks: [
         {
@@ -22,7 +22,7 @@ describe 'API tracks' do
   end
 
   it 'shows a track' do
-    get api_track_path track, format: :json
+    jget api_track_path track
     expect(json).to eq(
       track: {
         id:   track.id,

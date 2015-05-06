@@ -3,7 +3,7 @@ describe 'API playlists' do
 
   it 'lists playlists' do
     playlist = create :playlist
-    get api_playlists_path, format: :json
+    jget :playlists
     expect(json).to eq(
       playlists: [{
         id:   playlist.id,
@@ -14,7 +14,7 @@ describe 'API playlists' do
 
   it 'shows a playlist' do
     playlist = create :playlist
-    get api_playlist_path playlist, format: :json
+    jget api_playlist_path playlist
     expect(json).to eq(
       playlist: {
         id:   playlist.id,
@@ -26,7 +26,7 @@ describe 'API playlists' do
   describe 'playlists create' do
     let(:playlist) { attributes_for :playlist }
 
-    before { post api_playlists_path, format: :json, playlist: playlist }
+    before { jpost :playlists, playlist: playlist }
 
     it 'responds with created status' do
       expect(response).to have_http_status 201
@@ -42,7 +42,7 @@ describe 'API playlists' do
     end
 
     it 'creates the playlist' do
-      get response.location, format: :json
+      jget response.location
       expect(json[:playlist]).to include playlist
     end
 
@@ -65,18 +65,14 @@ describe 'API playlists' do
     let(:name)      { 'new name' }
     let(:playlist)  { create :playlist }
 
-    before do
-      put api_playlist_path(playlist), format: :json, playlist: {
-        name: name
-      }
-    end
+    before { jput api_playlist_path(playlist), playlist: { name: name } }
 
     it 'responds with no content status' do
       expect(response).to have_http_status 204
     end
 
     it 'updates the playlist' do
-      get api_playlist_path playlist, format: :json
+      jget api_playlist_path playlist
       expect(json[:playlist]).to include(
         name: 'new name'
       )
@@ -99,8 +95,8 @@ describe 'API playlists' do
 
   it 'destroys a playlist' do
     playlist = create :playlist
-    expect { delete api_playlist_path(playlist), format: :json }
-      .to change { get api_playlist_path playlist, format: :json }
+    expect { jdelete api_playlist_path playlist }
+      .to change { jget api_playlist_path playlist }
       .from(200).to 404
   end
 end

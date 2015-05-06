@@ -2,7 +2,7 @@ describe 'API sign in' do
   let(:user) { create :user }
 
   def do_create
-    post api_sessions_path, format: :json, session: {
+    jpost :sessions, session: {
       email:    user.email,
       password: user.password
     }

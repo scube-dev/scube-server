@@ -14,7 +14,7 @@ module AcceptanceHelpers
 
   def api_sign_in
     create :user do |o|
-      post api_sessions_path, format: :json, session: {
+      jpost :sessions, session: {
         email:    o.email,
         password: o.password
       }
@@ -46,6 +46,13 @@ module AcceptanceHelpers
       fill_in 'Name', with: o[:name]
       attach_file 'File', o[:file].path if file
       click_button 'Upload'
+    end
+  end
+
+  %w[get post put delete options].each do |verb|
+    define_method :"j#{verb}" do |path, parameters = {}, headers = {}|
+      path = path.is_a?(Symbol) ? send(:"api_#{path}_path") : path
+      send verb.to_sym, path, { format: :json }.merge(parameters), headers
     end
   end
 

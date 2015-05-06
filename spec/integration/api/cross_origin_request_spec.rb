@@ -4,7 +4,7 @@ describe 'API cross origin request' do
   before { api_sign_in }
 
   it 'responds to preflight request' do
-    options api_playlists_path(format: :json), nil, 'Origin' => origin
+    joptions :ping, {}, 'Origin' => origin
     expect(response.headers).to include(
       'Access-Control-Allow-Origin'       => origin,
       'Access-Control-Allow-Credentials'  => 'true',
@@ -15,7 +15,7 @@ describe 'API cross origin request' do
   end
 
   it 'responds to basic request' do
-    get api_playlists_path(format: :json), nil, 'Origin' => origin
+    jget :ping, {}, 'Origin' => origin
     expect(response.headers).to include(
       'Access-Control-Allow-Origin'       => origin,
       'Access-Control-Allow-Credentials'  => 'true',
@@ -24,7 +24,7 @@ describe 'API cross origin request' do
   end
 
   it 'responds to request without origin' do
-    get api_playlists_path format: :json
+    jget :ping
     expect(response.headers['Access-Control-Allow-Origin']).to eq ''
   end
 end

@@ -1,6 +1,6 @@
 describe 'API application' do
   describe 'ping endpoint' do
-    before { get api_ping_path, format: :json }
+    before { jget :ping }
 
     it 'responds with a pong' do
       expect(json).to eq(pong: true)
@@ -11,7 +11,7 @@ describe 'API application' do
     let(:headers) { {} }
     subject       { response }
 
-    before { get api_ping_auth_path, { format: :json }, headers }
+    before { jget :ping_auth, {}, headers }
 
     it 'requests authentication' do
       expect(response).to have_http_status 401
@@ -49,13 +49,13 @@ describe 'API application' do
     before { api_sign_in }
 
     it 'responds with a 404 when route does not exist' do
-      get '/api/not_found', format: :json
+      jget '/api/not_found'
       expect(response).to have_http_status 404
       expect(response.body).to be_empty
     end
 
     it 'responds with a 404 when a resource (AR) was not found' do
-      get api_playlist_path(id: 1), format: :json
+      jget api_playlist_path id: 1
       expect(response).to have_http_status 404
       expect(response.body).to be_empty
     end
