@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get '/ping', to: 'application#ping'
+    get '/ping/auth', to: 'application#ping_auth'
     match '*all', to: 'application#cor_preflight', via: :options
     resources :playlists, only: %i[index show create update destroy]
     resources :sessions, only: :create

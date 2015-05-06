@@ -29,7 +29,11 @@ module API
     end
 
     def ping
-      render json: { pong: true }
+      ping_response
+    end
+
+    def ping_auth
+      ping_response
     end
 
     def authenticate!
@@ -42,6 +46,13 @@ module API
       else
         head :not_acceptable, content_type: 'application/json'
       end
+    end
+
+
+    private
+
+    def ping_response
+      render json: { pong: true }
     end
   end
 end

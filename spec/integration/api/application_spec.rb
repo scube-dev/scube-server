@@ -7,6 +7,22 @@ describe 'API application' do
     end
   end
 
+  describe 'authenticated ping endpoint' do
+    before { get api_ping_auth_path, format: :json }
+
+    it 'requests authentication' do
+      expect(response).to have_http_status 401
+    end
+
+    context 'when session is authenticated' do
+      subject { response }
+
+      before { api_sign_in }
+
+      it { is_expected.to have_http_status 200 }
+    end
+  end
+
   describe 'formats handling' do
     before { api_sign_in }
 
