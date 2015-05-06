@@ -18,7 +18,7 @@ describe 'API sounds' do
     end
 
     it 'returns the sound file as the body' do
-      expect(response.body).to eq File.read(sound.path, mode: 'rb')
+      expect(response.body).to eq_file_content sound.path
     end
 
     context 'when method is HEAD' do
@@ -49,7 +49,7 @@ describe 'API sounds' do
 
     it 'creates the sound' do
       get response.location
-      expect(response.body).to eq File.read(file.path, mode: 'rb')
+      expect(response.body).to eq_file_content file.path
     end
 
     it 'returns the sound' do

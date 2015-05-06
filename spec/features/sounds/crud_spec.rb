@@ -9,6 +9,6 @@ feature 'Sounds CRUD' do
     visit find('audio')[:src]
 
     expect(response_headers['Content-Type']).to eq 'audio/mpeg'
-    expect(page.body).to eq File.read(track[:file].path, mode: 'rb')
+    expect(page.body).to eq_file_content track[:file].path
   end
 end
