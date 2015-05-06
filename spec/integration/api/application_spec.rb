@@ -8,16 +8,27 @@ describe 'API application' do
   end
 
   describe 'authenticated ping endpoint' do
-    before { get api_ping_auth_path, format: :json }
+    let(:headers) { {} }
+    subject       { response }
+
+    before { get api_ping_auth_path, { format: :json }, headers }
 
     it 'requests authentication' do
       expect(response).to have_http_status 401
     end
 
     context 'when session is authenticated' do
-      subject { response }
-
       before { api_sign_in }
+
+      it { is_expected.to have_http_status 200 }
+    end
+
+    context 'when requests has a valid authentication token' do
+      let(:key)     { create :key }
+      let(:headers) do {
+        'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
+          .encode_credentials(key.token)
+      } end
 
       it { is_expected.to have_http_status 200 }
     end

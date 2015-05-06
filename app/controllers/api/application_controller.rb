@@ -37,6 +37,9 @@ module API
     end
 
     def authenticate!
+      if key = authenticate_with_http_token { |t| Key.authenticate(t) }
+        self.current_user = key.user
+      end
       head :unauthorized if current_user.nil?
     end
 
