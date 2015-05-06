@@ -29,10 +29,17 @@ module API
     end
 
     def ping
-      render json: { pong: true }
+      ping_response
+    end
+
+    def ping_auth
+      ping_response
     end
 
     def authenticate!
+      if key = authenticate_with_http_token { |t| Key.authenticate(t) }
+        self.current_user = key.user
+      end
       head :unauthorized if current_user.nil?
     end
 
@@ -42,6 +49,13 @@ module API
       else
         head :not_acceptable, content_type: 'application/json'
       end
+    end
+
+
+    private
+
+    def ping_response
+      render json: { pong: true }
     end
   end
 end
