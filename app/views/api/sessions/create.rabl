@@ -1,3 +1,3 @@
-object @user
+object @user => :session
 
 attribute :id
