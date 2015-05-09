@@ -13,7 +13,7 @@ describe 'API cross origin request' do
     expect(response.headers).to include(
       'Access-Control-Allow-Origin'       => origin,
       'Access-Control-Allow-Credentials'  => 'true',
-      'Access-Control-Allow-Methods'      => 'GET, POST, PUT, DELETE',
+      'Access-Control-Allow-Methods'      => 'GET, POST, PUT, DELETE, OPTIONS',
       'Access-Control-Allow-Headers'      =>
         'Authorization, Content-Type, Content-Length, X-Requested-With',
       'Access-Control-Expose-Headers'     => 'Content-Length'
@@ -31,6 +31,6 @@ describe 'API cross origin request' do
 
   it 'responds to request without origin' do
     jget :ping
-    expect(response.headers['Access-Control-Allow-Origin']).to eq ''
+    expect(response.headers['Access-Control-Allow-Origin']).to eq nil
   end
 end

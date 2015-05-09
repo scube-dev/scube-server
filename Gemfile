@@ -4,6 +4,7 @@ gem 'rails',  '~> 4.2.1'
 gem 'pg'
 gem 'bcrypt'
 gem 'unicorn-rails'
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'has_secure_token'
 
