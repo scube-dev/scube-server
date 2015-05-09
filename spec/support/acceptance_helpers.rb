@@ -14,7 +14,7 @@ module AcceptanceHelpers
 
   def api_sign_in
     create :user do |o|
-      jpost :sessions, session: {
+      jpost api_sessions_path, session: {
         email:    o.email,
         password: o.password
       }
