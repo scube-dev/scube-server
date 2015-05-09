@@ -23,7 +23,7 @@ module API
     def cor_preflight
       headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE'
       headers['Access-Control-Allow-Headers'] =
-        'Content-Type, Content-Length, X-Requested-With'
+        'Authorization, Content-Type, Content-Length, X-Requested-With'
 
       head :ok
     end

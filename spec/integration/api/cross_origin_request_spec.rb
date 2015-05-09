@@ -10,7 +10,7 @@ describe 'API cross origin request' do
       'Access-Control-Allow-Credentials'  => 'true',
       'Access-Control-Allow-Methods'      => 'GET, POST, PUT, DELETE',
       'Access-Control-Allow-Headers'      =>
-        'Content-Type, Content-Length, X-Requested-With'
+        'Authorization, Content-Type, Content-Length, X-Requested-With'
     )
   end
 
