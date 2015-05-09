@@ -36,6 +36,9 @@ module API
       ping_response
     end
 
+
+    private
+
     def authenticate!
       if key = authenticate_with_http_token { |t| Key.authenticate(t) }
         self.current_user = key.user
@@ -50,9 +53,6 @@ module API
         head :not_acceptable, content_type: 'application/json'
       end
     end
-
-
-    private
 
     def ping_response
       render json: { pong: true }
