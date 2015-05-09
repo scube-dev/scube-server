@@ -35,8 +35,6 @@ describe 'API application' do
   end
 
   describe 'formats handling' do
-    before { api_sign_in }
-
     it 'responds with a 406 when request format is not JSON' do
       get api_ping_path, format: :xml
       expect(response).to have_http_status 406
