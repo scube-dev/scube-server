@@ -8,9 +8,14 @@ describe 'API sign in' do
     }
   end
 
-  it 'signs the user in with valid credentials' do
+  it 'returns a token' do
     do_create
-    expect(json).to eq(session: { id: user.id })
+    expect(json).to match(
+      session: {
+        id: an_instance_of(Fixnum),
+        token: /\A[\w\d]{24}\z/
+      }
+    )
   end
 
   [:email, :password].each do |attr|
