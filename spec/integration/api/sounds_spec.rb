@@ -1,13 +1,20 @@
 describe 'API sounds' do
-  subject { response }
+  let(:headers) { {} }
+  subject       { response }
 
-  before { api_sign_in }
+  before do
+    token = api_sign_in
+    headers.merge!({
+      'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
+        .encode_credentials(token)
+    })
+  end
 
   describe 'sound show' do
     let(:sound)           { create :sound }
     let(:request_method)  { :get }
-    let(:request_path)    { api_sound_path(sound) }
-    let(:request_show)    { send request_method, request_path }
+    let(:request_path)    { api_sound_path sound }
+    let(:request_show)    { send request_method, request_path, {}, headers }
 
     before { request_show }
 
@@ -43,12 +50,12 @@ describe 'API sounds' do
     let(:upload)  { fixture_file_upload file.path, file.content_type }
     let(:sound)   { { file: upload } }
 
-    before { post api_sounds_path, sound: sound }
+    before { post api_sounds_path, { sound: sound }, headers }
 
     it { is_expected.to have_http_status 201 }
 
     it 'creates the sound' do
-      get response.location
+      get response.location, {}, headers
       expect(response.body).to eq_file_content file.path
     end
 

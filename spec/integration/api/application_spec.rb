@@ -17,14 +17,8 @@ describe 'API application' do
       expect(response).to have_http_status 401
     end
 
-    context 'when session is authenticated' do
-      before { api_sign_in }
-
-      it { is_expected.to have_http_status 200 }
-    end
-
     context 'when requests has a valid authentication token' do
-      let(:key)     { create :key }
+      let(:key) { create :key }
       let(:headers) do {
         'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
           .encode_credentials(key.token)
