@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if !@user.save
       render :new
     else
-      self.current_user =  @user
+      self.set_session_user @user
       redirect_to :root
     end
   end

@@ -1,11 +1,11 @@
 feature 'User sign in' do
-  scenario 'redirects to the home page when not signed in' do
+  scenario 'redirects to the sign in page when not authenticated' do
     visit root_path
 
     expect(current_path).to eq new_session_path
   end
 
-  scenario 'signs the user in' do
+  scenario 'signs an user in' do
     user = create :user
 
     visit new_session_path

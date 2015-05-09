@@ -14,11 +14,12 @@ module AcceptanceHelpers
 
   def api_sign_in
     create :user do |o|
-      jpost :sessions, session: {
+      jpost api_sessions_path, session: {
         email:    o.email,
         password: o.password
       }
     end
+    @api_key_token = json[:session][:token]
   end
 
   def create_key
@@ -52,6 +53,12 @@ module AcceptanceHelpers
   %w[get post put delete options].each do |verb|
     define_method :"j#{verb}" do |path, parameters = {}, headers = {}|
       path = path.is_a?(Symbol) ? send(:"api_#{path}_path") : path
+      if @api_key_token
+        headers = {
+          'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
+            .encode_credentials(@api_key_token)
+        }.merge headers
+      end
       send verb.to_sym, path, { format: :json }.merge(parameters), headers
     end
   end

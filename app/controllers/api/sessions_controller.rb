@@ -9,8 +9,8 @@ module API
         return render json: '', status: :not_found
       end
 
-      @user = user
-      self.current_user = @user
+      @key = user.keys.create name:
+        "Login from external app `#{request.headers['Origin']}'"
     end
   end
 end
