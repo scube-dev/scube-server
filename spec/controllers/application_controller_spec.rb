@@ -6,6 +6,18 @@ describe ApplicationController do
       controller.current_user = user
       expect(session[:user_id]).to eq user.id
     end
+
+    context 'when a user was already set' do
+      let(:bob)   { user }
+      let(:alice) { create :user, email: 'alice@example.net' }
+
+      it 'resets the current user' do
+        controller.current_user = bob
+        expect { controller.current_user = alice }
+          .to change { controller.current_user }
+          .from(bob).to alice
+      end
+    end
   end
 
   describe '#current_user' do
