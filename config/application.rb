@@ -47,6 +47,7 @@ module Scube
 
     # config.assets.precompile += %w[]
 
+    config.action_view.raise_on_missing_translations = true
     config.action_view.field_error_proc = proc do |html_tag, instance|
       html_tag.html_safe
     end
