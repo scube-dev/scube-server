@@ -22,4 +22,8 @@
               = link_to 'Sign out', signout_path
 
     %main
+      - flash.each do |name, message|
+        .flash{class: "flash-#{name}"}
+          %p= message
+
       = yield
