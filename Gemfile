@@ -11,7 +11,6 @@ gem 'has_secure_token'
 gem 'haml'
 gem 'rabl'
 
-gem 'uglifier'
 gem 'jquery-rails'
 
 
