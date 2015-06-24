@@ -34,7 +34,7 @@ module AcceptanceHelpers
   def create_playlist
     attributes_for :playlist do |o|
       visit playlists_path
-      click_link 'Create playlist'
+      click_link 'New playlist'
       fill_in 'Name', with: o[:name]
       click_button 'Create'
     end
@@ -43,10 +43,10 @@ module AcceptanceHelpers
   def create_track file: false
     attributes_for file ? :track_with_sound : :track do |o|
       visit tracks_path
-      click_link 'Create track'
+      click_link 'New track'
       fill_in 'Name', with: o[:name]
       attach_file 'File', o[:file].path if file
-      click_button 'Upload'
+      click_button 'Create'
     end
   end
 

@@ -17,7 +17,7 @@ feature 'Tracks CRUD' do
     click_link track[:name]
     click_link 'Edit'
     fill_in 'Name', with: 'new track name'
-    click_button 'Save'
+    click_button 'Update Track'
 
     expect(current_path).to eq tracks_path
     expect(page).to have_content 'new track name'

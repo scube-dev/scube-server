@@ -1,9 +1,16 @@
-%h1= @track.name
+%h1
+  = @record.name
 
-- if @track.sound?
+
+- if @record.sound?
   %p
-    %audio{src: sound_path(@track.sound), controls: true, autoplay: true}
+    %audio{src: sound_path(@record.sound), controls: true, autoplay: true}
       Your browser does not support the audio element
 
-%p
-  = link_to 'Edit', edit_track_path(@track)
+%ul.actions
+  %li
+    = link_to 'Edit', edit_path(@record)
+  %li
+    = link_to 'Destroy', @record, method: :delete, data: { confirm: 'Are you sure?' }
+  %li
+    = link_to 'Back', collection_path(@resource)

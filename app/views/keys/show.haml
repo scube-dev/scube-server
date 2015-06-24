@@ -1,13 +1,13 @@
 %h1
-  Showing
-  key
+  Showing key
 
 
-%pre= @key.attributes.to_yaml
-
+%pre= @record.attributes.to_yaml
 
 %ul.actions
   %li
-    = link_to 'Edit', edit_key_path(@key)
+    = link_to 'Edit', edit_path(@record)
   %li
-    = link_to 'Destroy', @key, method: :delete, data: { confirm: 'Are you sure?' }
+    = link_to 'Destroy', @record, method: :delete, data: { confirm: 'Are you sure?' }
+  %li
+    = link_to 'Back', collection_path(@resource)

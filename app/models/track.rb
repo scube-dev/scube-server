@@ -3,6 +3,10 @@ class Track < ActiveRecord::Base
 
   validates_presence_of :name
 
+  def to_s
+    name
+  end
+
   def file= file
     sounds.build file: file
   end

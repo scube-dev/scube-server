@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     match '*all', to: 'application#not_found', via: :all
   end
 
-  resources :playlists
+  resources :playlists, only: %i[index new edit create update destroy]
 
   resources :sessions, only: %i[new create]
   get '/signout', to: 'sessions#destroy'

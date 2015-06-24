@@ -7,7 +7,7 @@ feature 'Playlists CRUD' do
 
     click_link playlist[:name]
     fill_in 'Name', with: 'new playlist name'
-    click_button 'Save'
+    click_button 'Update Playlist'
 
     expect(current_path).to eq playlists_path
     expect(page).to have_content 'new playlist name'
