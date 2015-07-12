@@ -13,36 +13,36 @@ need rubygems and the `bundler` gem installed. Check `rvm` key in
 
 * Clone the repository
 * Install the dependencies:
-    ```
-    bundle install
-    ```
+  ```
+  bundle install
+  ```
   [`bundle install` documentation](http://bundler.io/bundle_install.html)
 
 * Configure the
   [database adapter](http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/PostgreSQLAdapter.html):
-    ```
-    cp config/database.yml{.sample,}
-    $EDITOR config/database.yml
-    ```
+  ```
+  cp config/database.yml{.sample,}
+  $EDITOR config/database.yml
+  ```
 
 * Create the database and executes the migrations:
-    ```
-    bundle exec rake db:create db:migrate db:test:prepare
-    ```
+  ```
+  bundle exec rake db:create db:migrate db:test:prepare
+  ```
   [Running Migrations Rails guide](http://edgeguides.rubyonrails.org/active_record_migrations.html#running-migrations)
 
 * Configure
   [rails "secrets"](http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml)
   by generating new keys. Using your own unique keys is preferred, but
   alternatively you can use the provided secrets sample configuration:
-    ```
-    cp config/secrets.yml{.sample,}
-    ```
+  ```
+  cp config/secrets.yml{.sample,}
+  ```
 
 * Create directories used to store sound files:
-    ```
-    mkdir -p data/sounds data/test/sounds
-    ```
+  ```
+  mkdir -p data/sounds data/test/sounds
+  ```
 
   You can also check the `before_script` key in [Travis CI
 configuration][travis-config-file] as the setup steps listed in this
