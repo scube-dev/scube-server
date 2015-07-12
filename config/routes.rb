@@ -18,9 +18,7 @@ Rails.application.routes.draw do
 
   resources :sounds, only: :show
 
-  resources :tracks do
-    get 'download', on: :member
-  end
+  resources :tracks
 
   resources :keys
 
