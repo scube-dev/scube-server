@@ -17,8 +17,7 @@ module API
       end
     end
 
-
-    private
+  private
 
     def set_sound
       @sound = case params[:id]

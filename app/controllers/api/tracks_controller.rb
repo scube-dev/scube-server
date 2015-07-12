@@ -9,8 +9,7 @@ module API
     def show
     end
 
-
-    private
+  private
 
     def set_track
       @track = Track.find(params[:id])

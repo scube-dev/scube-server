@@ -5,8 +5,7 @@ class SoundsController < ApplicationController
     send_file @sound.path, type: @sound.mime_type
   end
 
-
-  private
+private
 
   def set_sound
     @sound = Sound.find(params[:id])

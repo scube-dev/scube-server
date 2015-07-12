@@ -31,8 +31,7 @@ module API
       head :no_content
     end
 
-
-    private
+  private
 
     def set_playlist
       @playlist = Playlist.find(params[:id])

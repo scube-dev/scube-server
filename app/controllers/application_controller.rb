@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-
-  protected
+protected
 
   def authenticate!
     if session[:user_id]

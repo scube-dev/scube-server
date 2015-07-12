@@ -19,8 +19,7 @@ module API
       ping_response
     end
 
-
-    private
+  private
 
     def authenticate!
       if key = authenticate_with_http_token { |t| Key.authenticate(t) }
