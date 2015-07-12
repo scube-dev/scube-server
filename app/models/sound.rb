@@ -9,7 +9,7 @@ class Sound < ActiveRecord::Base
   end
 
   def file= file
-    self.errors[:sha256] << 'No file given' and return unless file
+    errors[:sha256] << 'No file given' and return unless file
     self.sha256 = Digest::SHA256.file(file.path).hexdigest
     FileUtils.cp file.path, path
     self.mime_type = file.content_type
