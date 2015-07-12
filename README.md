@@ -28,7 +28,7 @@ need rubygems and the `bundler` gem installed. Check `rvm` key in
     bundle exec rake db:create db:migrate db:test:prepare
     ```
 
-* Configure [rails "secrets"][rails_secrets_doc] by generating new
+* Configure [rails secrets][rails_secrets_doc] by generating new
   keys. Using your own unique keys is preferred, but alternatively you
   can use the provided secrets sample configuration:
     ```
