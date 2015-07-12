@@ -16,8 +16,10 @@ need rubygems and the `bundler` gem installed. Check `rvm` key in
     ```
     bundle install
     ```
+  [`bundle install` documentation](http://bundler.io/bundle_install.html)
 
-* Configure the database adapter:
+* Configure the
+  [database adapter](http://api.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/PostgreSQLAdapter.html):
     ```
     cp config/database.yml{.sample,}
     $EDITOR config/database.yml
@@ -27,6 +29,7 @@ need rubygems and the `bundler` gem installed. Check `rvm` key in
     ```
     bundle exec rake db:create db:migrate db:test:prepare
     ```
+  [Running Migrations Rails guide](http://edgeguides.rubyonrails.org/active_record_migrations.html#running-migrations)
 
 * Configure
   [rails "secrets"](http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml)
@@ -41,9 +44,12 @@ need rubygems and the `bundler` gem installed. Check `rvm` key in
     mkdir -p data/sounds data/test/sounds
     ```
 
-  You can also check the `before_script` key in `.travis.yml`
-configuration as the setup steps listed in this key *must* be correct
-in order for tests to pass successfully on Travis CI service.
+  You can also check the `before_script` key in [Travis CI
+configuration][travis-config-file] as the setup steps listed in this
+key *must* be correct in order for tests to pass successfully on
+Travis CI.
+
+[travis-config-file]: https://raw.githubusercontent.com/scube-dev/scube-server/master/.travis.yml
 
 
 Server start
