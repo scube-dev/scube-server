@@ -18,7 +18,7 @@ protected
     redirect_to new_session_path if current_user.nil?
   end
 
-  def set_session_user user
+  def session_user= user
     session[:user_id] = user.id
   end
 end
