@@ -28,9 +28,10 @@ need rubygems and the `bundler` gem installed. Check `rvm` key in
     bundle exec rake db:create db:migrate db:test:prepare
     ```
 
-* Configure [rails secrets][rails_secrets_doc] by generating new
-  keys. Using your own unique keys is preferred, but alternatively you
-  can use the provided secrets sample configuration:
+* Configure
+  [rails "secrets"](http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml)
+  by generating new keys. Using your own unique keys is preferred, but
+  alternatively you can use the provided secrets sample configuration:
     ```
     cp config/secrets.yml{.sample,}
     ```
@@ -43,8 +44,6 @@ need rubygems and the `bundler` gem installed. Check `rvm` key in
   You can also check the `before_script` key in `.travis.yml`
 configuration as the setup steps listed in this key *must* be correct
 in order for tests to pass successfully on Travis CI service.
-
-[rails_secret_doc]: http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
 
 Server start
