@@ -34,17 +34,6 @@ module Scube
 
     config.autoload_paths += [Dry.lib_path]
 
-    config.middleware.insert_before 0, 'Rack::Cors' do
-      allow do
-        origins '*'
-        resource '*',
-          headers:
-            %w[Authorization Content-Type Content-Length X-Requested-With],
-          methods: %i[get post put delete options],
-          expose: %w[Content-Length]
-      end
-    end
-
     config.action_dispatch.default_headers.clear
 
     # config.assets.precompile += %w[]

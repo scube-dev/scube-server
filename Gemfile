@@ -4,7 +4,6 @@ gem 'rails', '4.2.2'
 gem 'pg'
 gem 'bcrypt'
 gem 'unicorn-rails'
-gem 'rack-cors', require: 'rack/cors'
 
 gem 'dry', github: 'tjouan/dry-rails'
 #gem 'dry', path: '../../dry-rails'
