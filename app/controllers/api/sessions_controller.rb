@@ -9,14 +9,21 @@ module API
         return render json: '', status: :not_found
       end
 
-      @key = user.keys.create name:
-        "Login from external app `#{request.headers['Origin']}'"
+      @key = user.keys.create name: key_name_for_current_request
     end
 
   private
 
     def session_params
       params.require(:session).permit %i[email password]
+    end
+
+    def key_name_for_current_request
+      if request.headers.key? 'Origin'
+        "Login from external www app `#{request.headers['Origin']}'"
+      else
+        "Login from external client"
+      end
     end
   end
 end
