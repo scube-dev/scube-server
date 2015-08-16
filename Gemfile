@@ -15,6 +15,10 @@ gem 'rabl'
 gem 'jquery-rails'
 
 
+group :development do
+  gem 'better_errors'
+end
+
 group :development, :test do
   gem 'pry-rails'
 end
