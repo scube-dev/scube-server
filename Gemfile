@@ -25,7 +25,6 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'rspec-activemodel-mocks'
 
   gem 'spork', github: 'tjouan/spork', branch: 'rspec-3'
   gem 'capybara'
