@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  namespace :api do
+  namespace :api, format: false do
     get '/ping', to: 'application#ping'
     get '/ping/auth', to: 'application#ping_auth'
     match '*all', to: 'application#cor_preflight', via: :options
