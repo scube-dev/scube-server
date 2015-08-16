@@ -1,5 +1,6 @@
-class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+class ApplicationController < ActionController::API
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+  include ActionController::ImplicitRender
 
   before_filter :authenticate!
 
@@ -9,16 +10,5 @@ class ApplicationController < ActionController::Base
 
   def current_user?
     !!current_user
-  end
-
-protected
-
-  def authenticate!
-    self.current_user = User.find_by(id: session[:user_id]) if session[:user_id]
-    redirect_to new_session_path unless current_user?
-  end
-
-  def session_user= user
-    session[:user_id] = user.id
   end
 end

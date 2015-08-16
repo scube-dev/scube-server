@@ -21,6 +21,5 @@ guard :rspec, cmd: 'bundle exec rspec --drb -f doc' do
 
   watch(%r{^app/controllers/})        { 'spec/features' }
   watch(%r{^app/controllers/api})     { 'spec/integration/api' }
-  watch(%r{^app/views/.+\.haml})      { 'spec/features' }
   watch(%r{^app/views/api/.+\.rabl})  { 'spec/integration/api' }
 end
