@@ -51,20 +51,29 @@ module AcceptanceHelpers
   end
 
   %w[get post put delete options].each do |verb|
-    define_method :"j#{verb}" do |path, parameters = {}, headers = {}|
+    define_method :"j#{verb}" do |path, params = nil, headers = {}|
       path = path.is_a?(Symbol) ? send(:"api_#{path}_path") : path
-      if @api_key_token
-        headers = {
-          'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
-            .encode_credentials(@api_key_token)
-        }.merge headers
-      end
-      send verb.to_sym, path, { format: :json }.merge(parameters), headers
+      params = JSON.generate(params) if params
+      send verb.to_sym, path, params, json_request_headers.merge(headers)
     end
   end
 
   def json status = :success
     expect(response).to have_http_status status unless status == :any
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+private
+
+  def json_request_headers
+    {
+      'Accept'        => 'application/json',
+      'Content-Type'  => 'application/json'
+    }.tap do |o|
+      o.merge!(
+        'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
+          .encode_credentials(@api_key_token)
+      ) if @api_key_token
+    end
   end
 end
