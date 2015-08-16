@@ -1,5 +1,3 @@
-require 'digest'
-
 RSpec::Matchers.define :eq_file_content do |expected_file_path|
   match do |actual|
     expect(actual).to eq File.read(expected_file_path, mode: 'rb')
