@@ -42,7 +42,7 @@ module API
       if key = authenticate_with_http_token { |t| Key.authenticate(t) }
         self.current_user = key.user
       end
-      head :unauthorized if current_user.nil?
+      head :unauthorized unless current_user?
     end
 
     def json_filter!

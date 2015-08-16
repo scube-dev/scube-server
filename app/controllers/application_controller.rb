@@ -15,7 +15,7 @@ protected
 
   def authenticate!
     self.current_user = User.find_by(id: session[:user_id]) if session[:user_id]
-    redirect_to new_session_path if current_user.nil?
+    redirect_to new_session_path unless current_user?
   end
 
   def session_user= user
