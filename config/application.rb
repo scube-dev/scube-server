@@ -7,7 +7,6 @@ require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'action_view/railtie'
-require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -32,16 +31,11 @@ module Scube
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.autoload_paths += [Dry.lib_path]
+    config.middleware.delete ActionDispatch::RemoteIp
 
     config.action_dispatch.default_headers.clear
 
-    # config.assets.precompile += %w[]
-
     config.action_view.raise_on_missing_translations = true
-    config.action_view.field_error_proc = proc do |html_tag, instance|
-      html_tag.html_safe
-    end
 
     config.sounds_path = Rails.env.test? ?
       File.join('data', Rails.env, 'sounds') :

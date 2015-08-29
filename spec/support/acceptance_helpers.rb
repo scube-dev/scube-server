@@ -3,15 +3,6 @@ module AcceptanceHelpers
     @integration_session.send :process, :options, path, options, headers
   end
 
-  def sign_in
-    create :user do |o|
-      visit new_session_path
-      fill_in 'Email', with: o.email
-      fill_in 'Password', with: o.password
-      click_button 'Sign in'
-    end
-  end
-
   def api_sign_in
     create :user do |o|
       jpost api_sessions_path, session: {
@@ -20,34 +11,6 @@ module AcceptanceHelpers
       }
     end
     @api_key_token = json[:session][:token]
-  end
-
-  def create_key
-    attributes_for :key do |o|
-      visit keys_path
-      click_link 'New key'
-      fill_in 'Name', with: o[:name]
-      click_button 'Create'
-    end
-  end
-
-  def create_playlist
-    attributes_for :playlist do |o|
-      visit playlists_path
-      click_link 'New playlist'
-      fill_in 'Name', with: o[:name]
-      click_button 'Create'
-    end
-  end
-
-  def create_track file: false
-    attributes_for file ? :track_with_sound : :track do |o|
-      visit tracks_path
-      click_link 'New track'
-      fill_in 'Name', with: o[:name]
-      attach_file 'File', o[:file].path if file
-      click_button 'Create'
-    end
   end
 
   %w[get post put delete options].each do |verb|

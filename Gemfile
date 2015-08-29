@@ -1,18 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.2'
+gem 'rails-api', '~> 0.4'
 gem 'pg'
 gem 'bcrypt'
 gem 'unicorn-rails'
 
-gem 'dry', github: 'tjouan/dry-rails'
-#gem 'dry', path: '../../dry-rails'
 gem 'has_secure_token'
 
-gem 'haml'
 gem 'rabl'
-
-gem 'jquery-rails'
 
 
 group :development do
@@ -27,7 +23,6 @@ group :test do
   gem 'rspec-rails'
 
   gem 'spork', github: 'tjouan/spork', branch: 'rspec-3'
-  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
 
