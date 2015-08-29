@@ -3,12 +3,6 @@ class Track < ActiveRecord::Base
 
   validates_presence_of :name
 
-  class << self
-    def latest
-      Track.order(created_at: :desc)
-    end
-  end
-
   def to_s
     name
   end

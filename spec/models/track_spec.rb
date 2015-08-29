@@ -16,14 +16,6 @@ describe Track do
     end
   end
 
-  describe '.latest' do
-    it 'returns latest tracks in descending creation date order' do
-      track1 = create :track, created_at: '2011-07-27 19:13:42'
-      track2 = create :track, created_at: '2011-07-27 19:58:57'
-      expect(described_class.latest).to eq [track2, track1]
-    end
-  end
-
   describe '#file=' do
     it 'builds a new related sound with the file' do
       sounds = double 'sounds association proxy'
