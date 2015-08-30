@@ -14,7 +14,7 @@ describe 'API tracks' do
           {
             id:         track.id,
             name:       track.name,
-            sound_url:  api_sound_url(track.sound)
+            sound_path: api_sound_path(track.sound)
           },
           {
             id:         other_track.id,
@@ -30,8 +30,9 @@ describe 'API tracks' do
       jget api_track_path track
       expect(json).to eq(
         track: {
-          id:   track.id,
-          name: track.name
+          id:         track.id,
+          name:       track.name,
+          sound_path: api_sound_path(track.sound)
         }
       )
     end
