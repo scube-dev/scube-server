@@ -17,6 +17,13 @@ FactoryGirl.define do
 
   factory :sound do
     file { build_sound_file }
+
+    factory :sound_with_file_upload do
+      file do
+        sound_file = build_sound_file
+        Rack::Test::UploadedFile.new(sound_file.path, sound_file.content_type)
+      end
+    end
   end
 
   factory :track do

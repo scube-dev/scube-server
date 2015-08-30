@@ -39,9 +39,7 @@ describe 'API sounds' do
   end
 
   describe 'sounds create' do
-    let(:file)    { attributes_for(:sound)[:file] }
-    let(:upload)  { fixture_file_upload file.path, file.content_type }
-    let(:sound)   { { file: upload } }
+    let(:sound) { attributes_for :sound_with_file_upload }
 
     before { do_post api_sounds_path, { sound: sound } }
 
@@ -49,7 +47,7 @@ describe 'API sounds' do
 
     it 'creates the sound' do
       jget response.location
-      expect(response.body).to eq_file_content file.path
+      expect(response.body).to eq_file_content sound[:file].path
     end
 
     it 'returns the sound' do
