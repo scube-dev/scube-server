@@ -13,11 +13,14 @@ module AcceptanceHelpers
     @api_key_token = json[:session][:token]
   end
 
-  %w[get post put delete options].each do |verb|
+  %i[head get post put delete options].each do |verb|
+    define_method :"do_#{verb}" do |path, params = nil, headers = {}|
+      send verb, _request_path(path), params, _request_headers.merge(headers)
+    end
+
     define_method :"j#{verb}" do |path, params = nil, headers = {}|
-      path = path.is_a?(Symbol) ? send(:"api_#{path}_path") : path
       params = JSON.generate(params) if params
-      send verb.to_sym, path, params, json_request_headers.merge(headers)
+      send :"do_#{verb}", path, params, _request_headers_json.merge(headers)
     end
   end
 
@@ -28,15 +31,23 @@ module AcceptanceHelpers
 
 private
 
-  def json_request_headers
-    {
-      'Accept'        => 'application/json',
-      'Content-Type'  => 'application/json'
-    }.tap do |o|
+  def _request_path path
+    path.is_a?(Symbol) ? send(:"api_#{path}_path") : path
+  end
+
+  def _request_headers
+    {}.tap do |o|
       o.merge!(
         'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
           .encode_credentials(@api_key_token)
       ) if @api_key_token
     end
+  end
+
+  def _request_headers_json
+    {
+      'Accept'        => 'application/json',
+      'Content-Type'  => 'application/json'
+    }
   end
 end
