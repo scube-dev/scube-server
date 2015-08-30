@@ -1,4 +1,6 @@
 describe 'API tracks' do
+  subject { response }
+
   let(:track)       { create :track_with_sound }
   let(:other_track) { create :track }
 
@@ -35,6 +37,23 @@ describe 'API tracks' do
           sound_path: api_sound_path(track.sound)
         }
       )
+    end
+  end
+
+  describe 'create' do
+    let(:track) { attributes_for :track_with_sound_upload }
+
+    before { do_post :tracks, { track: track } }
+
+    it { is_expected.to have_http_status 201 }
+
+    it 'creates a track' do
+      jget response.location
+      expect(json).to include :track
+    end
+
+    it 'returns the track' do
+      expect(json).to include :track
     end
   end
 end
