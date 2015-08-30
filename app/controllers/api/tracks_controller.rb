@@ -5,7 +5,7 @@ module API
     before_action :set_track, only: :show
 
     def index
-      @tracks = Track.all
+      @tracks = Track.with_sounds
     end
 
     def show

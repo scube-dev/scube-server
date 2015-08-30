@@ -3,6 +3,12 @@ class Track < ActiveRecord::Base
 
   validates_presence_of :name
 
+  class << self
+    def with_sounds
+      includes :sounds
+    end
+  end
+
   def to_s
     name
   end
