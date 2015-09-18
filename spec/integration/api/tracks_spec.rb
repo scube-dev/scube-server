@@ -71,5 +71,14 @@ describe 'API tracks' do
         expect(json[:track]).to include :sound_path
       end
     end
+
+    context 'when track has authors' do
+      let(:author)  { attributes_for :author }
+      let(:track)   { attributes_for(:track).merge authors: [author] }
+
+      it 'creates related authors' do
+        expect(json[:track]).to include authors: [author]
+      end
+    end
   end
 end
