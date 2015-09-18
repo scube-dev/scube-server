@@ -10,8 +10,4 @@ class Key < ActiveRecord::Base
       find_by_token token
     end
   end
-
-  def to_s
-    name
-  end
 end

@@ -3,8 +3,4 @@ class Playlist < ActiveRecord::Base
 
   validates :user, presence: true
   validates :name, presence: true
-
-  def to_s
-    name
-  end
 end
