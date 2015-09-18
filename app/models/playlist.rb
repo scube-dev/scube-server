@@ -1,8 +1,8 @@
 class Playlist < ActiveRecord::Base
   belongs_to :user
 
-  validates_presence_of :user
-  validates_presence_of :name
+  validates :user, presence: true
+  validates :name, presence: true
 
   def to_s
     name

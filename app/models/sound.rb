@@ -1,8 +1,8 @@
 class Sound < ActiveRecord::Base
   belongs_to :track
 
-  validates_presence_of :sha256
-  validates_presence_of :mime_type
+  validates :sha256, presence: true
+  validates :mime_type, presence: true
 
   def path
     "#{Rails.configuration.sounds_path}/#{sha256}"

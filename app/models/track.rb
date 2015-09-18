@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
   has_many :sounds
 
-  validates_presence_of :name
+  validates :name, presence: true
 
   class << self
     def with_sounds
