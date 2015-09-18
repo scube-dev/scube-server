@@ -1,6 +1,6 @@
 module API
   class SoundsController < ApplicationController
-    skip_before_filter :json_filter!, only: %i[show create]
+    skip_before_action :json_filter!, only: %i[show create]
 
     before_action :set_sound, only: :show
 

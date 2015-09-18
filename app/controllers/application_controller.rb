@@ -2,7 +2,7 @@ class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
   include ActionController::ImplicitRender
 
-  before_filter :authenticate!
+  before_action :authenticate!
 
   helper_method :current_user?
 

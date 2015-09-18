@@ -2,11 +2,11 @@ module API
   class ApplicationController < ::ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-    skip_before_filter :verify_authenticity_token
-    skip_before_filter :authenticate!, only: %i[cor_preflight ping]
+    skip_before_action :verify_authenticity_token
+    skip_before_action :authenticate!, only: %i[cor_preflight ping]
 
-    before_filter :cor_filter
-    before_filter :json_filter!, except: :cor_preflight
+    before_action :cor_filter
+    before_action :json_filter!, except: :cor_preflight
 
     def not_found
       head :not_found

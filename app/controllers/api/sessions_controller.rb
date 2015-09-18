@@ -1,6 +1,6 @@
 module API
   class SessionsController < ApplicationController
-    skip_before_filter :authenticate!, only: :create
+    skip_before_action :authenticate!, only: :create
 
     def create
       user = User.find_by_email(session_params[:email])
