@@ -4,7 +4,7 @@ describe 'API sounds' do
   before { api_sign_in }
 
   describe 'sound show' do
-    let(:sound)           { create :sound }
+    let(:sound)           { create_sound }
     let(:request_method)  { :get }
     let(:request_path)    { api_sound_path sound }
     let(:request_show)    { send "j#{request_method}", request_path }
@@ -14,11 +14,12 @@ describe 'API sounds' do
     it { is_expected.to have_http_status 200 }
 
     it 'has the sound mime type as content type' do
-      expect(response.content_type).to eq sound.mime_type
+      expect(response.content_type).to eq sound[:mime_type]
     end
 
     it 'returns the sound file as the body' do
-      expect(response.body).to eq_file_content sound.path
+      expect(response.body)
+        .to eq_file_content attributes_for(:sound_with_file_upload)[:file].path
     end
 
     context 'when method is HEAD' do
@@ -32,7 +33,7 @@ describe 'API sounds' do
     end
 
     context 'when sound is requested by SHA256 digest' do
-      let(:request_path) { api_sound_path id: sound.sha256 }
+      let(:request_path) { api_sound_path id: sound[:sha256] }
 
       it { is_expected.to have_http_status 200 }
     end
@@ -41,7 +42,7 @@ describe 'API sounds' do
   describe 'sounds create' do
     let(:sound) { attributes_for :sound_with_file_upload }
 
-    before { do_post api_sounds_path, { sound: sound } }
+    before { create_sound sound }
 
     it { is_expected.to have_http_status 201 }
 
@@ -61,7 +62,7 @@ describe 'API sounds' do
     end
 
     context 'when sound is invalid' do
-      let(:sound) { { file: nil } }
+      let(:sound) { attributes_for :sound_with_file_upload, file: nil }
 
       it { is_expected.to have_http_status 422 }
 

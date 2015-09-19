@@ -29,6 +29,20 @@ module AcceptanceHelpers
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def create_sound **options
+    attributes_for :sound_with_file_upload, options do |attrs|
+      do_post api_sounds_path, { sound: attrs }
+    end
+    json(:any)[:sound]
+  end
+
+  def create_track **options
+    attributes_for :track, options do |attrs|
+      do_post api_tracks_path, { track: attrs }
+    end
+    json(:any)[:track]
+  end
+
 private
 
   def _request_path path

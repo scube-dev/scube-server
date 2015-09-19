@@ -9,8 +9,8 @@ module API
     end
 
     def create
-      @sound = Sound.new(sound_params)
-      if @sound.save
+      @sound = Sound.new
+      if SoundSaver.call(@sound, sound_params[:file])
         render :show, status: :created, location: api_sound_path(@sound)
       else
         render json: @sound.errors, status: :unprocessable_entity
