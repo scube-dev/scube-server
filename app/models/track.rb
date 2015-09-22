@@ -9,10 +9,6 @@ class Track < ActiveRecord::Base
     end
   end
 
-  def file= file
-    sounds.build file: file
-  end
-
   def sound
     sounds.first
   end

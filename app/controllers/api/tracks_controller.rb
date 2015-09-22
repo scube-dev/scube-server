@@ -12,8 +12,8 @@ module API
     end
 
     def create
-      @track = Track.new(track_params)
-      if @track.save
+      @track = Track.new(track_params.except :file)
+      if TrackSaver.call(@track, track_params[:file])
         render :show, status: :created, location: api_track_path(@track)
       else
         render json: @track.errors, status: :unprocessable_entity

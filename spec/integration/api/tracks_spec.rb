@@ -1,26 +1,19 @@
 describe 'API tracks' do
-  subject { response }
-
-  let(:track)       { create :track_with_sound }
-  let(:other_track) { create :track }
+  let(:track) { create_track }
+  subject     { response }
 
   before { api_sign_in }
 
   describe 'index' do
-    before { track and other_track }
+    before { track }
 
     it 'lists tracks' do
       jget api_tracks_path
       expect(json).to eq(
         tracks: [
           {
-            id:         track.id,
-            name:       track.name,
-            sound_path: api_sound_path(track.sound)
-          },
-          {
-            id:         other_track.id,
-            name:       other_track.name
+            id:   track[:id],
+            name: track[:name]
           }
         ]
       )
@@ -32,18 +25,23 @@ describe 'API tracks' do
       jget api_track_path track
       expect(json).to eq(
         track: {
-          id:         track.id,
-          name:       track.name,
-          sound_path: api_sound_path(track.sound)
+          id:   track[:id],
+          name: track[:name]
         }
       )
+    end
+
+    context 'when track has a sound' do
+      let!(:track) { create_track attributes_for :track_with_file_upload }
+
+      it 'includes sound path' do
+        expect(json[:track]).to include :sound_path
+      end
     end
   end
 
   describe 'create' do
-    let(:track) { attributes_for :track_with_sound_upload }
-
-    before { do_post :tracks, { track: track } }
+    before { create_track track }
 
     it { is_expected.to have_http_status 201 }
 
@@ -54,6 +52,14 @@ describe 'API tracks' do
 
     it 'returns the track' do
       expect(json).to include :track
+    end
+
+    context 'when track has a sound' do
+      let!(:track) { attributes_for :track_with_file_upload }
+
+      it 'creates related sound' do
+        expect(json[:track]).to include :sound_path
+      end
     end
   end
 end
