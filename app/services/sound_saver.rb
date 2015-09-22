@@ -1,20 +1,9 @@
-class SoundSaver
-  class << self
-    def call *args
-      new(*args).call
-    end
-  end
-
+class SoundSaver < BaseService
   attr_reader :sound, :file
 
-  def initialize sound, file, save: true
+  def initialize sound, file
     @sound  = sound
     @file   = file
-    @save   = save
-  end
-
-  def save?
-    !!@save
   end
 
   def call
@@ -22,6 +11,6 @@ class SoundSaver
     sound.sha256 = Digest::SHA256.file(file.path).hexdigest
     FileUtils.mv file.path, sound.path
     sound.mime_type = file.content_type
-    sound.save if save?
+    sound.save
   end
 end

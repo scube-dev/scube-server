@@ -1,10 +1,4 @@
-class TrackSaver
-  class << self
-    def call *args
-      new(*args).call
-    end
-  end
-
+class TrackSaver < BaseService
   attr_reader :track, :file
 
   def initialize track, file
