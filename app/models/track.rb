@@ -1,5 +1,7 @@
 class Track < ActiveRecord::Base
   has_many :sounds
+  has_many :track_authors
+  has_many :authors, through: :track_authors
 
   validates :name, presence: true
 

@@ -12,8 +12,9 @@ module API
     end
 
     def create
-      @track = Track.new(track_params.except :file)
-      if TrackSaver.call(@track, track_params[:file])
+      @track = Track.new
+      @form = TrackForm.new(track_params.except(:file), record: @track)
+      if TrackSaver.call(@form, track_params[:file])
         render :show, status: :created, location: api_track_path(@track)
       else
         render json: @track.errors, status: :unprocessable_entity
@@ -27,7 +28,7 @@ module API
     end
 
     def track_params
-      params.require(:track).permit %i[name file]
+      params.require(:track).permit *%i[name file], authors: %i[name]
     end
   end
 end

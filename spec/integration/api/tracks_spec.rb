@@ -21,8 +21,9 @@ describe 'API tracks' do
   end
 
   describe 'show' do
+    before { jget api_track_path track }
+
     it 'shows a track' do
-      jget api_track_path track
       expect(json).to eq(
         track: {
           id:   track[:id],
@@ -36,6 +37,15 @@ describe 'API tracks' do
 
       it 'includes sound path' do
         expect(json[:track]).to include :sound_path
+      end
+    end
+
+    context 'when track has authors' do
+      let(:author)  { create :author }
+      let!(:track)  { create :track, authors: [author] }
+
+      it 'includes authors' do
+        expect(json[:track]).to include authors: [{ name: author.name }]
       end
     end
   end
@@ -59,6 +69,15 @@ describe 'API tracks' do
 
       it 'creates related sound' do
         expect(json[:track]).to include :sound_path
+      end
+    end
+
+    context 'when track has authors' do
+      let(:author)  { attributes_for :author }
+      let(:track)   { attributes_for(:track).merge authors: [author] }
+
+      it 'creates related authors' do
+        expect(json[:track]).to include authors: [author]
       end
     end
   end

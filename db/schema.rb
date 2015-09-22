@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509180854) do
+ActiveRecord::Schema.define(version: 20150909212654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name",       null: false
+  end
 
   create_table "keys", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -42,6 +48,17 @@ ActiveRecord::Schema.define(version: 20150509180854) do
     t.datetime "updated_at"
   end
 
+  create_table "track_authors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "track_id",   null: false
+    t.integer  "author_id",  null: false
+  end
+
+  add_index "track_authors", ["author_id"], name: "index_track_authors_on_author_id", using: :btree
+  add_index "track_authors", ["track_id", "author_id"], name: "index_track_authors_on_track_id_and_author_id", unique: true, using: :btree
+  add_index "track_authors", ["track_id"], name: "index_track_authors_on_track_id", using: :btree
+
   create_table "tracks", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -58,4 +75,6 @@ ActiveRecord::Schema.define(version: 20150509180854) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "keys", "users"
+  add_foreign_key "track_authors", "authors"
+  add_foreign_key "track_authors", "tracks"
 end
