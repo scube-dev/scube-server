@@ -17,11 +17,10 @@ end
 
 group :development, :test do
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'rspec-rails'
-
   gem 'spork', github: 'tjouan/spork', branch: 'rspec-3'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
