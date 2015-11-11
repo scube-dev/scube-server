@@ -4,6 +4,7 @@ class Key < ActiveRecord::Base
   has_secure_token :token
 
   validates :name, presence: true
+  validates :token, uniqueness: true
 
   class << self
     def authenticate token

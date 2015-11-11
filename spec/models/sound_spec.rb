@@ -2,8 +2,11 @@ describe Sound do
   subject(:sound) { build :sound }
 
   it { is_expected.to be_valid }
+
   it { is_expected.to belong_to :track }
+
   it { is_expected.to validate_presence_of :sha256 }
+  it { is_expected.to validate_uniqueness_of :sha256 }
   it { is_expected.to validate_presence_of :mime_type }
 
   describe '#path' do
