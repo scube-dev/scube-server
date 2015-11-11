@@ -7,7 +7,7 @@ class TrackForm < BaseForm
 
   def authors= authors
     authors.each do |author|
-      record.authors.new author
+      record.authors << Author.find_or_initialize_by(name: author[:name])
     end
   end
 end
