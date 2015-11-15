@@ -3,8 +3,6 @@ RSpec.describe User do
 
   it { is_expected.to be_valid }
 
-  it { is_expected.to have_many :playlists }
-
   it { is_expected.to have_secure_password }
 
   it { is_expected.to validate_presence_of :email }

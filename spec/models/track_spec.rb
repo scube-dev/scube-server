@@ -3,8 +3,6 @@ RSpec.describe Track do
 
   it { is_expected.to be_valid }
 
-  it { is_expected.to have_many :sounds }
-
   it { is_expected.to validate_presence_of :name }
 
   describe '#sound' do
