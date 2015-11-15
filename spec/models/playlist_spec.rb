@@ -1,4 +1,4 @@
-describe Playlist do
+RSpec.describe Playlist do
   subject(:playlist) { build :playlist }
 
   it { is_expected.to be_valid }

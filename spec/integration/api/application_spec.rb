@@ -1,4 +1,4 @@
-describe 'API application' do
+RSpec.describe 'API application' do
   describe 'ping endpoint' do
     before { jget :ping }
 

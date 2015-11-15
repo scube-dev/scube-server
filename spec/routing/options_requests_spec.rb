@@ -1,4 +1,4 @@
-describe '/api OPTIONS requests routing' do
+RSpec.describe '/api OPTIONS requests routing' do
   it 'routes to API::ApplicationController#cor_preflight' do
     expect(options: '/api/some_route')
       .to route_to(

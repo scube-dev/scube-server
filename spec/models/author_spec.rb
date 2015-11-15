@@ -1,4 +1,4 @@
-describe Author do
+RSpec.describe Author do
   subject(:author) { build :author }
 
   it { is_expected.to be_valid }

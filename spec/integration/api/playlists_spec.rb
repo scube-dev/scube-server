@@ -1,4 +1,4 @@
-describe 'API playlists' do
+RSpec.describe 'API playlists' do
   before { api_sign_in }
 
   it 'lists playlists' do

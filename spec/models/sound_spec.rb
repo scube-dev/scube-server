@@ -1,4 +1,4 @@
-describe Sound do
+RSpec.describe Sound do
   subject(:sound) { build :sound }
 
   it { is_expected.to be_valid }

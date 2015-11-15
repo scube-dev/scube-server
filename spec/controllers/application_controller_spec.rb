@@ -1,4 +1,4 @@
-describe ApplicationController do
+RSpec.describe ApplicationController do
   let(:user) { create :user }
 
   describe '#current_user?' do

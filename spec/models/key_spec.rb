@@ -1,4 +1,4 @@
-describe Key do
+RSpec.describe Key do
   subject(:key) { build :key }
 
   it { is_expected.to be_valid }

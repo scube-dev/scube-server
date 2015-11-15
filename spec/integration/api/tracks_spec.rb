@@ -1,4 +1,4 @@
-describe 'API tracks' do
+RSpec.describe 'API tracks' do
   let(:track) { create_track }
   subject     { response }
 

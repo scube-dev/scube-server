@@ -1,4 +1,4 @@
-describe Track do
+RSpec.describe Track do
   subject(:track) { build :track }
 
   it { is_expected.to be_valid }

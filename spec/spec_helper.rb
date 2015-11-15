@@ -10,6 +10,7 @@ Spork.prefork do
   ActiveRecord::Migration.maintain_test_schema!
 
   RSpec.configure do |config|
+    config.disable_monkey_patching!
     config.backtrace_exclusion_patterns << /\/bundler\/gems\//
     config.infer_spec_type_from_file_location!
     config.use_transactional_fixtures = true

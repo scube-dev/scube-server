@@ -1,4 +1,4 @@
-describe 'API cross origin request' do
+RSpec.describe 'API cross origin request' do
   let(:origin) { 'http://origin.example/' }
 
   before { api_sign_in }

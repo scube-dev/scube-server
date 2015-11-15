@@ -1,4 +1,4 @@
-describe 'API sounds' do
+RSpec.describe 'API sounds' do
   subject { response }
 
   before { api_sign_in }

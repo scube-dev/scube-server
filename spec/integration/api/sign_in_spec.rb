@@ -1,4 +1,4 @@
-describe 'API sign in' do
+RSpec.describe 'API sign in' do
   let(:user)      { create :user }
   let(:email)     { user.email }
   let(:password)  { user.password }

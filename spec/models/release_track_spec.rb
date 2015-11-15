@@ -1,4 +1,4 @@
-describe ReleaseTrack do
+RSpec.describe ReleaseTrack do
   subject(:release_track) { build :release_track }
 
   it { is_expected.to be_valid }
