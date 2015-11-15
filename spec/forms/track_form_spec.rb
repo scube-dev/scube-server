@@ -1,9 +1,9 @@
 RSpec.describe TrackForm do
-  let(:track)     { attributes_for :track }
-  let(:author)    { attributes_for :author }
-  subject(:form)  { described_class.new {} }
+  subject(:form) { described_class.new {} }
 
   describe '#authors=' do
+    let(:author) { attributes_for :author }
+
     context 'when given author name does not exist' do
       it 'builds a new author for the track' do
         form.authors = [author]
