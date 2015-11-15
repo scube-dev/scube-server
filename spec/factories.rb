@@ -19,6 +19,17 @@ FactoryGirl.define do
     user
   end
 
+  factory :release do
+    name 'Some release'
+    year 1982
+  end
+
+  factory :release_track do
+    release
+    track
+    number 42
+  end
+
   factory :sound do
     sha256    '1f68f4f8f965eeb55b1d9f4b8c9dccd772ecfeb54d37e801c81aeddea69dbebf'
     mime_type 'audio/mpeg'

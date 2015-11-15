@@ -22,4 +22,39 @@ RSpec.describe TrackForm do
       end
     end
   end
+
+  describe '#release=' do
+    let(:release) { attributes_for :release }
+
+    it 'builds a release track' do
+      form.release = release.merge track_number: 42
+      expect(form.record.release_tracks)
+        .to include an_instance_of ReleaseTrack
+    end
+
+    it 'builds the release track with given track number' do
+      form.release = release.merge track_number: 42
+      expect(form.record.release_tracks)
+        .to include an_object_having_attributes number: 42
+    end
+
+    it 'builds the release track with given release' do
+      form.release = release.merge track_number: 42
+      expect(form.record.release_tracks[0].release)
+        .to be_a(Release)
+        .and be_new_record
+        .and have_attributes release
+    end
+
+    context 'when given release exists' do
+      let(:release) { create :release }
+
+      it 'associates the existing release' do
+        form.release = release.attributes.merge track_number: 42
+        expect(form.record.release_tracks[0].release)
+          .to eq(release)
+          .and be_persisted
+      end
+    end
+  end
 end

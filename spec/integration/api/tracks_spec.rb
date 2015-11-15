@@ -80,5 +80,16 @@ describe 'API tracks' do
         expect(json[:track]).to include authors: [author]
       end
     end
+
+    context 'when track has release information' do
+      let(:release) { attributes_for :release }
+      let(:track) do
+        attributes_for(:track).merge release: release.merge(track_number: 42)
+      end
+
+      it 'creates related release' do
+        expect(json[:track]).to include releases: [release]
+      end
+    end
   end
 end
