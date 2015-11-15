@@ -36,6 +36,13 @@ module AcceptanceHelpers
     json(:any)[:sound]
   end
 
+  def create_author **options
+    attributes_for :author, options do |attrs|
+      jpost api_authors_path, author: attrs
+    end
+    json(:any)[:author]
+  end
+
   def create_track **options
     attributes_for :track, options do |attrs|
       do_post api_tracks_path, track: attrs

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get '/ping', to: 'application#ping'
     get '/ping/auth', to: 'application#ping_auth'
     match '*all', to: 'application#cor_preflight', via: :options
+    resources :authors, only: %i[index show create]
     resources :playlists, only: %i[index show create update destroy]
     resources :sessions, only: :create
     resources :sounds, only: %i[show create]
