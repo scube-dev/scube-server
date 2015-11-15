@@ -22,7 +22,7 @@ module API
       if request.headers.key? 'Origin'
         "Login from external www app `#{request.headers['Origin']}'"
       else
-        "Login from external client"
+        'Login from external client'
       end
     end
   end

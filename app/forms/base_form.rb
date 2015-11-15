@@ -10,12 +10,12 @@ class BaseForm
   extend Forwardable
 
   class << self
-    def delegate_attributes(attrs)
+    def delegate_attributes attrs
       def_delegators :@record, *attrs
     end
 
-    def resource(res)
-      self.define_singleton_method(:attached_resource) { res }
+    def resource res
+      define_singleton_method(:attached_resource) { res }
     end
   end
 
@@ -23,7 +23,7 @@ class BaseForm
 
   attr_reader :record
 
-  def initialize(attributes = {}, record: self.class.attached_resource.new)
+  def initialize attributes = {}, record: self.class.attached_resource.new
     @record = record
     define_model_name
     attributes.each do |k, v|
@@ -34,7 +34,7 @@ class BaseForm
     setup if respond_to? :setup
   end
 
-  def ==(other)
+  def == other
     record == other.record
   end
 
@@ -47,16 +47,17 @@ class BaseForm
     end
   end
 
-  def update(attributes)
+  def update attributes
     record.update attributes
     save
   end
   alias update_attributes update
 
 private
+
   def define_model_name
     self.class.define_singleton_method :model_name do
-      ActiveModel::Name.new(self.attached_resource)
+      ActiveModel::Name.new(attached_resource)
     end
   end
 
