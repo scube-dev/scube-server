@@ -212,6 +212,7 @@ DEPENDENCIES
   rails (= 4.2.4)
   rails-api (~> 0.4)
   rb-kqueue
+  rspec
   rspec-rails
   shoulda-matchers
   spork!
