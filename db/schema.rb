@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111083254) do
+ActiveRecord::Schema.define(version: 20151115133134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,25 @@ ActiveRecord::Schema.define(version: 20151111083254) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "release_tracks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "release_id", null: false
+    t.integer  "track_id",   null: false
+    t.integer  "number",     null: false
+  end
+
+  add_index "release_tracks", ["release_id", "track_id", "number"], name: "index_release_tracks_on_release_id_and_track_id_and_number", unique: true, using: :btree
+  add_index "release_tracks", ["release_id"], name: "index_release_tracks_on_release_id", using: :btree
+  add_index "release_tracks", ["track_id"], name: "index_release_tracks_on_track_id", using: :btree
+
+  create_table "releases", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name",       null: false
+    t.integer  "year",       null: false
   end
 
   create_table "sounds", force: :cascade do |t|
@@ -79,6 +98,8 @@ ActiveRecord::Schema.define(version: 20151111083254) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "keys", "users"
+  add_foreign_key "release_tracks", "releases"
+  add_foreign_key "release_tracks", "tracks"
   add_foreign_key "track_authors", "authors"
   add_foreign_key "track_authors", "tracks"
 end

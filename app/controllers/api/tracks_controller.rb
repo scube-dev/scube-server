@@ -28,7 +28,9 @@ module API
     end
 
     def track_params
-      params.require(:track).permit *%i[name file], authors: %i[name]
+      params.require(:track).permit *%i[name file],
+        authors:  %i[name],
+        release:  %i[name year track_number]
     end
   end
 end
