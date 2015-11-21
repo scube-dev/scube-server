@@ -1,7 +1,7 @@
-RSpec.describe 'API cross origin request' do
+RSpec.describe 'Cross origin requests' do
   let(:origin) { 'http://origin.example/' }
 
-  before { api_sign_in }
+  before { sign_in }
 
   it 'responds to preflight request' do
     joptions :ping, {},

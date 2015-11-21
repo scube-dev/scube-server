@@ -1,14 +1,14 @@
-RSpec.describe 'API tracks' do
+RSpec.describe 'Tracks' do
   let(:track) { create_track }
   subject     { response }
 
-  before { api_sign_in }
+  before { sign_in }
 
   describe 'index' do
     before { track }
 
     it 'lists tracks' do
-      jget api_tracks_path
+      jget tracks_path
       expect(json).to eq(
         tracks: [
           {
@@ -21,7 +21,7 @@ RSpec.describe 'API tracks' do
   end
 
   describe 'show' do
-    before { jget api_track_path track }
+    before { jget track_path track }
 
     it 'shows a track' do
       expect(json).to eq(

@@ -1,4 +1,4 @@
-RSpec.describe 'API application' do
+RSpec.describe 'Application' do
   describe 'ping endpoint' do
     before { jget :ping }
 
@@ -30,7 +30,7 @@ RSpec.describe 'API application' do
 
   describe 'formats handling' do
     it 'responds with a 406 when request format is not JSON' do
-      get api_ping_path, format: :xml
+      get ping_path, format: :xml
       expect(response).to have_http_status 406
       expect(response.content_type).to eq :json
       expect(response.body).to be_empty
@@ -38,16 +38,16 @@ RSpec.describe 'API application' do
   end
 
   describe 'not found' do
-    before { api_sign_in }
+    before { sign_in }
 
     it 'responds with a 404 when route does not exist' do
-      jget '/api/not_found'
+      jget '/not_found'
       expect(response).to have_http_status 404
       expect(response.body).to be_empty
     end
 
     it 'responds with a 404 when a resource (AR) was not found' do
-      jget api_playlist_path id: 1
+      jget playlist_path id: 1
       expect(response).to have_http_status 404
       expect(response.body).to be_empty
     end

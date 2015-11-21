@@ -1,12 +1,12 @@
-RSpec.describe 'API sounds' do
+RSpec.describe 'Sounds' do
   subject { response }
 
-  before { api_sign_in }
+  before { sign_in }
 
   describe 'sound show' do
     let(:sound)           { create_sound }
     let(:request_method)  { :get }
-    let(:request_path)    { api_sound_path sound }
+    let(:request_path)    { sound_path sound }
     let(:request_show)    { send "j#{request_method}", request_path }
 
     before { request_show }
@@ -33,7 +33,7 @@ RSpec.describe 'API sounds' do
     end
 
     context 'when sound is requested by SHA256 digest' do
-      let(:request_path) { api_sound_path id: sound[:sha256] }
+      let(:request_path) { sound_path id: sound[:sha256] }
 
       it { is_expected.to have_http_status 200 }
     end
