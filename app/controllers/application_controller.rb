@@ -6,10 +6,7 @@ class ApplicationController < ActionController::API
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-  before_action :authenticate!
-
-  skip_before_action :authenticate!, only: %i[cor_preflight ping]
-
+  before_action :authenticate!, except: %i[cor_preflight ping]
   before_action :cor_filter
   before_action :json_filter!, except: :cor_preflight
 
