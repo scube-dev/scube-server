@@ -19,7 +19,7 @@ Spork.prefork do
     config.include AcceptanceHelpers, type: :feature
     config.include AcceptanceHelpers, type: :request
 
-    config.after(:all) do
+    config.after :all do
       `rm -f #{Rails.configuration.sounds_path}/*`
     end
   end
