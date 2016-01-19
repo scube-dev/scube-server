@@ -34,4 +34,36 @@ RSpec.describe 'Authors' do
       expect(json).to include :author
     end
   end
+
+  describe 'update' do
+    let(:name)    { 'new name' }
+    let(:author)  { create_author }
+
+    before { jput author_path(author), author: { name: name } }
+
+    it 'responds with no content status' do
+      expect(response).to have_http_status 204
+    end
+
+    it 'updates the author' do
+      jget author_path author[:id]
+      expect(json[:author]).to include(
+        name: 'new name'
+      )
+    end
+
+    context 'when author is invalid' do
+      let(:name) { '' }
+
+      it 'responds with unprocessable entity status' do
+        expect(response).to have_http_status 422
+      end
+
+      it 'returns errors' do
+        expect(json :any).to match(
+          name: [an_instance_of(String)]
+        )
+      end
+    end
+  end
 end

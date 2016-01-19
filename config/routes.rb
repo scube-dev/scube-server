@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/ping', to: 'application#ping'
   get '/ping/auth', to: 'application#ping_auth'
 
-  resources :authors, only: %i[index show create]
+  resources :authors, only: %i[index show create update]
 
   resources :playlists, only: %i[index show create update destroy]
 

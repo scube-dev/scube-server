@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_action :set_author, only: :show
+  before_action :set_author, only: %i[show update]
 
   def index
     @authors = Author.all
@@ -12,6 +12,14 @@ class AuthorsController < ApplicationController
     @author = Author.new(author_params)
     if @author.save
       render :show, status: :created, location: author_path(@author)
+    else
+      render json: @author.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @author.update author_params
+      head :no_content
     else
       render json: @author.errors, status: :unprocessable_entity
     end
