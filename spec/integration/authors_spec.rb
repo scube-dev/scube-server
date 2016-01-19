@@ -1,14 +1,14 @@
-RSpec.describe 'API authors' do
+RSpec.describe 'Authors' do
   let(:author)  { create_author }
   subject       { response }
 
-  before { api_sign_in }
+  before { sign_in }
 
   describe 'index' do
     before { author }
 
     it 'lists authors' do
-      jget api_authors_path
+      jget authors_path
       expect(json).to eq(
         authors: [
           {

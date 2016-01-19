@@ -1,8 +1,8 @@
-RSpec.describe '/api OPTIONS requests routing' do
-  it 'routes to API::ApplicationController#cor_preflight' do
-    expect(options: '/api/some_route')
+RSpec.describe 'OPTIONS requests routing' do
+  it 'routes to ApplicationController#cor_preflight' do
+    expect(options: '/some_route')
       .to route_to(
-        controller: 'api/application',
+        controller: 'application',
         action: 'cor_preflight',
         all: 'some_route'
       )

@@ -1,10 +1,10 @@
-RSpec.describe 'API sign in' do
+RSpec.describe 'Sign in' do
   let(:user)      { create :user }
   let(:email)     { user.email }
   let(:password)  { user.password }
 
   def do_create
-    jpost api_sessions_path, session: {
+    jpost sessions_path, session: {
       email:    email,
       password: password
     }

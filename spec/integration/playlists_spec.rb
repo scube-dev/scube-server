@@ -1,5 +1,5 @@
-RSpec.describe 'API playlists' do
-  before { api_sign_in }
+RSpec.describe 'Playlists' do
+  before { sign_in }
 
   it 'lists playlists' do
     playlist = create :playlist
@@ -14,7 +14,7 @@ RSpec.describe 'API playlists' do
 
   it 'shows a playlist' do
     playlist = create :playlist
-    jget api_playlist_path playlist
+    jget playlist_path playlist
     expect(json).to eq(
       playlist: {
         id:   playlist.id,
@@ -65,14 +65,14 @@ RSpec.describe 'API playlists' do
     let(:name)      { 'new name' }
     let(:playlist)  { create :playlist }
 
-    before { jput api_playlist_path(playlist), playlist: { name: name } }
+    before { jput playlist_path(playlist), playlist: { name: name } }
 
     it 'responds with no content status' do
       expect(response).to have_http_status 204
     end
 
     it 'updates the playlist' do
-      jget api_playlist_path playlist
+      jget playlist_path playlist
       expect(json[:playlist]).to include(
         name: 'new name'
       )
@@ -95,8 +95,8 @@ RSpec.describe 'API playlists' do
 
   it 'destroys a playlist' do
     playlist = create :playlist
-    expect { jdelete api_playlist_path playlist }
-      .to change { jget api_playlist_path playlist }
+    expect { jdelete playlist_path playlist }
+      .to change { jget playlist_path playlist }
       .from(200).to 404
   end
 end

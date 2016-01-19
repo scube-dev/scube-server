@@ -3,14 +3,14 @@ module AcceptanceHelpers
     @integration_session.send :process, :options, path, options, headers
   end
 
-  def api_sign_in
+  def sign_in
     create :user do |o|
-      jpost api_sessions_path, session: {
+      jpost sessions_path, session: {
         email:    o.email,
         password: o.password
       }
     end
-    @api_key_token = json[:session][:token]
+    @key_token = json[:session][:token]
   end
 
   %i[head get post put delete options].each do |verb|
@@ -31,21 +31,21 @@ module AcceptanceHelpers
 
   def create_sound **options
     attributes_for :sound_with_file_upload, options do |attrs|
-      do_post api_sounds_path, sound: attrs
+      do_post sounds_path, sound: attrs
     end
     json(:any)[:sound]
   end
 
   def create_author **options
     attributes_for :author, options do |attrs|
-      jpost api_authors_path, author: attrs
+      jpost authors_path, author: attrs
     end
     json(:any)[:author]
   end
 
   def create_track **options
     attributes_for :track, options do |attrs|
-      do_post api_tracks_path, track: attrs
+      do_post tracks_path, track: attrs
     end
     json(:any)[:track]
   end
@@ -53,15 +53,15 @@ module AcceptanceHelpers
 private
 
   def _request_path path
-    path.is_a?(Symbol) ? send(:"api_#{path}_path") : path
+    path.is_a?(Symbol) ? send(:"#{path}_path") : path
   end
 
   def _request_headers
     {}.tap do |o|
       o.merge!(
         'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
-          .encode_credentials(@api_key_token)
-      ) if @api_key_token
+          .encode_credentials(@key_token)
+      ) if @key_token
     end
   end
 
