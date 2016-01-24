@@ -8,8 +8,8 @@ Installation
 ------------
 
   scube-server requires ruby ~> 2.0 and PostgreSQL ~> 9.4. You will
-need rubygems and the `bundler` gem installed. Check `rvm` key in
-`.travis.yml` configuration for a list of rubies currently supported.
+need rubygems and the `bundler` gem installed. Check the `.travis.yml`
+file for a list of rubies currently supported.
 
 * Clone the repository
 * Install the dependencies:
