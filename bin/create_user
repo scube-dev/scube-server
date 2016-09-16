@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'io/console'
+require './config/environment'
+
+
+puts 'mail address:'
+user_mail_address = $stdin.gets.chomp
+
+puts 'password:'
+user_password = $stdin.noecho(&:gets).chomp
+
+puts 'ok, creating user…'
+User.create!(
+  email: user_mail_address,
+  password: user_password
+)
+puts 'done'
