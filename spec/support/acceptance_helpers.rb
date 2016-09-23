@@ -30,7 +30,7 @@ module AcceptanceHelpers
   end
 
   def create_sound **options
-    attributes_for :sound_with_file_upload, options do |attrs|
+    attributes_for :sound, :with_file_upload, options do |attrs|
       do_post sounds_path, sound: attrs
     end
     json(:any)[:sound]

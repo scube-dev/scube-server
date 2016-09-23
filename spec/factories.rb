@@ -34,7 +34,7 @@ FactoryGirl.define do
     sha256    '1f68f4f8f965eeb55b1d9f4b8c9dccd772ecfeb54d37e801c81aeddea69dbebf'
     mime_type 'audio/mpeg'
 
-    factory :sound_with_file_upload do
+    trait :with_file_upload do
       file do
         sound_file = build_sound_file
         Rack::Test::UploadedFile.new(sound_file.path, sound_file.content_type)
@@ -45,7 +45,7 @@ FactoryGirl.define do
   factory :track do
     name 'Some track'
 
-    factory :track_with_file_upload do
+    trait :with_file_upload do
       file do
         sound_file = build_sound_file
         Rack::Test::UploadedFile.new(sound_file.path, sound_file.content_type)

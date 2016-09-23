@@ -19,7 +19,7 @@ RSpec.describe 'Sounds' do
 
     it 'returns the sound file as the body' do
       expect(response.body)
-        .to eq_file_content attributes_for(:sound_with_file_upload)[:file].path
+        .to eq_file_content attributes_for(:sound, :with_file_upload)[:file].path
     end
 
     context 'when method is HEAD' do
@@ -40,7 +40,7 @@ RSpec.describe 'Sounds' do
   end
 
   describe 'sounds create' do
-    let(:sound) { attributes_for :sound_with_file_upload }
+    let(:sound) { attributes_for :sound, :with_file_upload }
 
     before { create_sound sound }
 
@@ -62,7 +62,7 @@ RSpec.describe 'Sounds' do
     end
 
     context 'when sound is invalid' do
-      let(:sound) { attributes_for :sound_with_file_upload, file: nil }
+      let(:sound) { attributes_for :sound, :with_file_upload, file: nil }
 
       it { is_expected.to have_http_status 422 }
 
