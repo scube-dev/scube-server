@@ -1,5 +1,5 @@
 def build_sound_file
-  File.new("#{Rails.root}/spec/fixtures/test.mp3").tap do |o|
+  File.new('spec/fixtures/test.mp3').tap do |o|
     o.define_singleton_method(:content_type) { 'audio/mpeg' }
   end
 end
