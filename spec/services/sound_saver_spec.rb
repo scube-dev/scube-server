@@ -27,6 +27,10 @@ RSpec.describe SoundSaver do
       expect(sound).to be_persisted
     end
 
+    it 'returns true' do
+      expect(service.call).to be true
+    end
+
     context 'when no file upload is given' do
       let(:upload) { nil }
 
@@ -38,6 +42,10 @@ RSpec.describe SoundSaver do
       it 'does not save the sound' do
         service.call
         expect(sound).not_to be_persisted
+      end
+
+      it 'returns false' do
+        expect(service.call).to be false
       end
     end
   end
