@@ -12,6 +12,7 @@ RSpec::Matchers.define :eq_file_content do |expected_file_path|
   end
 
   def generate_message actual, verb = 'to eq'
-    "expected `#{actual[0..15].inspect.tr ?", ''}...' #{verb} `#{expected}' content"
+    "expected `#{actual[0..15].inspect.tr ?", ''}...'" \
+      " #{verb} `#{expected}' content"
   end
 end
