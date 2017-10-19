@@ -5,11 +5,8 @@ language: ruby
 cache: bundler
 rvm:
   - 2.3
-  - ruby-head
-  - 2.0
-  - 2.1
   - 2.2
-  - rbx-2
+  - 2.1
 before_script:
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:create db:migrate db:test:prepare
@@ -17,11 +14,6 @@ before_script:
   - 'echo -e "test:\n  secret_key_base: $(bundle exec rake secret)" > config/secrets.yml'
   - mkdir -p data/sounds data/test/sounds
 script: RAILS_ENV=test bundle exec rake
-matrix:
-  fast_finish: true
-  allow_failures:
-    - rvm: ruby-head
-    - rvm: rbx-2
 notifications:
   email:
     - tj+scube_server@a13.fr
