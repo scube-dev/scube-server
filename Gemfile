@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2'
-gem 'rails-api', '~> 0.4'
+gem 'rails', '4.2.10'
+gem 'rails-api', '0.4.1'
+gem 'rake', '~> 10.5'
+
 gem 'pg'
 gem 'bcrypt'
 gem 'unicorn-rails'
