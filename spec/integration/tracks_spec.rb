@@ -64,8 +64,8 @@ RSpec.describe 'Tracks' do
       expect(json).to include :track
     end
 
-    context 'when track has a sound' do
-      let!(:track) { attributes_for :track, :with_file_upload }
+    context 'when track has a file' do
+      let(:track) { attributes_for :track, :with_file_upload }
 
       it 'creates related sound' do
         expect(json[:track]).to include :sound_path
@@ -89,6 +89,20 @@ RSpec.describe 'Tracks' do
 
       it 'creates related release' do
         expect(json[:track]).to include releases: [release]
+      end
+    end
+
+    context 'when track is invalid' do
+      let(:track) { attributes_for :track, name: nil }
+
+      it 'responds with unprocessable entity status' do
+        expect(response).to have_http_status 422
+      end
+
+      it 'returns errors' do
+        expect(json :any).to match(
+          name: [an_instance_of(String)]
+        )
       end
     end
   end
