@@ -54,7 +54,7 @@ RSpec.describe 'Sounds' do
     it 'returns the sound' do
       expect(json).to match(
         sound: {
-          id:         an_instance_of(Fixnum),
+          id:         Integer,
           sha256:     /\A\h+\z/,
           mime_type: 'audio/mpeg'
         }
