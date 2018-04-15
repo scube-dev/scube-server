@@ -47,17 +47,11 @@ class Form
     end
   end
 
-  def update attributes
-    record.update attributes
-    save
-  end
-  alias update_attributes update
-
 private
 
   def define_model_name
     self.class.define_singleton_method :model_name do
-      ActiveModel::Name.new(attached_resource)
+      ActiveModel::Name.new attached_resource
     end
   end
 
