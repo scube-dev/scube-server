@@ -4,7 +4,7 @@ def build_sound_file
   end
 end
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :author do
     name 'Some author'
   end

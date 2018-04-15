@@ -15,7 +15,7 @@ Spork.prefork do
     config.infer_spec_type_from_file_location!
     config.use_transactional_fixtures = true
 
-    config.include FactoryGirl::Syntax::Methods
+    config.include FactoryBot::Syntax::Methods
     config.include AcceptanceHelpers, type: :feature
     config.include AcceptanceHelpers, type: :request
 
@@ -27,5 +27,5 @@ end
 
 Spork.each_run do
   Rails.application.reload_routes!
-  FactoryGirl.reload
+  FactoryBot.reload
 end
