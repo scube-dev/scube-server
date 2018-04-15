@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.10'
 gem 'rails-api', '0.4.1'
-gem 'rake', '~> 10.5'
+gem 'rake'
 
 gem 'pg', '~> 0.18'
 gem 'bcrypt'
