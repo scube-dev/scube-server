@@ -8,7 +8,13 @@ class TrackSaver < BaseService
   end
 
   def call
-    return false unless sound_saver.call(track.sounds.new, file) if file
+    if file
+      sound = track.sounds.new
+      unless sound_saver.call sound, file
+        @track.errors.messages.merge! file: sound.errors.messages
+        return false
+      end
+    end
     track.save
   end
 

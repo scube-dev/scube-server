@@ -16,7 +16,7 @@ class TracksController < ApplicationController
     if TrackSaver.call(@form, track_params[:file])
       render :show, status: :created, location: track_path(@track)
     else
-      render json: @track.errors, status: :unprocessable_entity
+      render json: @form.errors, status: :unprocessable_entity
     end
   end
 
