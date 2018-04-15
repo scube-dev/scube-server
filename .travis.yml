@@ -4,6 +4,7 @@ language: c
 notifications:
   email:
     - tj+scube_server@a13.fr
+  on_success: never
 
 env:
   - RUBYVER=2.5-stable
