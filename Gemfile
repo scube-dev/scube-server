@@ -11,7 +11,7 @@ gem 'has_secure_token'
 
 gem 'rabl'
 
-gem 'bootsnap', '~> 1.3', require: false
+gem 'bootsnap', require: false
 
 
 group :development do
@@ -26,7 +26,7 @@ end
 group :test do
   gem 'rspec'
   gem 'factory_bot_rails'
-  gem 'shoulda-matchers', '~> 3.1'
+  gem 'shoulda-matchers'
 
   gem 'rb-kqueue', require: false
   gem 'guard', require: false
