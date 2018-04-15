@@ -15,6 +15,13 @@ RSpec.configure do |config|
   config.include AcceptanceHelpers, type: :feature
   config.include AcceptanceHelpers, type: :request
 
+  Shoulda::Matchers.configure do |config|
+    config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
+
   config.after :all do
     `rm -f #{Rails.configuration.sounds_path}/*`
   end
