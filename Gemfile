@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.10'
+%w[
+  actionpack
+  actionview
+  activemodel
+  activerecord
+  activesupport
+  railties
+].each do |gem_name|
+  gem gem_name, '4.2.10'
+end
 gem 'rails-api', '0.4.1'
 
 gem 'pg', '~> 0.18'
