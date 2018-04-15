@@ -19,9 +19,9 @@ private
 
   def key_name_for_current_request
     if request.headers.key? 'Origin'
-      "Login from external www app `#{request.headers['Origin']}'"
+      "Session from external www app `#{request.headers['Origin']}'"
     else
-      'Login from external client'
+      'Session from external client'
     end
   end
 end
