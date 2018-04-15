@@ -31,11 +31,6 @@ class Form
       recipient = respond_to?(meth) ? self : record
       recipient.send meth, v
     end
-    setup if respond_to? :setup
-  end
-
-  def == other
-    record == other.record
   end
 
   def save
