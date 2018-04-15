@@ -12,6 +12,8 @@ gem 'has_secure_token'
 
 gem 'rabl'
 
+gem 'bootsnap', '~> 1.3', require: false
+
 
 group :development do
   gem 'better_errors'
