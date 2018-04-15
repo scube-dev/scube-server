@@ -29,7 +29,7 @@ group :test do
   gem 'factory_bot_rails'
   gem 'shoulda-matchers', '~> 3.1'
 
-  gem 'rb-kqueue',      require: false
-  gem 'guard',          require: false
-  gem 'guard-rspec',    require: false
+  gem 'rb-kqueue', require: false
+  gem 'guard', require: false
+  gem 'guard-rspec', require: false
 end
