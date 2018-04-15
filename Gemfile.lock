@@ -203,7 +203,6 @@ DEPENDENCIES
   rabl
   rails (= 4.2.10)
   rails-api (= 0.4.1)
-  rake
   rb-kqueue
   rspec
   rspec-rails
