@@ -70,6 +70,23 @@ RSpec.describe 'Tracks' do
       it 'creates related sound' do
         expect(json[:track]).to include :sound_path
       end
+
+      context 'when file content-type is missing' do
+        let :track do
+          attributes_for(:track).merge \
+            file: Rack::Test::UploadedFile.new('spec/fixtures/test.mp3', nil)
+        end
+
+        it { is_expected.to have_http_status 422 }
+
+        it 'returns an error about the file content-type' do
+          expect(json :any).to match(
+            file: {
+              mime_type: [an_instance_of(String)]
+            }
+          )
+        end
+      end
     end
 
     context 'when track has authors' do
