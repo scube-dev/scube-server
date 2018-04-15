@@ -7,9 +7,6 @@ class TracksController < ApplicationController
     @tracks = Track.with_sounds
   end
 
-  def show
-  end
-
   def create
     @track = Track.new
     @form = TrackForm.new track_params.except(:file), record: @track

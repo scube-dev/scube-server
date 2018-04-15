@@ -5,9 +5,6 @@ class PlaylistsController < ApplicationController
     @playlists = Playlist.all
   end
 
-  def show
-  end
-
   def create
     @playlist = current_user.playlists.build playlist_params
     if @playlist.save

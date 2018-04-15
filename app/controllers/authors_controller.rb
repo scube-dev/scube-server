@@ -5,9 +5,6 @@ class AuthorsController < ApplicationController
     @authors = Author.all
   end
 
-  def show
-  end
-
   def create
     @author = Author.new author_params
     if @author.save
