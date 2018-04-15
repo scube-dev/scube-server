@@ -15,7 +15,7 @@ RSpec.describe 'Sign in' do
   it 'returns a token' do
     expect(json).to match(
       session: {
-        id:     an_instance_of(Fixnum),
+        id:     Integer,
         token:  /\A[\w\d]{24}\z/
       }
     )

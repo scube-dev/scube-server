@@ -35,7 +35,7 @@ RSpec.describe 'Playlists' do
     it 'returns the playlist' do
       expect(json).to match(
         playlist: {
-          id:   an_instance_of(Fixnum),
+          id:   Integer,
           name: playlist[:name]
         }
       )
