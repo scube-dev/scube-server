@@ -52,13 +52,11 @@ RSpec.describe 'Sounds' do
     end
 
     it 'returns the sound' do
-      expect(json).to match(
-        sound: {
-          id:         Integer,
-          sha256:     /\A\h+\z/,
-          mime_type: 'audio/mpeg'
-        }
-      )
+      expect(json).to match sound: {
+        id: Integer,
+        sha256: /\A\h+\z/,
+        mime_type: 'audio/mpeg'
+      }
     end
 
     context 'when sound is invalid' do
@@ -67,9 +65,7 @@ RSpec.describe 'Sounds' do
       it { is_expected.to have_http_status 422 }
 
       it 'returns errors' do
-        expect(json :any).to include(
-          sha256: [an_instance_of(String)]
-        )
+        expect(json :any).to include sha256: [String]
       end
     end
   end

@@ -1,4 +1,4 @@
-class SoundSaver < BaseService
+class SoundSaver < Service
   attr_reader :sound, :file
 
   def initialize sound, file

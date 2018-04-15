@@ -14,7 +14,7 @@ RSpec.describe SoundSaver do
 
     it 'moves the given file' do
       service.call
-      expect(File.read(sound.path)).to eq File.read(file)
+      expect(File.read sound.path).to eq File.read file
     end
 
     it 'sets the MIME type given with the file upload' do

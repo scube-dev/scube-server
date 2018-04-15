@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate!, only: :create
 
   def create
-    user = User.find_by_email(session_params[:email])
+    user = User.find_by_email session_params[:email]
 
     unless user.try :authenticate?, params[:session][:password]
       return render json: '', status: :not_found

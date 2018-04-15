@@ -9,7 +9,7 @@ class AuthorsController < ApplicationController
   end
 
   def create
-    @author = Author.new(author_params)
+    @author = Author.new author_params
     if @author.save
       render :show, status: :created, location: author_path(@author)
     else
@@ -28,7 +28,7 @@ class AuthorsController < ApplicationController
 private
 
   def set_author
-    @author = Author.find(params[:id])
+    @author = Author.find params[:id]
   end
 
   def author_params

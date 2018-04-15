@@ -9,14 +9,10 @@ RSpec.describe 'Tracks' do
 
     it 'lists tracks' do
       jget tracks_path
-      expect(json).to eq(
-        tracks: [
-          {
-            id:   track[:id],
-            name: track[:name]
-          }
-        ]
-      )
+      expect(json).to eq tracks: [{
+        id: track[:id],
+        name: track[:name]
+      }]
     end
   end
 
@@ -24,12 +20,10 @@ RSpec.describe 'Tracks' do
     before { jget track_path track }
 
     it 'shows a track' do
-      expect(json).to eq(
-        track: {
-          id:   track[:id],
-          name: track[:name]
-        }
-      )
+      expect(json).to eq track: {
+        id: track[:id],
+        name: track[:name]
+      }
     end
 
     context 'when track has a sound' do
@@ -80,11 +74,9 @@ RSpec.describe 'Tracks' do
         it { is_expected.to have_http_status 422 }
 
         it 'returns an error about the file content-type' do
-          expect(json :any).to match(
-            file: {
-              mime_type: [an_instance_of(String)]
-            }
-          )
+          expect(json :any).to match file: {
+            mime_type: [String]
+          }
         end
       end
     end
@@ -117,9 +109,7 @@ RSpec.describe 'Tracks' do
       end
 
       it 'returns errors' do
-        expect(json :any).to match(
-          name: [an_instance_of(String)]
-        )
+        expect(json :any).to match name: [String]
       end
     end
   end

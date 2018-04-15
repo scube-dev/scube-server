@@ -9,7 +9,7 @@ class SoundsController < ApplicationController
 
   def create
     @sound = Sound.new
-    if SoundSaver.call(@sound, sound_params[:file])
+    if SoundSaver.call @sound, sound_params[:file]
       render :show, status: :created, location: sound_path(@sound)
     else
       render json: @sound.errors, status: :unprocessable_entity
@@ -20,8 +20,8 @@ private
 
   def set_sound
     @sound = case params[:id]
-      when /\A\d+\z/  then Sound.find(params[:id])
-      when /\A\h+\z/  then Sound.find_by_sha256!(params[:id])
+      when /\A\d+\z/ then Sound.find params[:id]
+      when /\A\h+\z/ then Sound.find_by_sha256! params[:id]
     end
   end
 

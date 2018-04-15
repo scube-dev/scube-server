@@ -9,14 +9,10 @@ RSpec.describe 'Authors' do
 
     it 'lists authors' do
       jget authors_path
-      expect(json).to eq(
-        authors: [
-          {
-            id:   author[:id],
-            name: author[:name]
-          }
-        ]
-      )
+      expect(json).to eq authors: [{
+        id: author[:id],
+        name: author[:name]
+      }]
     end
   end
 
@@ -47,9 +43,7 @@ RSpec.describe 'Authors' do
 
     it 'updates the author' do
       jget author_path author[:id]
-      expect(json[:author]).to include(
-        name: 'new name'
-      )
+      expect(json[:author]).to include name: 'new name'
     end
 
     context 'when author is invalid' do
@@ -60,9 +54,7 @@ RSpec.describe 'Authors' do
       end
 
       it 'returns errors' do
-        expect(json :any).to match(
-          name: [an_instance_of(String)]
-        )
+        expect(json :any).to match name: [String]
       end
     end
   end

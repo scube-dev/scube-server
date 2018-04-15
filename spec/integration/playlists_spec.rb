@@ -4,23 +4,19 @@ RSpec.describe 'Playlists' do
   it 'lists playlists' do
     playlist = create :playlist
     jget :playlists
-    expect(json).to eq(
-      playlists: [{
-        id:   playlist.id,
-        name: playlist.name
-      }]
-    )
+    expect(json).to eq playlists: [{
+      id: playlist.id,
+      name: playlist.name
+    }]
   end
 
   it 'shows a playlist' do
     playlist = create :playlist
     jget playlist_path playlist
-    expect(json).to eq(
-      playlist: {
-        id:   playlist.id,
-        name: playlist.name
-      }
-    )
+    expect(json).to eq playlist: {
+      id: playlist.id,
+      name: playlist.name
+    }
   end
 
   describe 'playlists create' do
@@ -33,12 +29,10 @@ RSpec.describe 'Playlists' do
     end
 
     it 'returns the playlist' do
-      expect(json).to match(
-        playlist: {
-          id:   Integer,
-          name: playlist[:name]
-        }
-      )
+      expect(json).to match playlist: {
+        id: Integer,
+        name: playlist[:name]
+      }
     end
 
     it 'creates the playlist' do
@@ -54,9 +48,7 @@ RSpec.describe 'Playlists' do
       end
 
       it 'returns errors' do
-        expect(json :any).to match(
-          name: [an_instance_of(String)]
-        )
+        expect(json :any).to match name: [String]
       end
     end
   end
@@ -73,9 +65,7 @@ RSpec.describe 'Playlists' do
 
     it 'updates the playlist' do
       jget playlist_path playlist
-      expect(json[:playlist]).to include(
-        name: 'new name'
-      )
+      expect(json[:playlist]).to include name: 'new name'
     end
 
     context 'when playlist is invalid' do
@@ -86,9 +76,7 @@ RSpec.describe 'Playlists' do
       end
 
       it 'returns errors' do
-        expect(json :any).to match(
-          name: [an_instance_of(String)]
-        )
+        expect(json :any).to match name: [String]
       end
     end
   end
@@ -97,6 +85,7 @@ RSpec.describe 'Playlists' do
     playlist = create :playlist
     expect { jdelete playlist_path playlist }
       .to change { jget playlist_path playlist }
-      .from(200).to 404
+      .from(200)
+      .to 404
   end
 end

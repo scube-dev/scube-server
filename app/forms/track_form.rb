@@ -1,4 +1,4 @@
-class TrackForm < BaseForm
+class TrackForm < Form
   resource Track
 
   delegate_attributes %i[
@@ -13,8 +13,8 @@ class TrackForm < BaseForm
 
   def release= attributes
     record.release_tracks.new(
-      release:  Release.find_or_initialize_by(attributes.slice *%i[name year]),
-      number:   attributes[:track_number]
+      release: Release.find_or_initialize_by(attributes.slice *%i[name year]),
+      number: attributes[:track_number]
     )
   end
 end

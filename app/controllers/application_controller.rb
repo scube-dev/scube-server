@@ -45,7 +45,7 @@ class ApplicationController < ActionController::API
 private
 
   def authenticate!
-    if key = authenticate_with_http_token { |t| Key.authenticate(t) }
+    if key = authenticate_with_http_token { |t| Key.authenticate t }
       self.current_user = key.user
     end
     head :unauthorized unless current_user?

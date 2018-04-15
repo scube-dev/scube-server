@@ -3,7 +3,7 @@ RSpec.describe 'Application' do
     before { jget :ping }
 
     it 'responds with a pong' do
-      expect(json).to eq(pong: true)
+      expect(json).to eq pong: true
     end
   end
 
@@ -19,7 +19,7 @@ RSpec.describe 'Application' do
 
     context 'when requests has a valid authentication token' do
       let(:key) { create :key }
-      let(:headers) do {
+      let :headers do {
         'HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Token
           .encode_credentials(key.token)
       } end

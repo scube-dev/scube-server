@@ -7,7 +7,9 @@ RSpec.describe TrackForm do
     context 'when given author name does not exist' do
       it 'builds a new author for the track' do
         form.authors = [author]
-        expect(form.record.authors[0]).to be_an(Author).and be_new_record
+        expect(form.record.authors[0])
+          .to be_an(Author)
+          .and be_new_record
       end
     end
 

@@ -1,4 +1,4 @@
-class TrackSaver < BaseService
+class TrackSaver < Service
   attr_reader :track, :file
 
   def initialize track, file, sound_saver: SoundSaver

@@ -12,8 +12,8 @@ class TracksController < ApplicationController
 
   def create
     @track = Track.new
-    @form = TrackForm.new(track_params.except(:file), record: @track)
-    if TrackSaver.call(@form, track_params[:file])
+    @form = TrackForm.new track_params.except(:file), record: @track
+    if TrackSaver.call @form, track_params[:file]
       render :show, status: :created, location: track_path(@track)
     else
       render json: @form.errors, status: :unprocessable_entity
@@ -23,12 +23,12 @@ class TracksController < ApplicationController
 private
 
   def set_track
-    @track = Track.find(params[:id])
+    @track = Track.find params[:id]
   end
 
   def track_params
     params.require(:track).permit *%i[name file],
-      authors:  %i[name],
-      release:  %i[name year track_number]
+      authors: %i[name],
+      release: %i[name year track_number]
   end
 end

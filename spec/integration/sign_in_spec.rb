@@ -13,15 +13,13 @@ RSpec.describe 'Sign in' do
   before { do_create }
 
   it 'returns a token' do
-    expect(json).to match(
-      session: {
-        id:     Integer,
-        token:  /\A[\w\d]{24}\z/
-      }
-    )
+    expect(json).to match session: {
+      id: Integer,
+      token: /\A[\w\d]{24}\z/
+    }
   end
 
-  [:email, :password].each do |attr|
+  %i[email password].each do |attr|
     context "with invalid #{attr}" do
       let(attr) { 'INVALID' }
 

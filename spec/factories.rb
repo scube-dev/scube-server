@@ -37,7 +37,7 @@ FactoryBot.define do
     trait :with_file_upload do
       file do
         sound_file = build_sound_file
-        Rack::Test::UploadedFile.new(sound_file.path, sound_file.content_type)
+        Rack::Test::UploadedFile.new sound_file.path, sound_file.content_type
       end
     end
   end
@@ -48,7 +48,7 @@ FactoryBot.define do
     trait :with_file_upload do
       file do
         sound_file = build_sound_file
-        Rack::Test::UploadedFile.new(sound_file.path, sound_file.content_type)
+        Rack::Test::UploadedFile.new sound_file.path, sound_file.content_type
       end
     end
   end
