@@ -65,7 +65,7 @@ RSpec.describe 'Tracks' do
     end
 
     context 'when track has a sound' do
-      let!(:track) { attributes_for :track, :with_file_upload }
+      let(:track) { attributes_for :track, :with_file_upload }
 
       it 'creates related sound' do
         expect(json[:track]).to include :sound_path
