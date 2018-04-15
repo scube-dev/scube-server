@@ -4,8 +4,4 @@ class Service
       new(*args).call
     end
   end
-
-  def save?
-    !!@save
-  end
 end
