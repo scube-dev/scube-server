@@ -25,7 +25,7 @@ end
 group :test do
   gem 'rspec'
   gem 'spork', github: 'tjouan/spork', branch: 'rspec-3'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'shoulda-matchers', '~> 2.8'
 
   gem 'rb-kqueue',      require: false
