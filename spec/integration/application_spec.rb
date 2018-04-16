@@ -29,10 +29,10 @@ RSpec.describe 'Application' do
   end
 
   describe 'formats handling' do
-    it 'responds with a 406 when request format is not JSON' do
-      get ping_path, format: :xml
+    it 'responds with a 406 when request does not accept JSON' do
+      get ping_path, {}, { 'Accept' => 'application/xml' }
       expect(response).to have_http_status 406
-      expect(response.content_type).to eq :json
+      expect(response['Content-Type']).to eq 'application/json'
       expect(response.body).to be_empty
     end
   end
