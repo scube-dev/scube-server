@@ -40,15 +40,16 @@ RSpec.describe 'Sounds' do
   end
 
   describe 'sounds create' do
-    let(:sound) { attributes_for :sound, :with_file_upload }
+    let(:sound) { create_sound }
 
-    before { create_sound sound }
+    before { sound }
 
     it { is_expected.to have_http_status 201 }
 
     it 'creates the sound' do
+      sound_file = attributes_for(:sound, :with_file_upload).fetch :file
       jget response.location
-      expect(response.body).to eq_file_content sound[:file].path
+      expect(response.body).to eq_file_content sound_file.path
     end
 
     it 'returns the sound' do
@@ -60,7 +61,7 @@ RSpec.describe 'Sounds' do
     end
 
     context 'when sound is invalid' do
-      let(:sound) { attributes_for :sound, :with_file_upload, file: nil }
+      let(:sound) { create_sound file: nil }
 
       it { is_expected.to have_http_status 422 }
 
