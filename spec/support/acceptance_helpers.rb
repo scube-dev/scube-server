@@ -30,9 +30,8 @@ module AcceptanceHelpers
   end
 
   def create_sound **options
-    attributes_for :sound, :with_file_upload, options do |attrs|
-      do_post sounds_path, sound: attrs
-    end
+    attrs = attributes_for(:sound, :with_file_upload).select { |k| k == :file }
+    do_post sounds_path, sound: attrs.merge(options)
     json(:any)[:sound]
   end
 
