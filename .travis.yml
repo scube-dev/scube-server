@@ -1,6 +1,6 @@
 sudo: required
 dist: trusty
-language: c
+language: minimal
 notifications:
   email:
     - tj+scube_server@a13.fr
