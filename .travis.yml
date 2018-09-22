@@ -1,6 +1,10 @@
 sudo: required
 dist: trusty
 language: minimal
+addons:
+  apt:
+    packages:
+      - postgresql-9.6
 notifications:
   email:
     - tj+scube_server@a13.fr
@@ -17,6 +21,8 @@ cache:
   timeout: 3600
 
 before_install:
+  - sudo sed -i -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart
   - . <(curl -ksS https://vault.a13.fr/dev/travis-utils/install-before.sh)
 install:
   - . <(curl -ksS https://vault.a13.fr/dev/travis-utils/install-bundler.sh)
