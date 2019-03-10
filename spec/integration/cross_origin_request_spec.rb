@@ -9,7 +9,7 @@ RSpec.describe 'Cross origin requests' do
       'Access-Control-Request-Method'   => 'GET',
       'Access-Control-Request-Headers'  =>
         'Authorization, Content-Type, Content-Length, X-Requested-With'
-    expect(response.headers).to include(
+    expect(response.headers.to_h).to include(
       'Access-Control-Allow-Origin'       => origin,
       'Access-Control-Allow-Credentials'  => 'true',
       'Access-Control-Allow-Methods'      => 'GET, POST, PUT, DELETE',
@@ -21,7 +21,7 @@ RSpec.describe 'Cross origin requests' do
 
   it 'responds to basic request' do
     jget :ping, {}, 'Origin' => origin
-    expect(response.headers).to include(
+    expect(response.headers.to_h).to include(
       'Access-Control-Allow-Origin'       => origin,
       'Access-Control-Allow-Credentials'  => 'true',
       'Access-Control-Expose-Headers'     => 'Content-Length'

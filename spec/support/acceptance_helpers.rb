@@ -1,6 +1,6 @@
 module AcceptanceHelpers
-  def options path, options = nil, headers = nil
-    @integration_session.send :process, :options, path, options, headers
+  def options path, args
+    @integration_session.send :process_with_kwargs, :options, path, args
   end
 
   def sign_in
@@ -15,7 +15,9 @@ module AcceptanceHelpers
 
   %i[head get post put delete options].each do |verb|
     define_method :"do_#{verb}" do |path, params = nil, headers = {}|
-      send verb, _request_path(path), params, _request_headers.merge(headers)
+      send verb, _request_path(path),
+        params: params,
+        headers: _request_headers.merge(headers)
     end
 
     define_method :"j#{verb}" do |path, params = nil, headers = {}|

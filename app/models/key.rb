@@ -1,9 +1,8 @@
-class Key < ActiveRecord::Base
+class Key < ApplicationRecord
   belongs_to :user
 
   has_secure_token :token
 
-  validates :user, presence: true
   validates :name, presence: true
   validates :token, uniqueness: true
 

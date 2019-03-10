@@ -3,9 +3,6 @@ RSpec.describe ReleaseTrack do
 
   it { is_expected.to be_valid }
 
-  it { is_expected.to validate_presence_of :release }
-  it { is_expected.to validate_presence_of :track }
-
   specify do
     is_expected
       .to validate_numericality_of(:number)

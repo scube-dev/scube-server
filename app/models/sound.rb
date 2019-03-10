@@ -1,5 +1,5 @@
-class Sound < ActiveRecord::Base
-  belongs_to :track
+class Sound < ApplicationRecord
+  belongs_to :track, optional: true
 
   validates :sha256, presence: true, uniqueness: true
   validates :mime_type, presence: true

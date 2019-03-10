@@ -8,13 +8,11 @@ source 'https://rubygems.org'
   activesupport
   railties
 ].each do |gem_name|
-  gem gem_name, '4.2.10'
+  gem gem_name, '~> 5.0.7'
 end
-gem 'rails-api', '0.4.1'
 
 gem 'bcrypt', '~> 3.1'
 gem 'bootsnap', '~> 1.4', require: false
-gem 'has_secure_token', '~> 1.0'
 gem 'pg', '~> 0.21'
 gem 'rabl', '~> 0.14'
 gem 'unicorn-rails', '~> 2.2'

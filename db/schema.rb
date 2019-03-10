@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -20,9 +19,8 @@ ActiveRecord::Schema.define(version: 20151115133134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name",       null: false
+    t.index ["name"], name: "index_authors_on_name", unique: true, using: :btree
   end
-
-  add_index "authors", ["name"], name: "index_authors_on_name", unique: true, using: :btree
 
   create_table "keys", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,10 +28,9 @@ ActiveRecord::Schema.define(version: 20151115133134) do
     t.integer  "user_id",    null: false
     t.string   "name"
     t.string   "token"
+    t.index ["token"], name: "index_keys_on_token", unique: true, using: :btree
+    t.index ["user_id"], name: "index_keys_on_user_id", using: :btree
   end
-
-  add_index "keys", ["token"], name: "index_keys_on_token", unique: true, using: :btree
-  add_index "keys", ["user_id"], name: "index_keys_on_user_id", using: :btree
 
   create_table "playlists", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,11 +45,10 @@ ActiveRecord::Schema.define(version: 20151115133134) do
     t.integer  "release_id", null: false
     t.integer  "track_id",   null: false
     t.integer  "number",     null: false
+    t.index ["release_id", "track_id", "number"], name: "index_release_tracks_on_release_id_and_track_id_and_number", unique: true, using: :btree
+    t.index ["release_id"], name: "index_release_tracks_on_release_id", using: :btree
+    t.index ["track_id"], name: "index_release_tracks_on_track_id", using: :btree
   end
-
-  add_index "release_tracks", ["release_id", "track_id", "number"], name: "index_release_tracks_on_release_id_and_track_id_and_number", unique: true, using: :btree
-  add_index "release_tracks", ["release_id"], name: "index_release_tracks_on_release_id", using: :btree
-  add_index "release_tracks", ["track_id"], name: "index_release_tracks_on_track_id", using: :btree
 
   create_table "releases", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -67,20 +63,18 @@ ActiveRecord::Schema.define(version: 20151115133134) do
     t.string   "mime_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["sha256"], name: "index_sounds_on_sha256", unique: true, using: :btree
   end
-
-  add_index "sounds", ["sha256"], name: "index_sounds_on_sha256", unique: true, using: :btree
 
   create_table "track_authors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "track_id",   null: false
     t.integer  "author_id",  null: false
+    t.index ["author_id"], name: "index_track_authors_on_author_id", using: :btree
+    t.index ["track_id", "author_id"], name: "index_track_authors_on_track_id_and_author_id", unique: true, using: :btree
+    t.index ["track_id"], name: "index_track_authors_on_track_id", using: :btree
   end
-
-  add_index "track_authors", ["author_id"], name: "index_track_authors_on_author_id", using: :btree
-  add_index "track_authors", ["track_id", "author_id"], name: "index_track_authors_on_track_id_and_author_id", unique: true, using: :btree
-  add_index "track_authors", ["track_id"], name: "index_track_authors_on_track_id", using: :btree
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name"
@@ -93,9 +87,8 @@ ActiveRecord::Schema.define(version: 20151115133134) do
     t.string   "password_digest", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "keys", "users"
   add_foreign_key "release_tracks", "releases"

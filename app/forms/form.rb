@@ -51,6 +51,6 @@ private
   end
 
   def merge_errors
-    record.errors.each { |k, v| errors[k] = v }
+    record.errors.each { |k, v| errors.add k, v }
   end
 end

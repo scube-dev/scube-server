@@ -1,4 +1,4 @@
-class Track < ActiveRecord::Base
+class Track < ApplicationRecord
   has_many :release_tracks, dependent: :destroy
   has_many :releases, through: :release_tracks
   has_many :sounds
