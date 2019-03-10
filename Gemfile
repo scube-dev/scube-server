@@ -12,28 +12,25 @@ source 'https://rubygems.org'
 end
 gem 'rails-api', '0.4.1'
 
-gem 'pg', '~> 0.18'
-gem 'bcrypt'
-gem 'unicorn-rails'
-
-gem 'has_secure_token'
-
-gem 'rabl'
-
-gem 'bootsnap', require: false
+gem 'bcrypt', '~> 3.1'
+gem 'bootsnap', '~> 1.4', require: false
+gem 'has_secure_token', '~> 1.0'
+gem 'pg', '~> 0.21'
+gem 'rabl', '~> 0.14'
+gem 'unicorn-rails', '~> 2.2'
 
 
 group :development do
-  gem 'better_errors'
+  gem 'better_errors', '~> 2.5'
 end
 
 group :development, :test do
-  gem 'pry-rails'
-  gem 'rspec-rails'
+  gem 'pry-rails', '~> 0.3'
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :test do
-  gem 'rspec'
-  gem 'factory_bot_rails'
-  gem 'shoulda-matchers'
+  gem 'factory_bot_rails', '~> 5.0'
+  gem 'rspec', '~> 3.8'
+  gem 'shoulda-matchers', '~> 4.0'
 end
