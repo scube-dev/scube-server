@@ -6,33 +6,35 @@ end
 
 FactoryBot.define do
   factory :author do
-    name 'Some author'
+    name { 'Some author' }
   end
 
   factory :key do
-    name 'Some key'
     user
+    name { 'Some key' }
   end
 
   factory :playlist do
-    name 'Some playlist'
     user
+    name { 'Some playlist' }
   end
 
   factory :release do
-    name 'Some release'
-    year 1982
+    name { 'Some release' }
+    year { 1982 }
   end
 
   factory :release_track do
     release
     track
-    number 42
+    number { 42 }
   end
 
   factory :sound do
-    sha256    '1f68f4f8f965eeb55b1d9f4b8c9dccd772ecfeb54d37e801c81aeddea69dbebf'
-    mime_type 'audio/mpeg'
+    sha256 do
+      '1f68f4f8f965eeb55b1d9f4b8c9dccd772ecfeb54d37e801c81aeddea69dbebf'
+    end
+    mime_type { 'audio/mpeg' }
 
     trait :with_file_upload do
       file do
@@ -43,7 +45,7 @@ FactoryBot.define do
   end
 
   factory :track do
-    name 'Some track'
+    name { 'Some track' }
 
     trait :with_file_upload do
       file do
@@ -57,6 +59,6 @@ FactoryBot.define do
     sequence :email do |n|
       "bob_#{n}@example.net"
     end
-    password '733tP4s5'
+    password { '733tP4s5' }
   end
 end
