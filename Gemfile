@@ -36,8 +36,4 @@ group :test do
   gem 'rspec'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
-
-  gem 'rb-kqueue', require: false
-  gem 'guard', require: false
-  gem 'guard-rspec', require: false
 end
