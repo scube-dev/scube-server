@@ -1,6 +1,6 @@
 module AcceptanceHelpers
   def options path, args
-    @integration_session.send :process_with_kwargs, :options, path, args
+    @integration_session.send :process, :options, path, args
   end
 
   def sign_in
