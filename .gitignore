@@ -2,5 +2,4 @@
 /config/secrets.yml
 /data/
 /log/*.log
-/public/assets/
 /tmp/
