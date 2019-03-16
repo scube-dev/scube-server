@@ -13,7 +13,7 @@ end
 
 gem 'bcrypt', '~> 3.1'
 gem 'bootsnap', '~> 1.4', require: false
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 1.1'
 gem 'rabl', '~> 0.14'
 gem 'unicorn-rails', '~> 2.2'
 
