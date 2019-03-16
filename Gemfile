@@ -8,7 +8,7 @@ source 'https://rubygems.org'
   activesupport
   railties
 ].each do |gem_name|
-  gem gem_name, '~> 5.1.6'
+  gem gem_name, '~> 5.2.2'
 end
 
 gem 'bcrypt', '~> 3.1'
